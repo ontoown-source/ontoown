@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-html lang="id">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +8,25 @@ html lang="id">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 2. SETTING DASAR */
         body {
-            font-family: 'League Spartan', sans-serif; /* Pake font pilihanmu */
+            font-family: 'League Spartan', sans-serif;
             margin: 0;
             background-color: #f9f9f9;
-            color: #333;
         }
 
-        /* 3. HEADER DENGAN WARNA HIJAU KAMU */
+        /* BAR PUTIH BIAR LOGO KELIHATAN JELAS */
         .navbar {
-            background-color: #249170; /* Ijo #249170 */
+            background-color: white; 
             padding: 1rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: white;
+            color: #249170; /* Tulisan jadi warna ijo kamu */
+            border-bottom: 2px solid #249170; /* Garis ijo tipis di bawah */
         }
 
         .logo {
-            height: 40px; /* Atur tinggi logo kamu di sini */
+            height: 45px; /* Sesuaikan tinggi logo */
         }
 
         .container {
@@ -35,12 +34,6 @@ html lang="id">
             text-align: center;
         }
 
-        h1 {
-            color: #249170; /* Tulisan judul pake ijo kamu juga */
-            font-weight: 700;
-        }
-
-        /* Tombol Gamification Sederhana */
         .btn-gamify {
             background-color: #249170;
             color: white;
@@ -49,16 +42,10 @@ html lang="id">
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
-            transition: 0.3s;
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 700;
             border: none;
             cursor: pointer;
-            font-family: 'League Spartan', sans-serif;
-            font-size: 18px;
-        }
-
-        .btn-gamify:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
         }
     </style>
 </head>
@@ -66,15 +53,13 @@ html lang="id">
 
     <nav class="navbar">
         <img src="logo.PNG" alt="Ontoown Logo" class="logo">
-        <div>Menu | Cari Rumah | Poin Saya</div>
+        <div style="font-weight: bold;">Menu | Cari Rumah | Poin Saya</div>
     </nav>
 
     <div class="container">
-        <h1>Selamat Datang di Ontoown 🏠</h1>
+        <h1 style="color: #249170;">Selamat Datang di Ontoown 🏠</h1>
         <p>Housing platform masa depan dengan sistem gamification.</p>
-        
         <button class="btn-gamify" onclick="tambahPoin()">Mulai Cari Rumah (+10 Poin!)</button>
-        
         <p id="status-poin" style="margin-top: 20px; font-weight: bold;"></p>
     </div>
 
@@ -86,6 +71,5 @@ html lang="id">
             alert("Selamat! Kamu baru saja mendapatkan 10 poin pertama di Ontoown!");
         }
     </script>
-
 </body>
 </html>
