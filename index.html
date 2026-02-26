@@ -16,68 +16,76 @@
             font-family: 'League Spartan', sans-serif;
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
-            padding-bottom: 90px;
+            padding-bottom: 100px;
         }
 
-        /* 1. TOP NAV */
+        /* 1. TOP NAVBAR */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 20px; background: white; position: sticky; top: 0; z-index: 1000;
+            padding: 12px 20px; background: white; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .logo-img { height: 35px; width: auto; }
+        .logo-img { height: 30px; width: auto; }
         .btn-signup {
-            background: var(--primary-green); color: white; padding: 8px 15px;
-            border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.8rem;
+            background: var(--primary-green); color: white; padding: 8px 16px;
+            border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem;
         }
 
-        /* 2. HERO */
+        /* 2. HERO SECTION */
         .hero {
-            height: 40vh;
+            height: 45vh;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; justify-content: center; align-items: center; color: white; text-align: center;
         }
-        .hero h1 { font-size: 2.5rem; line-height: 1.1; margin: 0; }
+        .hero h1 { font-size: 2.8rem; line-height: 1.1; margin: 0; font-weight: 700; }
 
-        /* 3. DESCRIPTION */
-        .desc-section { padding: 30px 20px; background: white; }
-        .desc-section p { color: #666; line-height: 1.5; margin: 15px 0; }
-        .btn-green {
+        /* 3. PLATFORM DESCRIPTION */
+        .desc-section { padding: 40px 25px; background: white; text-align: left; }
+        .desc-section p { color: #555; line-height: 1.6; margin: 20px 0; font-size: 1.05rem; }
+        .btn-discover {
             background: var(--primary-green); color: white; border: none;
-            padding: 12px 20px; border-radius: 10px; font-weight: 700; cursor: pointer;
+            padding: 12px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: inherit;
         }
 
         /* 4. PROGRESS CARD */
-        .card { background: white; margin: 20px; padding: 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 10px; }
-        .bar-bg { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 15px; }
-        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: 0.5s; }
+        .card { background: white; margin: 20px; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
+        .bar-bg { background: #f0f0f0; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 25px; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: 0.8s ease-in-out; }
+        
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; transition: 0.3s; }
+        .step-item.active { opacity: 1; }
+        .step-icon { font-size: 1.2rem; margin-bottom: 5px; }
+        .step-label { font-size: 0.7rem; font-weight: 600; }
 
         /* 5. LIVE FLEXIBLY (TICKET) */
-        .flex-box { background: var(--dark-blue); color: white; padding: 30px 20px; text-align: center; }
-        .ticket-wrap { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+        .flex-box { background: var(--dark-blue); color: white; padding: 40px 20px; text-align: center; }
+        .ticket-wrap { display: flex; gap: 12px; margin-top: 25px; justify-content: center; }
         .ticket {
-            background: #d1e9ff; color: #1a2538; padding: 15px; border-radius: 15px; flex: 1;
-            position: relative; max-width: 150px; text-align: center;
+            background: #d1e9ff; color: #1a2538; padding: 20px 10px; border-radius: 18px; flex: 1;
+            position: relative; max-width: 160px; text-align: center;
         }
         .ticket.green { background: #dcfce7; }
         .ticket::before, .ticket::after {
-            content: ''; position: absolute; top: 50%; width: 14px; height: 14px;
+            content: ''; position: absolute; top: 50%; width: 18px; height: 18px;
             background: var(--dark-blue); border-radius: 50%; transform: translateY(-50%);
         }
-        .ticket::before { left: -7px; } .ticket::after { right: -7px; }
-        .ticket h4 { margin: 5px 0; font-size: 0.8rem; color: #007bff; }
+        .ticket::before { left: -9px; } .ticket::after { right: -9px; }
+        .ticket h4 { margin: 10px 0 5px; font-size: 0.9rem; font-weight: 700; color: #007bff; }
         .ticket.green h4 { color: #16a34a; }
+        .ticket p { font-size: 0.65rem; margin: 0; line-height: 1.3; }
 
-        /* 6. MORTGAGE SIMULATOR UI */
-        .sim-box { background: white; border-radius: 15px; padding: 20px; border: 1px solid #eee; }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 5px; color: #444; }
+        /* 6. MORTGAGE SIMULATOR */
+        .sim-container { background: white; border-radius: 20px; padding: 20px; border: 1px solid #f0f0f0; margin-top: 15px; }
+        .input-group { margin-bottom: 18px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: #333; }
         .input-group input, .input-group select {
-            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;
+            width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; box-sizing: border-box; font-family: inherit;
         }
-        .res-area { background: #f0fdf4; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
-        .res-val { font-size: 1.5rem; font-weight: 700; color: var(--primary-green); }
+        .res-area { background: #f0fdf4; padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center; border: 1px dashed var(--primary-green); }
+        .res-val { font-size: 1.8rem; font-weight: 700; color: var(--primary-green); margin: 5px 0; }
 
         /* BOTTOM NAV */
         .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; }
@@ -86,7 +94,7 @@
 <body>
 
     <nav class="top-nav">
-        <img src="logo.png" alt="Ontoown" class="logo-img">
+        <img src="logo.png" alt="Ontoown Logo" class="logo-img">
         <a href="#" class="btn-signup">Sign Up</a>
     </nav>
 
@@ -95,110 +103,19 @@
     </header>
 
     <section class="desc-section">
-        <img src="logo.png" alt="Ontoown" style="height: 40px; margin-bottom: 10px;">
-        <p>ONTOOWN helps you rent with purpose—building equity, habits, and readiness to own a home step by step.</p>
-        <button class="btn-green">Discover more</button>
+        <img src="logo.png" alt="Ontoown" style="height: 50px; margin-bottom: 10px;">
+        <p>ONTOOWN is a platform that turns renting into a real path to home ownership. You can start by renting, build equity over time, and smoothly transition to owning your home step by step.</p>
+        <button class="btn-discover">Discover more</button>
     </section>
 
     <section class="card">
         <div class="prog-header">
-            <span>✪ My Progress</span>
+            <span>✪ On-to-Own Progress</span>
             <span id="p-txt" style="color: var(--primary-green);">33%</span>
         </div>
         <div class="bar-bg"><div id="p-bar" class="bar-fill"></div></div>
-        <div style="text-align: center; margin: 20px 0;">
-            <img id="p-img" src="rumah-33.png" style="width: 180px;" alt="Progress">
-        </div>
-        <button onclick="up()" class="btn-green" style="width: 100%; background: #e8f4f1; color: var(--primary-green);">Tingkatkan Progres</button>
-    </section>
-
-    <section class="flex-box">
-        <h2 style="margin: 0;">Live Flexibly</h2>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Try a unit before committing by renting daily.</p>
-        <div class="ticket-wrap">
-            <div class="ticket">
-                <span style="font-size: 1.5rem;">🏢</span>
-                <h4>Trial Stay Pass</h4>
-                <p style="font-size: 0.6rem;">Valid for New User only</p>
-            </div>
-            <div class="ticket green">
-                <span style="font-size: 1.5rem;">🏠</span>
-                <h4>Rotation</h4>
-                <p style="font-size: 0.6rem;">Valid for Ontoown Renters</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="card">
-        <h2 style="margin: 0 0 10px 0;">Mortgage Simulator</h2>
-        <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">See your future house by trying the simulator.</p>
         
-        <div class="sim-box">
-            <div class="input-group">
-                <label>Property Price (Rp)</label>
-                <input type="number" id="m-price" value="500000000">
-            </div>
-            <div class="input-group">
-                <label>Tenor: <span id="y-txt">15</span> Tahun</label>
-                <input type="range" id="m-years" min="1" max="30" value="15" oninput="document.getElementById('y-txt').innerText = this.value">
-            </div>
-            <div class="input-group">
-                <label>Interest Rate (%/Year)</label>
-                <input type="number" id="m-rate" value="6">
-            </div>
-            <div class="input-group">
-                <label>Interest Type</label>
-                <select id="m-type">
-                    <option value="anuitas">Anuitas (Efektif)</option>
-                    <option value="flat">Flat</option>
-                </select>
-            </div>
-            <button onclick="calc()" class="btn-green" style="width: 100%;">Cek Estimasi</button>
-            <div class="res-area">
-                <div style="font-size: 0.8rem; color: #666;">Monthly Installment:</div>
-                <div class="res-val" id="m-res">Rp 0</div>
-            </div>
-        </div>
-    </section>
-
-    <nav class="bottom-nav">
-        <div style="color: var(--primary-green); font-size: 1.5rem;">🏠</div>
-        <div style="font-size: 1.5rem;">🔍</div>
-        <div style="font-size: 1.5rem;">👤</div>
-    </nav>
-
-    <script>
-        // Logika Tombol Progres
-        let prog = 33;
-        function up() {
-            if (prog < 100) {
-                prog += 33; if (prog > 100) prog = 100;
-                document.getElementById('p-bar').style.width = prog + "%";
-                document.getElementById('p-txt').innerText = prog + "%";
-                const img = document.getElementById('p-img');
-                // Ganti nama file di bawah ini jika nama file gambar anda berbeda
-                if (prog >= 100) img.src = 'rumah-100.png';
-                else if (prog >= 66) img.src = 'rumah-66.png';
-            }
-        }
-
-        // Logika Kalkulator Mortgage
-        function calc() {
-            const price = parseFloat(document.getElementById('m-price').value);
-            const loan = price * 0.9; 
-            const years = parseInt(document.getElementById('m-years').value);
-            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
-            const type = document.getElementById('m-type').value;
-            let res = 0;
-
-            if (type === 'flat') {
-                res = (loan + (loan * rate * years)) / (years * 12);
-            } else {
-                const i = rate / 12; const n = years * 12;
-                res = loan * (i / (1 - Math.pow(1 + i, -n)));
-            }
-            document.getElementById('m-res').innerText = "Rp " + Math.round(res).toLocaleString('id-ID');
-        }
-    </script>
-</body>
-</html>
+        <div class="steps-nav">
+            <div class="step-item active" id="s1">
+                <div class="
+            
