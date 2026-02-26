@@ -4,122 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Rent Today, Own Tomorrow</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --primary-green: #249170;
             --dark-blue: #1a2538;
-            --light-blue: #d1e9ff;
-            --light-green: #dcfce7;
             --white: #ffffff;
+            --bg-gray: #f8f9fa;
         }
 
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-            padding-bottom: 80px;
+            background-color: var(--bg-gray);
+            padding-bottom: 90px;
         }
 
-        /* 1. HERO SECTION */
+        /* HERO */
         .hero {
-            position: relative;
-            height: 40vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
+            height: 45vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             color: white;
-        }
-
-        .hero h1 { font-size: 2.5rem; margin: 0; }
-
-        /* 2. FLEXIBILITY SECTION (Ticket Design) */
-        .flex-section {
-            background-color: var(--dark-blue);
-            color: white;
-            padding: 40px 20px;
             text-align: center;
         }
 
-        .flex-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
+        .hero h1 { font-size: 2.5rem; line-height: 1.1; margin: 0; }
 
-        .ticket {
-            background: var(--light-blue);
-            color: #1a2538;
-            padding: 20px;
-            border-radius: 15px;
-            width: 45%;
-            position: relative;
-            text-align: center;
-        }
-
-        .ticket.green { background: var(--light-green); }
-
-        /* Efek potongan tiket di samping */
-        .ticket::before, .ticket::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            background: var(--dark-blue);
-            border-radius: 50%;
-        }
-        .ticket::before { left: -10px; transform: translateY(-50%); }
-        .ticket::after { right: -10px; transform: translateY(-50%); }
-
-        .ticket h4 { margin: 10px 0 5px; color: #3b82f6; }
-        .ticket.green h4 { color: #16a34a; }
-        .ticket p { font-size: 0.7rem; margin: 0; opacity: 0.8; }
-
-        /* 3. MORTGAGE SIMULATOR */
-        .simulator-section { padding: 30px 20px; }
-        
-        .sim-card {
+        /* PROGRESS SECTION */
+        .section-card {
             background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-
-        .result-box {
-            background: #f0fdf4;
+            margin: 20px;
             padding: 20px;
-            border-radius: 15px;
-            margin-top: 20px;
-            border: 1px dashed var(--primary-green);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .result-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .result-price { font-size: 1.5rem; font-weight: 700; color: var(--primary-green); }
+        .progress-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 10px; }
+        .bar-bg { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 20px; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: 0.5s; }
+        .house-display { text-align: center; margin: 20px 0; }
+        .house-img { width: 200px; height: auto; }
 
-        .btn-calc {
+        .btn-main {
             width: 100%;
             background: var(--primary-green);
             color: white;
@@ -128,155 +60,152 @@
             border-radius: 12px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 10px;
+            font-family: inherit;
         }
 
-        /* 4. GAMIFICATION PROGRESS (Yang lama tetap ada) */
-        .gamify-section { padding: 20px; }
-        .gamify-card { background: white; padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .progress-bar-bg { background: #eee; height: 10px; border-radius: 5px; margin: 15px 0; overflow: hidden; }
-        .progress-bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: 0.5s; }
+        /* LIVE FLEXIBLY (TICKET) */
+        .flex-section { background: var(--dark-blue); color: white; padding: 30px 20px; text-align: center; }
+        .flex-grid { display: flex; gap: 15px; margin-top: 20px; justify-content: center; }
         
-        /* Navigasi */
+        .ticket {
+            background: #d1e9ff;
+            color: var(--dark-blue);
+            padding: 15px;
+            border-radius: 15px;
+            flex: 1;
+            position: relative;
+            max-width: 160px;
+        }
+        .ticket.green { background: #dcfce7; }
+        
+        /* Ticket Cut-outs */
+        .ticket::before, .ticket::after {
+            content: ''; position: absolute; top: 50%; width: 16px; height: 16px;
+            background: var(--dark-blue); border-radius: 50%; transform: translateY(-50%);
+        }
+        .ticket::before { left: -8px; }
+        .ticket::after { right: -8px; }
+
+        .ticket h4 { margin: 10px 0 5px; font-size: 0.9rem; }
+        .ticket p { font-size: 0.65rem; margin: 0; opacity: 0.8; }
+
+        /* MORTGAGE SIMULATOR */
+        .sim-input-group { margin-bottom: 15px; }
+        .sim-input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
+        .sim-input-group input, .sim-input-group select {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box;
+        }
+
+        .res-box { background: #f0fdf4; border: 1px dashed var(--primary-green); padding: 15px; border-radius: 15px; margin-top: 20px; text-align: center; }
+        .res-price { font-size: 1.4rem; font-weight: 700; color: var(--primary-green); }
+
+        /* NAV */
         .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
-    <header class="hero">
+    <section class="hero">
         <h1>Live Flexibly.<br>Own Tomorrow.</h1>
-    </header>
+    </section>
+
+    <section class="section-card">
+        <div class="progress-header">
+            <span>✪ My Progress</span>
+            <span id="txt-prog" style="color: var(--primary-green);">33%</span>
+        </div>
+        <div class="bar-bg"><div id="bar-fill" class="bar-fill"></div></div>
+        <div class="house-display">
+            <img id="house-img" src="rumah-33.png" class="house-img" alt="Progress">
+        </div>
+        <button class="btn-main" onclick="updateProgress()" style="background: #e8f4f1; color: var(--primary-green);">Tingkatkan Progres</button>
+    </section>
 
     <section class="flex-section">
         <h2 style="margin: 0;">Live Flexibly</h2>
-        <p style="font-size: 0.9rem; opacity: 0.8;">Try a unit before committing by renting daily.</p>
-        
-        <div class="flex-container">
+        <p style="font-size: 0.8rem; opacity: 0.7;">Try a unit before committing by renting daily.</p>
+        <div class="flex-grid">
             <div class="ticket">
-                <span style="font-size: 1.5rem;">🏢</span>
+                <span style="font-size: 1.2rem;">🏢</span>
                 <h4>Trial Stay Pass</h4>
-                <p>Valid for New User in Ontoown Apps only</p>
+                <p>Valid for New User only</p>
             </div>
             <div class="ticket green">
-                <span style="font-size: 1.5rem;">🏠</span>
+                <span style="font-size: 1.2rem;">🏠</span>
                 <h4>Rotation</h4>
-                <p>Valid for Ontoown Renters with Flexibility Add-on</p>
+                <p>Valid for Ontoown Renters</p>
             </div>
         </div>
     </section>
 
-    <section class="gamify-section">
-        <div class="gamify-card">
-            <div style="display: flex; justify-content: space-between; font-weight: 700;">
-                <span>✪ My Progress</span>
-                <span id="angka-progress" style="color: var(--primary-green);">33%</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div id="bar-hijau" class="progress-bar-fill"></div>
-            </div>
-            <button class="btn-calc" onclick="naikProgress()" style="background: #e8f4f1; color: var(--primary-green); padding: 8px;">Tingkatkan Progres</button>
-            <div style="margin-top: 15px;">
-                <img id="house-visual" src="rumah-33.png" style="width: 150px;" alt="Progress Rumah">
-            </div>
+    <section class="section-card">
+        <h2 style="margin: 0 0 15px 0;">Mortgage Simulator</h2>
+        
+        <div class="sim-input-group">
+            <label>Harga Properti (Rp)</label>
+            <input type="number" id="p-price" value="500000000">
         </div>
-    </section>
 
-    <section class="simulator-section">
-        <div class="sim-card">
-            <h2 style="margin-top: 0;">Mortgage Simulator</h2>
-            
-            <div class="input-group">
-                <label>Harga Properti (Rp)</label>
-                <input type="number" id="prop-price" value="500000000">
-            </div>
+        <div class="sim-input-group">
+            <label>Jangka Waktu: <span id="y-val">15</span> Tahun</label>
+            <input type="range" id="p-years" min="1" max="30" value="15" oninput="document.getElementById('y-val').innerText = this.value">
+        </div>
 
-            <div class="input-group">
-                <label>Down Payment (%)</label>
-                <select id="dp-percent">
-                    <option value="5">5%</option>
-                    <option value="10">10%</option>
-                    <option value="20">20%</option>
-                </select>
-            </div>
+        <div class="sim-input-group">
+            <label>Jenis Bunga</label>
+            <select id="p-type">
+                <option value="anuitas">Anuitas (Efektif)</option>
+                <option value="flat">Flat</option>
+            </select>
+        </div>
 
-            <div class="input-group">
-                <label>Jangka Waktu (Tahun)</label>
-                <input type="range" id="years" min="1" max="30" value="15" oninput="this.nextElementSibling.value = this.value">
-                <output>15</output> thn
-            </div>
+        <button class="btn-main" onclick="calcMortgage()">Cek Estimasi Cicilan</button>
 
-            <div class="input-group">
-                <label>Suku Bunga (% per tahun)</label>
-                <input type="number" id="interest" value="6" step="0.1">
-            </div>
-
-            <div class="input-group">
-                <label>Jenis Bunga</label>
-                <select id="interest-type">
-                    <option value="anuitas">Anuitas (Efektif)</option>
-                    <option value="flat">Flat</option>
-                </select>
-            </div>
-
-            <button class="btn-calc" onclick="hitungKPR()">Hitung Estimasi</button>
-
-            <div class="result-box" id="result-area">
-                <div class="result-item">
-                    <span>Estimasi Cicilan:</span>
-                </div>
-                <div class="result-price" id="monthly-installment">Rp 0</div>
-                <p id="calc-note" style="font-size: 0.8rem; color: #666; margin-top: 10px;">Klik hitung untuk melihat proyeksi.</p>
-            </div>
+        <div class="res-box">
+            <div style="font-size: 0.9rem; color: #666;">Estimasi Cicilan Bulanan:</div>
+            <div class="res-price" id="res-install">Rp 0</div>
         </div>
     </section>
 
     <nav class="bottom-nav">
-        <div style="color: var(--primary-green);">🏠</div>
-        <div>🔍</div>
-        <div>👤</div>
+        <div style="color: var(--primary-green); font-size: 1.5rem;">🏠</div>
+        <div style="font-size: 1.5rem;">🔍</div>
+        <div style="font-size: 1.5rem;">👤</div>
     </nav>
 
     <script>
-        // LOGIKA PROGRESS (LAMA)
-        let persen = 33;
-        const houseImages = { start: 'rumah-33.png', mid: 'rumah-66.png', final: 'rumah-100.png' };
+        // LOGIKA PROGRESS
+        let p = 33;
+        const imgs = { s: 'rumah-33.png', m: 'rumah-66.png', f: 'rumah-100.png' };
 
-        function naikProgress() {
-            if (persen < 100) {
-                persen += 33;
-                if (persen > 100) persen = 100;
-                document.getElementById('bar-hijau').style.width = persen + "%";
-                document.getElementById('angka-progress').innerText = persen + "%";
-                const img = document.getElementById('house-visual');
-                if (persen >= 100) img.src = houseImages.final;
-                else if (persen >= 66) img.src = houseImages.mid;
+        function updateProgress() {
+            if (p < 100) {
+                p += 33; if (p > 100) p = 100;
+                document.getElementById('bar-fill').style.width = p + "%";
+                document.getElementById('txt-prog').innerText = p + "%";
+                const i = document.getElementById('house-img');
+                if (p >= 100) i.src = imgs.f;
+                else if (p >= 66) i.src = imgs.m;
             }
         }
 
-        // LOGIKA MORTGAGE (BARU)
-        function hitungKPR() {
-            const price = parseFloat(document.getElementById('prop-price').value);
-            const dp = price * (parseFloat(document.getElementById('dp-percent').value) / 100);
-            const loanAmount = price - dp;
-            const years = parseInt(document.getElementById('years').value);
-            const annualInterest = parseFloat(document.getElementById('interest').value) / 100;
-            const type = document.getElementById('interest-type').value;
-
-            let installment = 0;
+        // LOGIKA MORTGAGE
+        function calcMortgage() {
+            const price = parseFloat(document.getElementById('p-price').value);
+            const loan = price * 0.9; // Asumsi DP 10%
+            const years = parseInt(document.getElementById('p-years').value);
+            const rate = 0.06; // Bunga 6%
+            const type = document.getElementById('p-type').value;
+            let result = 0;
 
             if (type === 'flat') {
-                // RUMUS BUNGA FLAT: (Pokok + (Pokok * Bunga * Tenor)) / Total Bulan
-                const totalInterest = loanAmount * annualInterest * years;
-                installment = (loanAmount + totalInterest) / (years * 12);
+                result = (loan + (loan * rate * years)) / (years * 12);
             } else {
-                // RUMUS ANUITAS: P * (i / (1 - (1 + i)^-n))
-                const monthlyInterest = annualInterest / 12;
-                const totalMonths = years * 12;
-                installment = loanAmount * (monthlyInterest / (1 - Math.pow(1 + monthlyInterest, -totalMonths)));
+                const mRate = rate / 12;
+                const mTotal = years * 12;
+                result = loan * (mRate / (1 - Math.pow(1 + mRate, -mTotal)));
             }
-
-            document.getElementById('monthly-installment').innerText = "Rp " + Math.round(installment).toLocaleString('id-ID') + "/bln";
-            document.getElementById('calc-note').innerText = `Pinjaman: Rp ${loanAmount.toLocaleString('id-ID')} selama ${years} tahun.`;
+            document.getElementById('res-install').innerText = "Rp " + Math.round(result).toLocaleString('id-ID');
         }
     </script>
 </body>
