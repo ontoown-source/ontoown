@@ -9,7 +9,8 @@
 
     <style>
         :root {
-            --primary-green: #249170; /* Warna hijau kebanggaanmu */
+            --primary-green: #249170;
+            --light-gray: #f0f0f0;
             --white: #ffffff;
         }
 
@@ -20,13 +21,13 @@
             background-color: #ffffff;
             color: #333;
             overflow-x: hidden;
+            padding-bottom: 80px; /* Space for bottom nav */
         }
 
-        /* 1. HERO SECTION (BAGIAN ATAS) */
+        /* 1. HERO SECTION */
         .hero {
             position: relative;
-            height: 75vh;
-            /* Background gambar apartemen dengan overlay gelap */
+            height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
@@ -61,35 +62,21 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin: 0;
             font-weight: 700;
-            line-height: 1;
+            line-height: 1.1;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            margin: 20px 0 30px;
-            opacity: 0.9;
-        }
-
-        /* 2. BRANDING SECTION (LOGO & INTRO) */
+        /* 2. BRANDING SECTION */
         .branding {
-            padding: 60px 30px;
+            padding: 40px 30px 20px;
             text-align: left;
         }
 
         .logo-main {
-            height: 65px;
-            margin-bottom: 25px;
-        }
-
-        .branding p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 30px;
+            height: 50px;
+            margin-bottom: 20px;
         }
 
         .btn-discover {
@@ -101,20 +88,21 @@
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            font-family: 'League Spartan', sans-serif;
+            margin-top: 10px;
         }
 
-        /* 3. GAMIFICATION CARD (PROGRESS BAR) */
+        /* 3. GAMIFICATION CARD & HOUSE VISUAL */
         .gamify-section {
-            padding: 0 30px 120px;
+            padding: 20px 30px 50px;
         }
 
         .gamify-card {
             background: #fff;
             padding: 25px;
             border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             border: 1px solid #f0f0f0;
+            text-align: center;
         }
 
         .card-header {
@@ -128,36 +116,91 @@
             display: flex;
             align-items: center;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .star-box {
-            background: #f0f0f0;
-            width: 35px;
-            height: 35px;
+            background: #e8f4f1;
+            color: var(--primary-green);
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            margin-right: 12px;
-            font-size: 20px;
+            margin-right: 10px;
         }
 
         .progress-container {
             background-color: #f0f0f0;
-            height: 15px;
+            height: 12px;
             border-radius: 10px;
             overflow: hidden;
+            margin-bottom: 25px;
         }
 
         .progress-bar {
             background-color: var(--primary-green);
             height: 100%;
-            width: 33%; /* Progres awal */
-            transition: width 0.8s ease-in-out;
+            width: 33%; 
+            transition: width 0.5s ease;
         }
 
-        /* 4. BOTTOM NAVIGATION (MOBILE STYLE) */
+        /* Status Icons */
+        .status-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+
+        .step-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #999;
+            transition: 0.3s;
+        }
+
+        .step.active .step-icon {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        /* House Image Container */
+        .house-display {
+            margin-top: 20px;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .house-img {
+            max-width: 280px;
+            height: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        /* 4. BOTTOM NAVIGATION */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -167,21 +210,13 @@
             justify-content: space-around;
             padding: 15px 0;
             border-top: 1px solid #eee;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
         }
 
-        .nav-icon {
-            font-size: 24px;
-            color: #ccc;
-        }
+        .nav-icon { font-size: 24px; color: #ccc; }
+        .nav-icon.active { color: var(--primary-green); }
 
-        .nav-icon.active {
-            color: var(--primary-green);
-        }
-
-        /* Responsive HP */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -189,20 +224,15 @@
 
     <header class="hero">
         <nav class="hero-nav">
-            <img src="logo.PNG" alt="Logo" style="height: 35px; filter: brightness(0) invert(1);">
+            <div style="font-weight: 700; font-size: 1.5rem;">ONTOOWN</div>
             <a href="#" class="btn-signup">Sign Up</a>
         </nav>
         <h1>Rent today.<br>Own Tomorrow.</h1>
-        <p>ONTOOWN helps you rent with purpose—building equity, habits, and readiness to own a home.</p>
     </header>
 
     <main class="branding">
-        <img src="logo.PNG" alt="Ontoown" class="logo-main">
-        <p>
-            ONTOOWN is a platform that turns renting into a real path to home ownership. 
-            You can start by renting, build equity over time, and smoothly transition to owning your home step by step.
-        </p>
-        <button class="btn-discover" onclick="naikProgress()">Discover more</button>
+        <p>Progres Anda dalam membangun masa depan dimulai di sini.</p>
+        <button class="btn-discover" onclick="naikProgress()">Tingkatkan Progres</button>
     </main>
 
     <section class="gamify-section">
@@ -211,10 +241,30 @@
                 <div class="progress-title">
                     <span class="star-box">✪</span> On-to-Own Progress
                 </div>
-                <div id="angka-progress" style="font-weight: 700;">33%</div>
+                <div id="angka-progress" style="font-weight: 700; color: var(--primary-green);">33%</div>
             </div>
+
             <div class="progress-container">
                 <div id="bar-hijau" class="progress-bar"></div>
+            </div>
+
+            <div class="status-steps">
+                <div class="step active" id="step-rent">
+                    <div class="step-icon">↳</div>
+                    <div class="step-label">Rent Started</div>
+                </div>
+                <div class="step" id="step-equity">
+                    <div class="step-icon">📈</div>
+                    <div class="step-label">Build Equity</div>
+                </div>
+                <div class="step" id="step-home">
+                    <div class="step-icon">🏠</div>
+                    <div class="step-label">Own Your Home</div>
+                </div>
+            </div>
+
+            <div class="house-display">
+                <img id="house-visual" src="rumah-33.png" alt="House Progress" class="house-img">
             </div>
         </div>
     </section>
@@ -227,17 +277,41 @@
 
     <script>
         let persen = 33;
+        
+        // Objek untuk memetakan progres ke gambar
+        // Ganti URL ini dengan file gambar Anda (image_bf9e73.png dsb)
+        const houseImages = {
+            start: 'rumah-33.png',  // Tahap Rangka
+            mid: 'rumah-66.png',    // Tahap Setengah Jadi
+            final: 'rumah-100.png'  // Rumah Jadi
+        };
+
         function naikProgress() {
             if (persen < 100) {
-                persen += 5; // Naik 5% tiap klik
+                persen += 33; // Naik bertahap
                 if (persen > 100) persen = 100;
                 
-                document.getElementById('bar-hijau').style.width = persen + "%";
-                document.getElementById('angka-progress').innerText = persen + "%";
-                
-                if (persen === 100) {
-                    alert("Wihhh! Progres kamu sudah 100%! Kamu selangkah lebih dekat punya rumah impian! 🏠✨");
-                }
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            const bar = document.getElementById('bar-hijau');
+            const angka = document.getElementById('angka-progress');
+            const img = document.getElementById('house-visual');
+            
+            bar.style.width = persen + "%";
+            angka.innerText = persen + "%";
+
+            // Update Ikon & Gambar Rumah berdasarkan milestone
+            if (persen >= 100) {
+                document.getElementById('step-home').classList.add('active');
+                img.src = houseImages.final;
+            } else if (persen >= 66) {
+                document.getElementById('step-equity').classList.add('active');
+                img.src = houseImages.mid;
+            } else {
+                img.src = houseImages.start;
             }
         }
     </script>
