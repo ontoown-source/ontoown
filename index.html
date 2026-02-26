@@ -3,73 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ontoown - Housing Platform</title>
+    <title>Ontoown - Rent Today, Own Tomorrow</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --primary-green: #249170; /* Warna hijau kebanggaanmu */
+            --white: #ffffff;
+        }
+
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0;
-            background-color: #f9f9f9;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
         }
 
-        /* BAR PUTIH BIAR LOGO KELIHATAN JELAS */
-        .navbar {
-            background-color: white; 
-            padding: 1rem 2rem;
+        /* 1. HERO SECTION (BAGIAN ATAS) */
+        .hero {
+            position: relative;
+            height: 75vh;
+            /* Background gambar apartemen dengan overlay gelap */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            box-sizing: border-box;
+        }
+
+        .btn-signup {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 20px 0 30px;
+            opacity: 0.9;
+        }
+
+        /* 2. BRANDING SECTION (LOGO & INTRO) */
+        .branding {
+            padding: 60px 30px;
+            text-align: left;
+        }
+
+        .logo-main {
+            height: 65px;
+            margin-bottom: 25px;
+        }
+
+        .branding p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .btn-discover {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        /* 3. GAMIFICATION CARD (PROGRESS BAR) */
+        .gamify-section {
+            padding: 0 30px 120px;
+        }
+
+        .gamify-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid #f0f0f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .progress-title {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            color: #249170; /* Tulisan jadi warna ijo kamu */
-            border-bottom: 2px solid #249170; /* Garis ijo tipis di bawah */
-        }
-
-        .logo {
-            height: 45px; /* Sesuaikan tinggi logo */
-        }
-
-        .container {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .btn-gamify {
-            background-color: #249170;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            font-family: 'League Spartan', sans-serif;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .star-box {
+            background: #f0f0f0;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .progress-container {
+            background-color: #f0f0f0;
+            height: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background-color: var(--primary-green);
+            height: 100%;
+            width: 33%; /* Progres awal */
+            transition: width 0.8s ease-in-out;
+        }
+
+        /* 4. BOTTOM NAVIGATION (MOBILE STYLE) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            color: #ccc;
+        }
+
+        .nav-icon.active {
+            color: var(--primary-green);
+        }
+
+        /* Responsive HP */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <img src="logo.PNG" alt="Ontoown Logo" class="logo">
-        <div style="font-weight: bold;">Menu | Cari Rumah | Poin Saya</div>
+    <header class="hero">
+        <nav class="hero-nav">
+            <img src="logo.PNG" alt="Logo" style="height: 35px; filter: brightness(0) invert(1);">
+            <a href="#" class="btn-signup">Sign Up</a>
+        </nav>
+        <h1>Rent today.<br>Own Tomorrow.</h1>
+        <p>ONTOOWN helps you rent with purpose—building equity, habits, and readiness to own a home.</p>
+    </header>
+
+    <main class="branding">
+        <img src="logo.PNG" alt="Ontoown" class="logo-main">
+        <p>
+            ONTOOWN is a platform that turns renting into a real path to home ownership. 
+            You can start by renting, build equity over time, and smoothly transition to owning your home step by step.
+        </p>
+        <button class="btn-discover" onclick="naikProgress()">Discover more</button>
+    </main>
+
+    <section class="gamify-section">
+        <div class="gamify-card">
+            <div class="card-header">
+                <div class="progress-title">
+                    <span class="star-box">✪</span> On-to-Own Progress
+                </div>
+                <div id="angka-progress" style="font-weight: 700;">33%</div>
+            </div>
+            <div class="progress-container">
+                <div id="bar-hijau" class="progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <div class="nav-icon active">🏠</div>
+        <div class="nav-icon">🔍</div>
+        <div class="nav-icon">👤</div>
     </nav>
 
-    <div class="container">
-        <h1 style="color: #249170;">Selamat Datang di Ontoown 🏠</h1>
-        <p>Housing platform masa depan dengan sistem gamification.</p>
-        <button class="btn-gamify" onclick="tambahPoin()">Mulai Cari Rumah (+10 Poin!)</button>
-        <p id="status-poin" style="margin-top: 20px; font-weight: bold;"></p>
-    </div>
-
     <script>
-        let poin = 0;
-        function tambahPoin() {
-            poin += 10;
-            document.getElementById('status-poin').innerText = "Kamu dapat poin! Total: " + poin;
-            alert("Selamat! Kamu baru saja mendapatkan 10 poin pertama di Ontoown!");
+        let persen = 33;
+        function naikProgress() {
+            if (persen < 100) {
+                persen += 5; // Naik 5% tiap klik
+                if (persen > 100) persen = 100;
+                
+                document.getElementById('bar-hijau').style.width = persen + "%";
+                document.getElementById('angka-progress').innerText = persen + "%";
+                
+                if (persen === 100) {
+                    alert("Wihhh! Progres kamu sudah 100%! Kamu selangkah lebih dekat punya rumah impian! 🏠✨");
+                }
+            }
         }
     </script>
+
 </body>
 </html>
