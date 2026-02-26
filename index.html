@@ -117,5 +117,118 @@
         
         <div class="steps-nav">
             <div class="step-item active" id="s1">
-                <div class="
-            
+                <div class="step-icon">↳</div>
+                <div class="step-label">Rent Started</div>
+            </div>
+            <div class="step-item" id="s2">
+                <div class="step-icon">📈</div>
+                <div class="step-label">Build Equity</div>
+            </div>
+            <div class="step-item" id="s3">
+                <div class="step-icon">🏠</div>
+                <div class="step-label">Own Your Home</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <img id="p-img" src="rumah-33.png" style="width: 240px; height: auto;" alt="House Progress">
+        </div>
+        <button onclick="up()" class="btn-discover" style="width: 100%; background: #e8f4f1; color: var(--primary-green);">Tingkatkan Progres</button>
+    </section>
+
+    <section class="flex-box">
+        <h2 style="margin: 0; font-size: 1.8rem;">Live Flexibly</h2>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px;">Try a unit before committing by renting daily with trial stays & move within the ONTOOWN ecosystem.</p>
+        <div class="ticket-wrap">
+            <div class="ticket">
+                <span style="font-size: 1.8rem;">🏢</span>
+                <h4>Trial Stay Pass</h4>
+                <p>Valid for New User in Ontoown Apps only</p>
+            </div>
+            <div class="ticket green">
+                <span style="font-size: 1.8rem;">🏠</span>
+                <h4>Rotation</h4>
+                <p>Valid for Ontoown Renters with Flexibility Add-on</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2 style="margin: 0 0 10px 0;">Mortgage Simulator</h2>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">See your future house by trying the mortgage simulator. Simulate your payment and timelines all in one!</p>
+        
+        <div class="sim-container">
+            <div class="input-group">
+                <label>Property Price (Rp)</label>
+                <input type="number" id="m-price" value="500000000">
+            </div>
+            <div class="input-group">
+                <label>Tenor: <span id="y-txt">15</span> Tahun</label>
+                <input type="range" id="m-years" min="5" max="30" value="15" oninput="document.getElementById('y-txt').innerText = this.value">
+            </div>
+            <div class="input-group">
+                <label>Interest Rate (%/Year)</label>
+                <input type="number" id="m-rate" value="6" step="0.1">
+            </div>
+            <div class="input-group">
+                <label>Interest Type</label>
+                <select id="m-type">
+                    <option value="anuitas">Anuitas (Efektif)</option>
+                    <option value="flat">Flat</option>
+                </select>
+            </div>
+            <button onclick="calc()" class="btn-discover" style="width: 100%;">Try mortgage simulator</button>
+            <div class="res-area">
+                <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Estimated Monthly Installment</div>
+                <div class="res-val" id="m-res">Rp 0</div>
+                <div id="m-note" style="font-size: 0.75rem; color: #888; margin-top: 8px;">Asumsi DP 10% dari harga properti</div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <div style="color: var(--primary-green); font-size: 1.6rem;">🏠</div>
+        <div style="font-size: 1.6rem; color: #ccc;">🔍</div>
+        <div style="font-size: 1.6rem; color: #ccc;">👤</div>
+    </nav>
+
+    <script>
+        // FUNGSI TINGKATKAN PROGRESS
+        let prog = 33;
+        function up() {
+            if (prog < 100) {
+                prog += 33; if (prog > 100) prog = 100;
+                document.getElementById('p-bar').style.width = prog + "%";
+                document.getElementById('p-txt').innerText = prog + "%";
+                const img = document.getElementById('p-img');
+                
+                if (prog >= 66) document.getElementById('s2').classList.add('active');
+                if (prog >= 100) {
+                    document.getElementById('s3').classList.add('active');
+                    img.src = 'rumah-100.png';
+                } else if (prog >= 66) {
+                    img.src = 'rumah-66.png';
+                }
+            }
+        }
+
+        // FUNGSI KALKULATOR KPR
+        function calc() {
+            const price = parseFloat(document.getElementById('m-price').value);
+            const loan = price * 0.9; // Simulasi dengan DP 10%
+            const years = parseInt(document.getElementById('m-years').value);
+            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
+            const type = document.getElementById('m-type').value;
+            let res = 0;
+
+            if (type === 'flat') {
+                res = (loan + (loan * rate * years)) / (years * 12);
+            } else {
+                const i = rate / 12; const n = years * 12;
+                res = loan * (i / (1 - Math.pow(1 + i, -n)));
+            }
+            document.getElementById('m-res').innerText = "Rp " + Math.round(res).toLocaleString('id-ID');
+        }
+    </script>
+</body>
+</html>
