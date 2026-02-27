@@ -74,7 +74,7 @@
         }
         .gamification-grid::-webkit-scrollbar { display: none; }
         .game-card {
-            min-width: 155px; padding: 18px 14px; border-radius: 18px; text-align: left;
+            min-width: 165px; padding: 18px 14px; border-radius: 18px; text-align: left;
             display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
         .game-icon-box {
@@ -85,7 +85,7 @@
         .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; color: #444; }
         .game-points { font-weight: 800; font-size: 0.8rem; display: block; }
 
-        /* Varian Warna Kartu & Ikon (Sesuai Referensi) */
+        /* Warna Kartu & Ikon (Sesuai Referensi) */
         .card-orange { background-color: #ffedd5; } .bg-orange { background-color: #f97316; }
         .card-blue { background-color: #dbeafe; }   .bg-blue { background-color: #2e4a8a; }
         .card-green { background-color: #dcfce7; }  .bg-green { background-color: #249170; }
@@ -177,28 +177,43 @@
                             <div class="game-icon-box bg-orange">💡</div>
                             <span class="game-points" style="color: #9a3412;">+100 points</span>
                         </div>
-                        <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
+                        <div>
+                            <h4>Hemat Energi</h4>
+                            <p>Kurangi pemakaian listrik bulananmu!</p>
+                        </div>
                     </div>
+
                     <div class="game-card card-blue">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div class="game-icon-box bg-blue">🔥</div>
                             <span class="game-points" style="color: #1e3a8a;">+80 points</span>
                         </div>
-                        <div><h4>Pahlawan Tepat Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
+                        <div>
+                            <h4>Pahlawan Waktu</h4>
+                            <p>Bayar sewa sebelum jatuh tempo.</p>
+                        </div>
                     </div>
+
                     <div class="game-card card-green">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div class="game-icon-box bg-green">⭐</div>
                             <span class="game-points" style="color: #064e3b;">+50 points</span>
                         </div>
-                        <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
+                        <div>
+                            <h4>Beri Ulasan</h4>
+                            <p>Berikan rating untuk dapatkan poin.</p>
+                        </div>
                     </div>
+
                     <div class="game-card card-lightblue">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div class="game-icon-box bg-lightblue">👥</div>
                             <span class="game-points" style="color: #1e40af;">+100 points</span>
                         </div>
-                        <div><h4>Ajak Teman</h4><p>Ajak temanmu untuk ikut bergabung.</p></div>
+                        <div>
+                            <h4>Ajak Teman</h4>
+                            <p>Ajak temanmu untuk ikut bergabung.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -233,10 +248,6 @@
                             <label>Tenor: <span id="v-years">15</span> Years</label>
                             <input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()">
                         </div>
-                        <div class="input-row">
-                            <label>Monthly Income</label>
-                            <div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div>
-                        </div>
                     </div>
                     <div class="res-area">
                         <div class="res-main-val" id="res-monthly">Rp 0</div>
@@ -259,15 +270,9 @@
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
             const years = parseInt(document.getElementById('m-years').value);
-            const income = parseFloat(document.getElementById('m-income').value) || 1;
             document.getElementById('v-years').innerText = years;
-
             const monthlyPayment = (price * 0.9 * 1.5) / (years * 12);
-            const allocation = (monthlyPayment / income) * 100;
-
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
-            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
-            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
         }
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
