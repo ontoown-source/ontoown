@@ -374,6 +374,7 @@
                     <div class="sim-group">
                         <div class="input-row"><label>Harga Properti</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
                         <div class="input-row"><label>Uang Muka (DP)</label><div class="input-with-icon"><span>💵</span><select id="m-dp" onchange="calc()"><option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.20">20%</option></select></div></div>
+                        <div class="input-row"><label>Ekuitas per Bulan (RTO)</label><div class="input-with-icon"><span>📈</span><select id="m-equity" onchange="calc()"><option value="0.15" selected>15%</option><option value="0.20">20%</option><option value="0.25">25%</option></select></div></div>
                     </div>
                     <div class="sim-group">
                         <div class="input-row"><label>Tenor: <span id="v-years">15</span> Tahun</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div>
@@ -425,19 +426,29 @@
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
             const dpPercent = parseFloat(document.getElementById('m-dp').value);
+            const equityPercent = parseFloat(document.getElementById('m-equity').value); // Tambahan
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const income = parseFloat(document.getElementById('m-income').value) || 1;
             document.getElementById('v-years').innerText = years;
             document.getElementById('v-rate').innerText = (rate*100).toFixed(1);
 
+            // Logika Perhitungan RTO yang diperbarui
             const loanAmount = price * (1 - dpPercent);
+            
+            // Rumus KPR standar (bunga flat sederhana dalam contoh ini)
             const monthlyPayment = (loanAmount * (1 + (rate * years))) / (years * 12);
-            const allocation = (monthlyPayment / income) * 100;
+            
+            // Ekuitas RTO: Persentase dari harga rumah dibagi masa sewa (asumsi 1 tahun trial)
+            const monthlyEquity = (price * equityPercent) / 12; 
+            
+            // Total yang dibayar penyewa = Cicilan + Tambahan Ekuitas RTO
+            const totalMonthly = monthlyPayment + monthlyEquity;
+            const allocation = (totalMonthly / income) * 100;
 
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(totalMonthly).toLocaleString('id-ID');
             document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
-            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
+            document.getElementById('res-alloc').style.color = allocation > 40 ? "#ef4444" : "#249170"; // Batas aman dinaikkan karena include ekuitas
         }
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
