@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Sewa Hari Ini, Miliki Esok Hari</title>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         :root {
             --primary-green: #249170;
@@ -20,7 +21,6 @@
             background-color: var(--bg-gray);
             color: #333;
             overflow-x: hidden;
-            /* Perubahan: Membuat scroll halus */
             scroll-behavior: smooth;
         }
 
@@ -45,20 +45,13 @@
             color: white; text-align: center; padding: 0 20px;
         }
         
-        /* Ukuran Font Default (Desktop) */
         .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
         .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
-        /* --- Teks Responsif untuk HP --- */
         @media (max-width: 767px) {
-            .hero h1 {
-                font-size: 2.2rem; /* Ukuran diperkecil untuk HP */
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
         }
-        /* --------------------------------- */
 
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         
@@ -70,14 +63,8 @@
                 max-width: 1500px;
                 margin: 0 auto;
             }
-            .content-left {
-                flex: 1.7;
-                min-width: 0;
-            } 
-            .sidebar-right {
-                flex: 1;
-                min-width: 350px;
-            }
+            .content-left { flex: 1.7; min-width: 0; } 
+            .sidebar-right { flex: 1; min-width: 350px; }
             .gamify-container {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -90,7 +77,7 @@
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
         .section-card p { line-height: 1.6; color: #555; }
 
-        /* --- TICKET STYLE (FLEXIBILITY) --- */
+        /* --- TICKET STYLE --- */
         .ticket-container {
             display: flex;
             gap: 15px;
@@ -128,7 +115,8 @@
         .ticket::before { left: -10px; }
         .ticket::after { right: -10px; }
 
-        .ticket-icon { font-size: 2rem; margin-bottom: 5px; }
+        /* Icon Ticket Diperbarui */
+        .ticket-icon { font-size: 2.5rem; margin-bottom: 5px; display: block; } 
         .ticket h4 { margin: 0; font-size: 1.2rem; font-weight: 800; }
         .ticket p { margin: 0; font-size: 0.8rem; font-weight: 600; opacity: 0.8; line-height: 1.3 !important; }
 
@@ -152,6 +140,8 @@
         .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px; }
         .badge-ready { position: absolute; top: 10px; left: 10px; background: #34d399; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
         .badge-rent { position: absolute; top: 10px; left: 10px; background: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        
+        /* Wishlist Icon Diperbarui */
         .wishlist-icon { position: absolute; top: 10px; right: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .prop-info { padding: 15px; }
         .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
@@ -159,7 +149,7 @@
         .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* --- UPDATE GAMIFY STYLE (VERTIKAL SCROLL DI HP) --- */
+        /* --- GAMIFY STYLE --- */
         .gamify-container {
             display: flex;
             gap: 15px;
@@ -211,7 +201,7 @@
         .input-row { margin-bottom: 15px; }
         .input-row label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
         .input-with-icon { position: relative; display: flex; align-items: center; }
-        .input-with-icon span { position: absolute; left: 12px; }
+        .input-with-icon span { position: absolute; left: 12px; color: #666; }
         .input-with-icon input, .input-with-icon select { 
             width: 100%; padding: 12px 12px 12px 35px; border: 1px solid #e0e0e0; 
             border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
@@ -230,9 +220,6 @@
         .waitlist-input-container {
             display: flex; gap: 10px; max-width: 600px; margin: 0 auto;
             background: white; padding: 8px; border-radius: 40px;
-        }
-        .waitlist-input-container input {
-            flex: 1; border: none; padding: 15px 25px; border-radius: 40px; outline: none; font-family: inherit;
         }
         .btn-join {
             background: var(--primary-green); color: white; border: none;
@@ -276,13 +263,13 @@
                 
                 <div class="ticket-container">
                     <div class="ticket ticket-blue">
-                        <div class="ticket-icon">🏢</div>
+                        <i class="ph ph-buildings ticket-icon"></i>
                         <h4>Trial Stay Pass</h4>
                         <p>Berlaku khusus bagi pengguna baru di Aplikasi Ontoown </p>
                     </div>
                     
                     <div class="ticket ticket-green">
-                        <div class="ticket-icon">🏠</div>
+                        <i class="ph ph-house-line ticket-icon"></i>
                         <h4>Rotasi Unit</h4>
                         <p>Berlaku bagi penyewa Ontoown dengan Add-on Fleksibilitas</p>
                     </div>
@@ -296,28 +283,22 @@
                 </div>
                 <div class="prop-scroll-container">
                     <div class="prop-card">
-                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><div class="rating">⭐ 4.8</div><h3>Sudirman Park Apartment</h3>
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon"><i class="ph ph-heart"></i></div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating"><i class="ph ph-star-fill"></i> 4.8</div><h3>Sudirman Park Apartment</h3>
                         <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
                         <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
                     </div>
                     <div class="prop-card">
-                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><div class="rating">⭐ 4.9</div><h3>The Verde Residence</h3>
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon"><i class="ph ph-heart"></i></div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating"><i class="ph ph-star-fill"></i> 4.9</div><h3>The Verde Residence</h3>
                         <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
                         <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
                     </div>
                     <div class="prop-card">
-                        <div class="prop-img-box"><span class="badge-rent">Sewa</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><div class="rating">⭐ 4.7</div><h3>Central Park Residence</h3>
+                        <div class="prop-img-box"><span class="badge-rent">Sewa</span><div class="wishlist-icon"><i class="ph ph-heart"></i></div><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating"><i class="ph ph-star-fill"></i> 4.7</div><h3>Central Park Residence</h3>
                         <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp4.200.000/bln</span></div>
                         <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp630.000/bln</span></div></div>
-                    </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><div class="rating">⭐ 4.6</div><h3>Menara Jakarta</h3>
-                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp3.400.000/bln</span></div>
-                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp510.000/bln</span></div></div>
                     </div>
                 </div>
             </section>
@@ -328,28 +309,28 @@
                 <div class="gamify-container">
                     <div class="gamify-card c-orange">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="g-icon-box bg-orange">💡</div>
+                            <div class="g-icon-box bg-orange"><i class="ph ph-lightbulb"></i></div>
                             <span class="g-pts" style="color: #9a3412;">+100 poin</span>
                         </div>
                         <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
                     </div>
                     <div class="gamify-card c-blue">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="g-icon-box bg-blue">🔥</div>
+                            <div class="g-icon-box bg-blue"><i class="ph ph-fire"></i></div>
                             <span class="g-pts" style="color: #1e3a8a;">+80 poin</span>
                         </div>
                         <div><h4>Pahlawan Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
                     </div>
                     <div class="gamify-card c-green">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="g-icon-box bg-green">⭐</div>
+                            <div class="g-icon-box bg-green"><i class="ph ph-star"></i></div>
                             <span class="g-pts" style="color: #064e3b;">+50 poin</span>
                         </div>
                         <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
                     </div>
                     <div class="gamify-card c-lightblue">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="g-icon-box bg-lightblue">👥</div>
+                            <div class="g-icon-box bg-lightblue"><i class="ph ph-users"></i></div>
                             <span class="g-pts" style="color: #1e40af;">+100 poin</span>
                         </div>
                         <div><h4>Ajak Teman</h4><p>Ajak temanmu untuk ikut bergabung.</p></div>
@@ -360,12 +341,12 @@
 
         <div class="sidebar-right">
             <section class="section-card">
-                <div class="prog-header"><span>✪ Progres Ontoown</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
+                <div class="prog-header"><span><i class="ph ph-medal"></i> Progres Ontoown</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
-                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
-                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)"><div class="step-icon">📈</div><div class="step-label">Ekuitas</div></div>
-                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
+                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon"><i class="ph ph-key"></i></div><div class="step-label">Sewa</div></div>
+                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)"><div class="step-icon"><i class="ph ph-chart-line-up"></i></div><div class="step-label">Ekuitas</div></div>
+                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon"><i class="ph ph-house-line"></i></div><div class="step-label">Milik</div></div>
                 </div>
                 <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progres"></div>
             </section>
@@ -374,14 +355,14 @@
                 <h3 style="margin-top:0">Simulasi KPR</h3>
                 <div class="sim-container">
                     <div class="sim-group">
-                        <div class="input-row"><label>Harga Properti</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
-                        <div class="input-row"><label>Uang Muka (DP)</label><div class="input-with-icon"><span>💵</span><select id="m-dp" onchange="calc()"><option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.20">20%</option></select></div></div>
-                        <div class="input-row"><label>Ekuitas per Bulan (RTO)</label><div class="input-with-icon"><span>📈</span><select id="m-equity" onchange="calc()"><option value="0.15" selected>15%</option><option value="0.20">20%</option><option value="0.25">25%</option></select></div></div>
+                        <div class="input-row"><label>Harga Properti</label><div class="input-with-icon"><span><i class="ph ph-bank"></i></span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
+                        <div class="input-row"><label>Uang Muka (DP)</label><div class="input-with-icon"><span><i class="ph ph-money"></i></span><select id="m-dp" onchange="calc()"><option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.20">20%</option></select></div></div>
+                        <div class="input-row"><label>Ekuitas per Bulan (RTO)</label><div class="input-with-icon"><span><i class="ph ph-percent"></i></span><select id="m-equity" onchange="calc()"><option value="0.15" selected>15%</option><option value="0.20">20%</option><option value="0.25">25%</option></select></div></div>
                     </div>
                     <div class="sim-group">
                         <div class="input-row"><label>Tenor: <span id="v-years">15</span> Tahun</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div>
                         <div class="input-row"><label>Suku Bunga: <span id="v-rate">6</span>%</label><input type="range" id="m-rate" min="1" max="15" value="6" step="0.1" oninput="calc()"></div>
-                        <div class="input-row"><label>Pendapatan Bulanan</label><div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
+                        <div class="input-row"><label>Pendapatan Bulanan</label><div class="input-with-icon"><span><i class="ph ph-wallet"></i></span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
                     </div>
                     <div class="res-area">
                         <div style="font-size:0.8rem; color:#333">Estimasi Cicilan Bulanan</div>
@@ -420,7 +401,7 @@
             <div><img src="logoputih.PNG" alt="Logo" class="footer-logo"><p>Sewa Hari Ini, Miliki Esok Hari.</p></div>
             <div><h4>Produk</h4><ul><li>Fleksibilitas</li><li>Gamifikasi</li><li>Properti</li></ul></div>
             <div><h4>Dukungan</h4><ul><li>FAQ</li><li>Syarat & Ketentuan</li></ul></div>
-            <div><h4>Hubungi Kami</h4><div class="contact-info">✉ ontoown@gmail.com</div><div class="contact-info">📸 @ontoown</div></div>
+            <div><h4>Hubungi Kami</h4><div class="contact-info"><i class="ph ph-envelope"></i> ontoown@gmail.com</div><div class="contact-info"><i class="ph ph-instagram-logo"></i> @ontoown</div></div>
         </div>
     </footer>
 
@@ -428,29 +409,27 @@
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
             const dpPercent = parseFloat(document.getElementById('m-dp').value);
-            const equityPercent = parseFloat(document.getElementById('m-equity').value); // Tambahan
+            const equityPercent = parseFloat(document.getElementById('m-equity').value); 
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const income = parseFloat(document.getElementById('m-income').value) || 1;
             document.getElementById('v-years').innerText = years;
             document.getElementById('v-rate').innerText = (rate*100).toFixed(1);
 
-            // Logika Perhitungan RTO yang diperbarui
             const loanAmount = price * (1 - dpPercent);
             
-            // Rumus KPR standar (bunga flat sederhana dalam contoh ini)
+            // Rumus KPR sederhana
             const monthlyPayment = (loanAmount * (1 + (rate * years))) / (years * 12);
             
-            // Ekuitas RTO: Persentase dari harga rumah dibagi masa sewa (asumsi 1 tahun trial)
+            // Ekuitas RTO
             const monthlyEquity = (price * equityPercent) / 12; 
             
-            // Total yang dibayar penyewa = Cicilan + Tambahan Ekuitas RTO
             const totalMonthly = monthlyPayment + monthlyEquity;
             const allocation = (totalMonthly / income) * 100;
 
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(totalMonthly).toLocaleString('id-ID');
             document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
-            document.getElementById('res-alloc').style.color = allocation > 40 ? "#ef4444" : "#249170"; // Batas aman dinaikkan karena include ekuitas
+            document.getElementById('res-alloc').style.color = allocation > 40 ? "#ef4444" : "#249170";
         }
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
