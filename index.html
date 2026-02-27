@@ -47,10 +47,23 @@
 
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         
+        /* UPDATE MEDIA QUERY UNTUK LAPTOP */
         @media (min-width: 1024px) {
-            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1400px; margin: 0 auto; }
-            .content-left { flex: 2.5; } 
-            .sidebar-right { flex: 1; }  
+            .main-container {
+                flex-direction: row;
+                padding: 40px 5%;
+                gap: 30px;
+                max-width: 1500px; /* Sedikit dilebarkan */
+                margin: 0 auto;
+            }
+            .content-left {
+                flex: 1.7; /* Konten utama lebih lebar */
+                min-width: 0;
+            } 
+            .sidebar-right {
+                flex: 1; /* Sidebar kanan tetap proporsional */
+                min-width: 350px; /* Mencegah terlalu kecil */
+            }  
         }
 
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
@@ -67,7 +80,7 @@
 
         .ticket {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
             padding: 30px 20px;
             border-radius: 25px;
             text-align: center;
@@ -103,16 +116,17 @@
         /* --- STYLE LAINNYA --- */
         .solution-text { font-size: 1.1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
         
+        /* UPDATE SCROLL CONTAINER */
         .prop-scroll-container {
-            display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px;
+            display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
         }
         .prop-scroll-container::-webkit-scrollbar { display: none; }
         .prop-card { 
             background: white; border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            min-width: 280px; 
-            flex: 0 0 calc(33.333% - 15px); 
+            min-width: 250px; /* Ukuran kartu disesuaikan */
+            flex: 0 0 calc(25% - 15px); /* Tampilkan 4 kartu per baris di layar lebar */
             scroll-snap-align: start;
             border: 1px solid #f0f0f0;
         }
@@ -351,7 +365,7 @@
             <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 15px; border-radius: 40px; border: none;">
             <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none;">
             
-            <select id="wl-gender" required style="padding: 15px; border-radius: 40px; border: none; appearance: none; background: white;">
+            <select id="wl-gender" required style="padding: 15px; border-radius: 40px; border: none; appearance: none; background: white; color: #333;">
                 <option value="" disabled selected>Jenis Kelamin</option>
                 <option value="Laki-laki">Laki-laki</option>
                 <option value="Perempuan">Perempuan</option>
