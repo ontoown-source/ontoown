@@ -12,6 +12,9 @@
             --primary-green: #249170;
             --dark-blue: #1a2538;
             --bg-gray: #f8f9fa;
+            --accent-yellow: #fef3c7;
+            --accent-blue: #dbeafe;
+            --accent-green: #d1fae5;
         }
 
         body {
@@ -88,12 +91,12 @@
         .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.5s ease; }
         
         .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .step-item { text-align: center; flex: 1; opacity: 0.4; }
-        .step-item.active { opacity: 1; }
-        .step-icon { font-size: 1.2rem; margin-bottom: 5px; }
-        .step-label { font-size: 0.7rem; font-weight: 600; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
+        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
+        .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .step-label { font-size: 0.75rem; font-weight: 600; }
         
-        /* REVISI: House Visual Box dengan Image File */
+        /* House Visual Box */
         .house-visual-box {
             text-align: center;
             margin: 20px 0;
@@ -119,6 +122,59 @@
         .btn-cta { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
         .res-area { background: #f0fdf4; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
         .res-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
+
+        /* Gamification Section */
+        .gamification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .game-card {
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: var(--dark-blue);
+        }
+        .game-card h4 { margin: 10px 0 5px; font-size: 1rem; }
+        .game-card p { font-size: 0.75rem; margin: 0; opacity: 0.8; }
+        .game-icon { font-size: 1.5rem; }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--dark-blue);
+            color: white;
+            text-align: center;
+            padding: 60px 5%;
+            border-radius: 20px;
+            margin: 40px 5%;
+        }
+        .final-cta h2 { margin-top: 0; font-size: 2.2rem; }
+        .cta-input-group {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 30px auto 0;
+            background: white;
+            padding: 5px;
+            border-radius: 30px;
+        }
+        .cta-input-group input {
+            flex: 1;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            outline: none;
+        }
+        .btn-submit {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
         /* Footer */
         .footer { background: var(--dark-blue); color: white; padding: 50px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
@@ -160,6 +216,36 @@
                     </div>
                 </div>
             </section>
+
+            <section class="section-card">
+                <h2>Progress feels better when you can see it.</h2>
+                <div class="gamification-grid">
+                    <div class="game-card" style="background: var(--accent-yellow);">
+                        <div class="game-icon">⚡</div>
+                        <h4>Power Saver</h4>
+                        <p>Cut your electricity usage at home!</p>
+                        <p><strong>+100 points</strong></p>
+                    </div>
+                    <div class="game-card" style="background: var(--accent-blue);">
+                        <div class="game-icon">⏰</div>
+                        <h4>On Time Hero</h4>
+                        <p>Pay rent before the due date.</p>
+                        <p><strong>+80 points</strong></p>
+                    </div>
+                    <div class="game-card" style="background: var(--accent-green);">
+                        <div class="game-icon">⭐</div>
+                        <h4>Rate & Earn</h4>
+                        <p>Leave a review to earn points.</p>
+                        <p><strong>+50 points</strong></p>
+                    </div>
+                    <div class="game-card" style="background: var(--accent-blue);">
+                        <div class="game-icon">👥</div>
+                        <h4>Bring a Friend</h4>
+                        <p>Invite a friend to move in</p>
+                        <p><strong>+500 points</strong></p>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div class="sidebar-right">
@@ -171,9 +257,18 @@
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill" style="width: 33%;"></div></div>
                 
                 <div class="steps-nav">
-                    <div class="step-item active"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
-                    <div class="step-item"><div class="step-icon">📈</div><div class="step-label">Ekuitas</div></div>
-                    <div class="step-item"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
+                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)">
+                        <div class="step-icon">↳</div>
+                        <div class="step-label">Sewa</div>
+                    </div>
+                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)">
+                        <div class="step-icon">📈</div>
+                        <div class="step-label">Ekuitas</div>
+                    </div>
+                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)">
+                        <div class="step-icon">🏠</div>
+                        <div class="step-label">Milik</div>
+                    </div>
                 </div>
                 
                 <div class="house-visual-box">
@@ -215,6 +310,15 @@
                     </div>
                 </div>
             </section>
+        </div>
+    </div>
+
+    <div class="final-cta">
+        <h2>Ready to own your home?</h2>
+        <p>Join the waiting list to get exclusive access to our properties.</p>
+        <div class="cta-input-group">
+            <input type="email" placeholder="Enter your email address">
+            <button class="btn-submit">Join Waiting List</button>
         </div>
     </div>
 
@@ -260,28 +364,25 @@
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
             document.getElementById('res-equity').innerText = "Rp " + Math.round(rtoEquity).toLocaleString('id-ID');
             
-            // Logika untuk mengubah gambar dan bar berdasarkan ekuitas
-            updateVisuals(equityPercent);
+            // Opsional: Otomatis ubah gambar berdasarkan input % ekuitas
+            let pct = equityPercent * 100;
+            if (pct >= 80) setStep(100, 'rumah-100.png', document.querySelectorAll('.step-item')[2]);
+            else if (pct >= 30) setStep(66, 'rumah-66.png', document.querySelectorAll('.step-item')[1]);
+            else setStep(33, 'rumah-33.png', document.querySelectorAll('.step-item')[0]);
         }
         
-        function updateVisuals(equity) {
-            let imgSource = "rumah-33.png";
-            let barWidth = "33%";
-            let progressText = "33%";
+        // INTERAKTIF PROGRES
+        function setStep(percent, image, element) {
+            // Update Gambar
+            document.getElementById('house-img').src = image;
+            // Update Bar
+            document.getElementById('prog-bar').style.width = percent + "%";
+            // Update Teks
+            document.getElementById('prog-text').innerText = percent + "%";
 
-            if (equity >= 0.8) {
-                imgSource = "rumah-100.png";
-                barWidth = "100%";
-                progressText = "100%";
-            } else if (equity >= 0.3) {
-                imgSource = "rumah-66.png";
-                barWidth = "66%";
-                progressText = "66%";
-            }
-
-            document.getElementById('house-img').src = imgSource;
-            document.getElementById('prog-bar').style.width = barWidth;
-            document.getElementById('prog-text').innerText = progressText;
+            // Update Active Class
+            document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
         }
         
         // Hitung saat load pertama kali
