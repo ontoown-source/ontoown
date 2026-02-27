@@ -276,27 +276,23 @@
     <div class="waiting-list-section">
         <h2>Slot terbatas</h2>
         <p>Jadilah yang pertama punya rumah tanpa drama.<br>Gabung daftar tunggu sekarang untuk akses eksklusif</p>
-        <div class="waiting-list-section">
-    <h2>Slot terbatas</h2>
-    <p>Jadilah yang pertama punya rumah tanpa drama.<br>Gabung daftar tunggu sekarang untuk akses eksklusif</p>
-    
-    <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
-        <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 15px; border-radius: 40px; border: none;">
-        <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none;">
         
-        <select id="wl-gender" required style="padding: 15px; border-radius: 40px; border: none; appearance: none;">
-            <option value="" disabled selected>Jenis Kelamin</option>
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-        </select>
+        <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+            <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 15px; border-radius: 40px; border: none;">
+            <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none;">
+            
+            <select id="wl-gender" required style="padding: 15px; border-radius: 40px; border: none; appearance: none; background: white;">
+                <option value="" disabled selected>Jenis Kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+            
+            <input type="text" id="wl-city" placeholder="Kota yang diinginkan" required style="padding: 15px; border-radius: 40px; border: none;">
+            
+            <button type="submit" class="btn-join" style="width: 100%; margin-top: 10px; border: none; cursor: pointer;">Gabung Waiting List</button>
+        </form>
         
-        <input type="text" id="wl-city" placeholder="Kota yang diinginkan" required style="padding: 15px; border-radius: 40px; border: none;">
-        
-        <button type="submit" class="btn-join" style="width: 100%; margin-top: 10px;">Gabung Waiting List</button>
-    </form>
-    
-    <p id="responseMessage" style="margin-top: 15px; font-weight: bold;"></p>
-</div>
+        <p id="responseMessage" style="margin-top: 15px; font-weight: bold;"></p>
     </div>
 
     <footer class="footer">
@@ -336,47 +332,47 @@
         calc();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-    // 1. Inisialisasi Supabase
-    const supabaseUrl = 'https://rxwvnnaksopgjvlqjdti.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4d3ZubmFrc29wZ2p2bHFqZHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxODg0NTcsImV4cCI6MjA4Nzc2NDQ1N30.8GQHcZ8_x0gEFi72KxjyfydrDRmPV3No_ZitnRrZWXk';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    <script>
+        // 1. Inisialisasi Supabase
+        const supabaseUrl = 'https://rxwvnnaksopgjvlqjdti.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4d3ZubmFrc29wZ2p2bHFqZHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxODg0NTcsImV4cCI6MjA4Nzc2NDQ1N30.8GQHcZ8_x0gEFi72KxjyfydrDRmPV3No_ZitnRrZWXk';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // 2. Handler untuk submit form
-    document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
-        e.preventDefault(); // Mencegah reload halaman
+        // 2. Handler untuk submit form
+        document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Mencegah reload halaman
 
-        const button = e.target.querySelector('button');
-        button.innerText = 'Mengirim...';
-        button.disabled = true;
+            const button = e.target.querySelector('button');
+            button.innerText = 'Mengirim...';
+            button.disabled = true;
 
-        // Ambil nilai dari input
-        const name = document.getElementById('wl-name').value;
-        const email = document.getElementById('wl-email').value;
-        const gender = document.getElementById('wl-gender').value;
-        const city = document.getElementById('wl-city').value;
-        const messageEl = document.getElementById('responseMessage');
+            // Ambil nilai dari input
+            const name = document.getElementById('wl-name').value;
+            const email = document.getElementById('wl-email').value;
+            const gender = document.getElementById('wl-gender').value;
+            const city = document.getElementById('wl-city').value;
+            const messageEl = document.getElementById('responseMessage');
 
-        // 3. Kirim data ke Supabase
-        const { data, error } = await supabase
-            .from('waiting_list')
-            .insert([
-                { nama: name, email: email, jenis_kelamin: gender, lokasi: city },
-            ]);
+            // 3. Kirim data ke Supabase
+            const { data, error } = await supabase
+                .from('waiting_list')
+                .insert([
+                    { nama: name, email: email, jenis_kelamin: gender, lokasi: city },
+                ]);
 
-        // 4. Handle respon
-        if (error) {
-            messageEl.innerText = 'Gagal menyimpan data. Coba lagi.';
-            messageEl.style.color = '#ff6b6b';
-            button.innerText = 'Gabung Waiting List';
-            button.disabled = false;
-        } else {
-            messageEl.innerText = 'Berhasil! Terima kasih sudah bergabung.';
-            messageEl.style.color = '#34d399';
-            document.getElementById('waitlistForm').reset();
-            button.innerText = 'Berhasil!';
-        }
-    });
-</script>
+            // 4. Handle respon
+            if (error) {
+                messageEl.innerText = 'Gagal menyimpan data. Coba lagi.';
+                messageEl.style.color = '#ff6b6b';
+                button.innerText = 'Gabung Waiting List';
+                button.disabled = false;
+            } else {
+                messageEl.innerText = 'Berhasil! Terima kasih sudah bergabung.';
+                messageEl.style.color = '#34d399';
+                document.getElementById('waitlistForm').reset();
+                button.innerText = 'Berhasil!';
+            }
+        });
+    </script>
 </body>
 </html>
