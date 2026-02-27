@@ -10,6 +10,8 @@
             --primary-green: #249170;
             --dark-blue: #1a2538;
             --bg-gray: #f8f9fa;
+            --light-blue: #d1e9ff;
+            --light-green: #dcfce7;
         }
 
         body {
@@ -45,15 +47,26 @@
 
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         
-        /* UPDATE: Mengatur rasio agar konten kiri lebih dominan */
         @media (min-width: 1024px) {
             .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1400px; margin: 0 auto; }
-            .content-left { flex: 2.5; } /* Lebih lebar */
-            .sidebar-right { flex: 1; }  /* Lebih sempit */
+            .content-left { flex: 2.5; } 
+            .sidebar-right { flex: 1; }  
         }
 
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
+        .section-card p { line-height: 1.6; color: #555; }
+
+        /* --- NEW STYLES SECTION 3 & 4 --- */
+        .solution-text { font-size: 1.1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
+        
+        .flex-container { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 25px; }
+        .flex-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 15px; }
+        .flex-box h4 { margin-top: 0; color: var(--dark-blue); }
+        .flex-box p { font-size: 0.9rem; margin-bottom: 0; }
+        
+        .ticket-image { max-width: 100%; height: auto; border-radius: 10px; margin-top: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        /* -------------------------------- */
 
         /* 3. DISCOVERY PROPERTY */
         .prop-scroll-container {
@@ -64,8 +77,8 @@
         .prop-card { 
             background: white; border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            min-width: 280px; /* Sedikit lebih lebar */
-            flex: 0 0 calc(33.333% - 15px); /* Tampilkan 3 kartu */
+            min-width: 280px; 
+            flex: 0 0 calc(33.333% - 15px); 
             scroll-snap-align: start;
             border: 1px solid #f0f0f0;
         }
@@ -172,9 +185,20 @@
     <div class="main-container">
         <div class="content-left">
             <section class="section-card">
-                <h2>Susah punya rumah?</h2>
-                <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
-                <p><strong>Gimana kalau kamu bisa test drive rumah impian dengan cara mencicil sambil tinggal di rumahnya?</strong></p>
+                <h2>Solusi Cerdas Punya Rumah</h2>
+                <p class="solution-text">
+                    "Kenalin, ONTOOWN. disini km mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah"
+                </p>
+            </section>
+
+            <section class="section-card">
+                <h2>Fleksibilitas Tanpa Batas</h2>
+                <p>
+                    "Ngerasa ga cocok sm tetangganya? Atau kejauhan dr kantor baru? Tenang, di ONTOOWN km punya kendali. Pakai trial pass, kamu bisa coba hunian dengan bebas. Putar unitmu, temukan rumah yg benar2 di hati"
+                </p>
+                <div class="flex-container">
+                    <img src="image_0a5152.png" alt="Ontoown Tiket Fleksibilitas" class="ticket-image">
+                </div>
             </section>
 
             <section class="section-card">
