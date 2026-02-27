@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Rent Today, Own Tomorrow</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --primary-green: #249170;
@@ -18,11 +16,10 @@
             font-family: 'League Spartan', sans-serif;
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
-            line-height: 1.6;
             color: #333;
         }
 
-        /* 1. NAVBAR */
+        /* NAVBAR */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
@@ -34,7 +31,7 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* 2. HERO SECTION */
+        /* HERO SECTION */
         .hero {
             height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
@@ -45,7 +42,6 @@
         .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
         .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
-        /* Container Layout */
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         @media (min-width: 1024px) {
             .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1300px; margin: 0 auto; }
@@ -53,11 +49,10 @@
             .sidebar-right { flex: 1; }
         }
 
-        /* Card Style */
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
 
-        /* 3. PROPERTY SCROLL */
+        /* PROPERTY SCROLL */
         .prop-scroll-container {
             display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -72,7 +67,7 @@
         .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* 4. GAMIFICATION REDESIGN (SESUAI GAMBAR DENGAN 4 KARTU) */
+        /* GAMIFICATION (4 CARDS) */
         .gamification-grid {
             display: flex; gap: 12px; overflow-x: auto; padding: 10px 0 20px; scrollbar-width: none;
         }
@@ -82,4 +77,39 @@
             display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
         .game-icon-box {
-            width: 38px; height: 38px; border-radius: 8px; display: flex; align-
+            width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: white;
+        }
+        .game-card h4 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1a2538; }
+        .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; color: #444; }
+        .game-points { font-weight: 800; font-size: 0.8rem; display: block; }
+
+        .card-orange { background-color: #ffedd5; } .bg-orange { background-color: #f97316; }
+        .card-blue { background-color: #dbeafe; }   .bg-blue { background-color: #2e4a8a; }
+        .card-green { background-color: #dcfce7; }  .bg-green { background-color: #249170; }
+        .card-lightblue { background-color: #d1e9ff; } .bg-lightblue { background-color: #3b82f6; }
+
+        /* SIDEBAR PROGRESS */
+        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
+        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease-in-out; }
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
+        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
+        .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
+        .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
+
+        /* MORTGAGE SIMULATOR */
+        .sim-container { background: white; border-radius: 20px; padding: 5px; border: 1px solid #f0f0f0; margin-top: 15px; }
+        .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
+        .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
+        .input-row { margin-bottom: 15px; }
+        .input-row label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
+        .input-with-icon { position: relative; display: flex; align-items: center; }
+        .input-with-icon span { position: absolute; left: 12px; }
+        .input-with-icon input, .input-with-icon select { 
+            width: 100%; padding: 12px 12px 12px 35px; border: 1px solid #e0e0e0; 
+            border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
+        }
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top:
