@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* NAVBAR */
+        /* 1. NAVBAR */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
@@ -28,11 +28,11 @@
         }
         .logo-img { height: 30px; width: auto; }
         .btn-signup {
-            background: var(--primary-green); color: white; padding: 10px 20px;
+            background: var(--primary-green); color: white; padding: 10px 25px;
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* HERO SECTION */
+        /* 2. HERO SECTION */
         .hero {
             height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
@@ -53,7 +53,7 @@
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
 
-        /* PROPERTY SCROLL (FIGMA STYLE) */
+        /* 3. DISCOVERY PROPERTY (FIGMA STYLE) */
         .prop-scroll-container {
             display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -75,34 +75,12 @@
         .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
         .rating { font-size: 0.75rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
         .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
-        .price-label { color: #888; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* GAMIFICATION (STRICT 4 CARDS) */
-        .gamification-grid {
-            display: flex; gap: 12px; overflow-x: auto; padding: 10px 0 20px; scrollbar-width: none;
-        }
-        .gamification-grid::-webkit-scrollbar { display: none; }
-        .game-card {
-            min-width: 155px; padding: 18px 14px; border-radius: 18px; text-align: left;
-            display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-        }
-        .game-icon-box {
-            width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; color: white;
-        }
-        .game-card h4 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1a2538; }
-        .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; color: #444; }
-        .game-points { font-weight: 800; font-size: 0.8rem; display: block; }
-        .card-orange { background-color: #ffedd5; } .bg-orange { background-color: #f97316; }
-        .card-blue { background-color: #dbeafe; }   .bg-blue { background-color: #2e4a8a; }
-        .card-green { background-color: #dcfce7; }  .bg-green { background-color: #249170; }
-        .card-lightblue { background-color: #d1e9ff; } .bg-lightblue { background-color: #3b82f6; }
-
-        /* SIDEBAR PROGRESS */
+        /* 4. PROGRESS ON-TO-OWN (BALIKIN 3 TAHAP) */
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
-        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease-in-out; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease; }
         .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
         .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
         .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
@@ -110,7 +88,7 @@
         .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
         .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
 
-        /* MORTGAGE SIMULATOR */
+        /* 5. MORTGAGE SIMULATOR (LENGKAP) */
         .sim-container { background: white; border-radius: 20px; padding: 5px; border: 1px solid #f0f0f0; margin-top: 15px; }
         .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
         .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
@@ -125,7 +103,35 @@
         input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
         .res-area { background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; margin-top: 10px; }
         .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
-        .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; text-align: center; }
+        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
+
+        /* 6. WAITING LIST SECTION */
+        .waiting-list-section {
+            background: var(--dark-blue); color: white; text-align: center;
+            padding: 80px 5%; border-radius: 40px; margin: 40px 20px;
+        }
+        .waiting-list-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .waiting-list-section p { opacity: 0.8; margin-bottom: 30px; }
+        .waitlist-input-container {
+            display: flex; gap: 10px; max-width: 600px; margin: 0 auto;
+            background: white; padding: 8px; border-radius: 40px;
+        }
+        .waitlist-input-container input {
+            flex: 1; border: none; padding: 15px 25px; border-radius: 40px; outline: none; font-family: inherit;
+        }
+        .btn-join {
+            background: var(--primary-green); color: white; border: none;
+            padding: 15px 35px; border-radius: 40px; font-weight: 700; cursor: pointer;
+        }
+
+        /* 7. FOOTER */
+        .footer { background: var(--dark-blue); color: white; padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-logo { height: 35px; margin-bottom: 20px; }
+        .footer h4 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer ul { list-style: none; padding: 0; }
+        .footer ul li { margin-bottom: 12px; opacity: 0.7; font-size: 0.95rem; }
+        .contact-info { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -148,8 +154,8 @@
             </section>
 
             <section class="section-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h2 style="font-size: 1.4rem;">Discovery Your Property</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 1.5rem;">Discovery Your Property</h2>
                     <span style="font-size: 0.85rem; color: #f59e0b; cursor: pointer;">View All ></span>
                 </div>
                 <div class="prop-scroll-container">
@@ -171,48 +177,85 @@
                         <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp4.200.000/mo</span></div>
                         <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp630.000/mo</span></div></div>
                     </div>
-                </div>
-            </section>
-
-            <section class="section-card">
-                <h2 style="font-size: 1.6rem; line-height: 1.2;">Progress feels better when you can see it.</h2>
-                <div class="gamification-grid">
-                    <div class="game-card card-orange"><div class="game-icon-box bg-orange">💡</div><span class="game-points" style="color: #9a3412;">+100 pts</span><div><h4>Hemat Energi</h4><p>Kurangi listrik bulanan!</p></div></div>
-                    <div class="game-card card-blue"><div class="game-icon-box bg-blue">🔥</div><span class="game-points" style="color: #1e3a8a;">+80 pts</span><div><h4>Pahlawan Waktu</h4><p>Bayar sewa tepat waktu.</p></div></div>
-                    <div class="game-card card-green"><div class="game-icon-box bg-green">⭐</div><span class="game-points" style="color: #064e3b;">+50 pts</span><div><h4>Beri Ulasan</h4><p>Berikan rating untuk poin.</p></div></div>
-                    <div class="game-card card-lightblue"><div class="game-icon-box bg-lightblue">👥</div><span class="game-points" style="color: #1e40af;">+100 pts</span><div><h4>Ajak Teman</h4><p>Ajak teman bergabung.</p></div></div>
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.6</div><h3>Menara Jakarta</h3>
+                        <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp3.400.000/mo</span></div>
+                        <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp510.000/mo</span></div></div>
+                    </div>
                 </div>
             </section>
         </div>
 
         <div class="sidebar-right">
             <section class="section-card">
-                <div class="prog-header"><span>✪ On-to-Own</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
+                <div class="prog-header"><span>✪ Progres On-to-Own</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
                     <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
+                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)"><div class="step-icon">📈</div><div class="step-label">Ekuitas</div></div>
                     <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
                 </div>
-                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="House"></div>
+                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progress"></div>
             </section>
+
             <section class="section-card">
                 <h3 style="margin-top:0">Mortgage Simulator</h3>
                 <div class="sim-container">
-                    <div class="sim-group"><div class="input-row"><label>Price</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div></div>
-                    <div class="sim-group"><div class="input-row"><label>Tenor: <span id="v-years">15</span> Yrs</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div></div>
-                    <div class="res-area"><div class="res-main-val" id="res-monthly">Rp 0</div><div style="font-size: 0.8rem; color:#249170; font-weight:700;">Cicilan Sehat</div></div>
+                    <div class="sim-group">
+                        <div class="input-row"><label>Property Price</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
+                        <div class="input-row"><label>Down Payment</label><div class="input-with-icon"><span>💵</span><select id="m-dp" onchange="calc()"><option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.20">20%</option></select></div></div>
+                    </div>
+                    <div class="sim-group">
+                        <div class="input-row"><label>Tenor: <span id="v-years">15</span> Years</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div>
+                        <div class="input-row"><label>Interest Rate: <span id="v-rate">6</span>%</label><input type="range" id="m-rate" min="1" max="15" value="6" step="0.1" oninput="calc()"></div>
+                        <div class="input-row"><label>Monthly Income</label><div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
+                    </div>
+                    <div class="res-area">
+                        <div style="font-size:0.8rem; color:#666">Estimated Monthly Installment</div>
+                        <div class="res-main-val" id="res-monthly">Rp 0</div>
+                        <div class="res-detail"><span>Income Allocation</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
+                    </div>
                 </div>
             </section>
         </div>
     </div>
-    <footer class="footer"><img src="new-logo.png" style="height:30px"></footer>
+
+    <div class="waiting-list-section">
+        <h2>Slot terbatas</h2>
+        <p>Jadilah yang pertama punya rumah tanpa drama.<br>Join waiting list sekarang untuk akses eksklusif</p>
+        <div class="waitlist-input-container">
+            <input type="email" placeholder="Masukkan alamat email kamu">
+            <button class="btn-join">Join</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div><img src="new-logo.png" alt="Logo" class="footer-logo"><p>Rent Today, Own Tomorrow.</p></div>
+            <div><h4>Products</h4><ul><li>Flexibility</li><li>Gamification</li><li>Property</li></ul></div>
+            <div><h4>Support</h4><ul><li>FAQ</li><li>Terms & Conditions</li></ul></div>
+            <div><h4>Contact Us</h4><div class="contact-info">✉ ontoown@gmail.com</div><div class="contact-info">📸 @ontoown</div></div>
+        </div>
+    </footer>
+
     <script>
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
+            const dpPercent = parseFloat(document.getElementById('m-dp').value);
             const years = parseInt(document.getElementById('m-years').value);
+            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
+            const income = parseFloat(document.getElementById('m-income').value) || 1;
             document.getElementById('v-years').innerText = years;
-            const monthlyPayment = (price * 0.9 * 1.5) / (years * 12);
+            document.getElementById('v-rate').innerText = (rate*100).toFixed(1);
+
+            const loanAmount = price * (1 - dpPercent);
+            const monthlyPayment = (loanAmount * (1 + (rate * years))) / (years * 12);
+            const allocation = (monthlyPayment / income) * 100;
+
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
+            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
+            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
         }
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
