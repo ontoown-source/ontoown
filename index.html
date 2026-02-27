@@ -31,26 +31,30 @@
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo-img { height: 40px; width: auto; }
+        .logo-img { height: 30px; width: auto; }
         .btn-signup {
             background: var(--primary-green); color: white; padding: 10px 20px;
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
+        /* 1. HERO SECTION (Update Bold & Background) */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            color: white; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; text-transform: none; }
+        .hero p { font-size: 1.2rem; margin-top: 15px; font-weight: 500; }
+
         /* Main Container Layout */
         .main-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding: 20px;
+            display: flex; flex-direction: column; gap: 20px; padding: 20px;
         }
 
         @media (min-width: 1024px) {
-            .main-container {
-                flex-direction: row;
-                padding: 40px 5%;
-                gap: 30px;
-            }
+            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; }
             .content-left { flex: 2; }
             .sidebar-right { flex: 1; }
         }
@@ -58,131 +62,74 @@
         /* General Card Style */
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
-        .section-card p { color: #555; font-size: 1rem; }
 
-        /* Property Cards Horizontal */
+        /* 2. PROPERTY SCROLL (Balikin fitur geser) */
         .prop-scroll-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
         }
+        .prop-scroll-container::-webkit-scrollbar { display: none; }
+
         .prop-card {
             background: white; border-radius: 20px; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.06); 
-            overflow: hidden; 
-            min-width: 300px;
-            flex: 1;
+            overflow: hidden; min-width: 280px; flex: 0 0 auto;
+            scroll-snap-align: start;
         }
         .prop-img-box { position: relative; height: 180px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; }
         .badge-ready {
             position: absolute; top: 12px; left: 12px; background: #34d399; color: white;
-            padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700;
+            padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700;
         }
-        .prop-info { padding: 20px; }
-        .prop-info h3 { margin: 0 0 10px; font-size: 1.2rem; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+        .prop-info { padding: 15px; }
+        .prop-info h3 { margin: 0 0 10px; font-size: 1.1rem; font-weight: 700; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
         /* Progress Visuals */
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
-        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.5s ease; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease-in-out; }
         
         .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
         .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
         .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
         .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
-        .step-label { font-size: 0.75rem; font-weight: 600; }
+        .step-label { font-size: 0.7rem; font-weight: 600; }
         
-        /* House Visual Box */
         .house-visual-box {
-            text-align: center;
-            margin: 20px 0;
-            padding: 10px;
-            background: #f9fafb;
-            border-radius: 15px;
-            min-height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px;
         }
-        .house-visual-box img {
-            max-width: 100%;
-            height: auto;
-            max-height: 180px;
-        }
+        .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
 
-        /* Calculator Update */
-        .sim-container { background: white; border-radius: 20px; padding: 20px; border: 1px solid #eee; margin-top: 15px; }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
-        .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .btn-cta { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
-        .res-area { background: #f0fdf4; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
-        .res-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
-
-        /* Gamification Section */
+        /* Gamification */
         .gamification-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 20px;
         }
-        .game-card {
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            color: var(--dark-blue);
-        }
-        .game-card h4 { margin: 10px 0 5px; font-size: 1rem; }
-        .game-card p { font-size: 0.75rem; margin: 0; opacity: 0.8; }
-        .game-icon { font-size: 1.5rem; }
+        .game-card { padding: 15px; border-radius: 15px; text-align: left; color: var(--dark-blue); }
+        .game-card h4 { margin: 8px 0 4px; font-size: 0.9rem; font-weight: 700; }
+        .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; opacity: 0.8; }
 
-        /* Final CTA Section */
+        /* Final CTA */
         .final-cta {
-            background: var(--dark-blue);
-            color: white;
-            text-align: center;
-            padding: 60px 5%;
-            border-radius: 20px;
-            margin: 40px 5%;
+            background: var(--dark-blue); color: white; text-align: center;
+            padding: 60px 5%; border-radius: 30px; margin: 40px 5%;
         }
-        .final-cta h2 { margin-top: 0; font-size: 2.2rem; }
+        .final-cta h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; }
         .cta-input-group {
-            display: flex;
-            gap: 10px;
-            max-width: 500px;
-            margin: 30px auto 0;
-            background: white;
-            padding: 5px;
-            border-radius: 30px;
+            display: flex; gap: 10px; max-width: 500px; margin: 30px auto 0;
+            background: white; padding: 6px; border-radius: 35px;
         }
         .cta-input-group input {
-            flex: 1;
-            border: none;
-            padding: 15px;
-            border-radius: 30px;
-            outline: none;
+            flex: 1; border: none; padding: 12px 20px; border-radius: 30px; outline: none; font-family: inherit;
         }
         .btn-submit {
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
+            background: var(--primary-green); color: white; border: none;
+            padding: 12px 25px; border-radius: 30px; font-weight: 700; cursor: pointer;
         }
 
-        /* Footer */
-        .footer { background: var(--dark-blue); color: white; padding: 50px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-logo { height: 35px; margin-bottom: 15px; }
-        .footer h4 { margin-bottom: 15px; }
-        .footer ul { list-style: none; padding: 0; }
-        .footer ul li { margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8; }
-        .footer a { color: white; text-decoration: none; }
+        .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; }
     </style>
 </head>
 <body>
@@ -192,16 +139,21 @@
         <a href="#" class="btn-signup">Daftar</a>
     </nav>
 
+    <header class="hero">
+        <h1>Gak usah Nunggu<br>kaya punya rumah.</h1>
+        <p>Huni hari ini, miliki esok hari</p>
+    </header>
+
     <div class="main-container">
-        
         <div class="content-left">
             <section class="section-card">
-                <h2>Kenalin Ontoown</h2>
-                <p>Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah.</p>
+                <h2>Susah punya rumah?</h2>
+                <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
+                <p><strong>Gimana kalau kamu bisa test drive rumah impian dengan cara mencicil sambil tinggal di rumahnyaa?</strong></p>
             </section>
 
             <section class="section-card">
-                <h2>Temukan Properti</h2>
+                <h2>Ontoown Picks</h2>
                 <div class="prop-scroll-container">
                     <div class="prop-card">
                         <div class="prop-img-box">
@@ -214,6 +166,28 @@
                             <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bln</span></div>
                         </div>
                     </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box">
+                            <span class="badge-ready">Ontoown Ready</span>
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                        </div>
+                        <div class="prop-info">
+                            <h3>The Verde Residence</h3>
+                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
+                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div>
+                        </div>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box">
+                            <span class="badge-ready">Ontoown Ready</span>
+                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                        </div>
+                        <div class="prop-info">
+                            <h3>Menara Jakarta</h3>
+                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp3.400.000/bln</span></div>
+                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp510.000/bln</span></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -221,28 +195,22 @@
                 <h2>Progress feels better when you can see it.</h2>
                 <div class="gamification-grid">
                     <div class="game-card" style="background: var(--accent-yellow);">
-                        <div class="game-icon">⚡</div>
+                        <span style="font-size: 1.5rem;">💡</span>
                         <h4>Power Saver</h4>
                         <p>Cut your electricity usage at home!</p>
                         <p><strong>+100 points</strong></p>
                     </div>
                     <div class="game-card" style="background: var(--accent-blue);">
-                        <div class="game-icon">⏰</div>
+                        <span style="font-size: 1.5rem;">🔥</span>
                         <h4>On Time Hero</h4>
                         <p>Pay rent before the due date.</p>
                         <p><strong>+80 points</strong></p>
                     </div>
                     <div class="game-card" style="background: var(--accent-green);">
-                        <div class="game-icon">⭐</div>
+                        <span style="font-size: 1.5rem;">💎</span>
                         <h4>Rate & Earn</h4>
                         <p>Leave a review to earn points.</p>
                         <p><strong>+50 points</strong></p>
-                    </div>
-                    <div class="game-card" style="background: var(--accent-blue);">
-                        <div class="game-icon">👥</div>
-                        <h4>Bring a Friend</h4>
-                        <p>Invite a friend to move in</p>
-                        <p><strong>+500 points</strong></p>
                     </div>
                 </div>
             </section>
@@ -254,30 +222,25 @@
                     <span>✪ Progres On-to-Own</span>
                     <span id="prog-text" style="color: var(--primary-green);">33%</span>
                 </div>
-                <div class="bar-bg"><div id="prog-bar" class="bar-fill" style="width: 33%;"></div></div>
-                
+                <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
                     <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)">
-                        <div class="step-icon">↳</div>
-                        <div class="step-label">Sewa</div>
+                        <div class="step-icon">↳</div><div class="step-label">Sewa</div>
                     </div>
                     <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)">
-                        <div class="step-icon">📈</div>
-                        <div class="step-label">Ekuitas</div>
+                        <div class="step-icon">📈</div><div class="step-label">Ekuitas</div>
                     </div>
                     <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)">
-                        <div class="step-icon">🏠</div>
-                        <div class="step-label">Milik</div>
+                        <div class="step-icon">🏠</div><div class="step-label">Milik</div>
                     </div>
                 </div>
-                
                 <div class="house-visual-box">
                     <img id="house-img" src="rumah-33.png" alt="House Progress">
                 </div>
             </section>
 
             <section class="section-card">
-                <h2>Simulator KPR</h2>
+                <h3 style="margin-top:0">Simulator KPR</h3>
                 <div class="sim-container">
                     <div class="input-group">
                         <label>Harga Properti (Rp)</label>
@@ -287,26 +250,10 @@
                         <label>Tenor (Tahun)</label>
                         <input type="number" id="m-years" value="15">
                     </div>
-                    <div class="input-group">
-                        <label>Suku Bunga (% per tahun)</label>
-                        <input type="number" id="m-rate" value="6" step="0.1">
-                    </div>
-                    <div class="input-group">
-                        <label>Jenis Bunga</label>
-                        <select id="m-type">
-                            <option value="annuity">Anuitas</option>
-                            <option value="flat">Flat</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Persentase Ekuitas RTO (%)</label>
-                        <input type="number" id="m-equity" value="15" onchange="calc()">
-                    </div>
                     <button onclick="calc()" class="btn-cta">Hitung</button>
-                    
                     <div class="res-area">
-                        <div class="res-row"><span>Cicilan/Bulan</span><span class="price-val" id="res-monthly">Rp 0</span></div>
-                        <div class="res-row"><span>Ekuitas RTO</span><span class="price-val" id="res-equity">Rp 0</span></div>
+                        <div style="font-size:0.8rem; color:#666">Cicilan/Bulan</div>
+                        <div class="price-val" id="res-monthly" style="font-size:1.4rem">Rp 0</div>
                     </div>
                 </div>
             </section>
@@ -314,78 +261,33 @@
     </div>
 
     <div class="final-cta">
-        <h2>Ready to own your home?</h2>
-        <p>Join the waiting list to get exclusive access to our properties.</p>
+        <h2>Slot terbatas</h2>
+        <p>Jadilah yang pertama punya rumah tanpa drama.<br>Join waiting list sekarang untuk akses eksklusif</p>
         <div class="cta-input-group">
-            <input type="email" placeholder="Enter your email address">
+            <input type="email" placeholder="Masukkan alamat email kamu">
             <button class="btn-submit">Join Waiting List</button>
         </div>
     </div>
 
     <footer class="footer">
-        <div>
-            <img src="new-logo.png" alt="Ontoown Logo" class="footer-logo">
-            <p style="font-size: 0.8rem; opacity: 0.7;">Rent Today, Own Tomorrow.</p>
-        </div>
-        <div>
-            <h4>Fitur</h4>
-            <ul>
-                <li><a href="#">Flexibility</a></li>
-                <li><a href="#">Gamification</a></li>
-                <li><a href="#">Mortgage Simulator</a></li>
-            </ul>
-        </div>
-    </footer>
+        <div><img src="new-logo.png" alt="Logo" style="height:30px"></div>
+        <div><h4>© 2026 Ontoown</h4></div>
+    </footer >
 
     <script>
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value);
             const years = parseInt(document.getElementById('m-years').value);
-            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
-            const type = document.getElementById('m-type').value;
-            const equityPercent = parseFloat(document.getElementById('m-equity').value) / 100;
-            
-            const dp = price * 0.1; // Asumsi DP 10%
-            const loanAmount = price - dp;
-            const months = years * 12;
-            
-            let monthlyPayment = 0;
-            
-            if (type === 'annuity') {
-                const monthlyRate = rate / 12;
-                monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-            } else {
-                const totalInterest = loanAmount * rate * years;
-                monthlyPayment = (loanAmount + totalInterest) / months;
-            }
-            
-            const rtoEquity = monthlyPayment * equityPercent;
-            
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
-            document.getElementById('res-equity').innerText = "Rp " + Math.round(rtoEquity).toLocaleString('id-ID');
-            
-            // Opsional: Otomatis ubah gambar berdasarkan input % ekuitas
-            let pct = equityPercent * 100;
-            if (pct >= 80) setStep(100, 'rumah-100.png', document.querySelectorAll('.step-item')[2]);
-            else if (pct >= 30) setStep(66, 'rumah-66.png', document.querySelectorAll('.step-item')[1]);
-            else setStep(33, 'rumah-33.png', document.querySelectorAll('.step-item')[0]);
+            const monthly = (price * 1.1) / (years * 12); // Simple math for demo
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthly).toLocaleString('id-ID');
         }
-        
-        // INTERAKTIF PROGRES
         function setStep(percent, image, element) {
-            // Update Gambar
             document.getElementById('house-img').src = image;
-            // Update Bar
             document.getElementById('prog-bar').style.width = percent + "%";
-            // Update Teks
             document.getElementById('prog-text').innerText = percent + "%";
-
-            // Update Active Class
             document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
             element.classList.add('active');
         }
-        
-        // Hitung saat load pertama kali
         calc();
     </script>
 </body>
