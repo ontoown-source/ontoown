@@ -53,44 +53,32 @@
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
 
-        /* UPDATED DISCOVER YOUR PROPERTY SECTION */
+        /* PROPERTY SCROLL (FIGMA STYLE) */
         .prop-scroll-container {
             display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
         }
         .prop-scroll-container::-webkit-scrollbar { display: none; }
-        
         .prop-card { 
             background: white; border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            overflow: hidden; min-width: 240px; /* Lebar diperkecil sesuai figma */
+            overflow: hidden; min-width: 240px; 
             flex: 0 0 auto; scroll-snap-align: start;
             border: 1px solid #f0f0f0;
         }
         .prop-img-box { position: relative; height: 150px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; }
-        .badge-ready { 
-            position: absolute; top: 10px; left: 10px; background: #34d399; color: white; 
-            padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; 
-        }
-        .badge-rent {
-            position: absolute; top: 10px; left: 10px; background: #3b82f6; color: white; 
-            padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; 
-        }
-        .wishlist-icon {
-            position: absolute; top: 10px; right: 10px; background: white; 
-            width: 25px; height: 25px; border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        .badge-ready { position: absolute; top: 10px; left: 10px; background: #34d399; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        .badge-rent { position: absolute; top: 10px; left: 10px; background: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        .wishlist-icon { position: absolute; top: 10px; right: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .prop-info { padding: 12px; }
         .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
         .rating { font-size: 0.75rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
         .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
         .price-label { color: #888; }
         .price-val { font-weight: 700; color: var(--primary-green); }
-        .price-val.rent { color: var(--primary-green); }
 
-        /* GAMIFICATION */
+        /* GAMIFICATION (STRICT 4 CARDS) */
         .gamification-grid {
             display: flex; gap: 12px; overflow-x: auto; padding: 10px 0 20px; scrollbar-width: none;
         }
@@ -137,10 +125,6 @@
         input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
         .res-area { background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; margin-top: 10px; }
         .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
-        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
-
-        /* FINAL CTA */
-        .final-cta { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 5%; }
         .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; text-align: center; }
     </style>
 </head>
@@ -170,56 +154,22 @@
                 </div>
                 <div class="prop-scroll-container">
                     <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <div class="wishlist-icon">❤</div>
-                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <div class="rating">⭐ 4.8</div>
-                            <h3>Sudirman Park Apartment</h3>
-                            <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp6.800.000/month</span></div>
-                            <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp1.020.000/month</span></div>
-                        </div>
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.8</div><h3>Sudirman Park Apartment</h3>
+                        <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp6.800.000/mo</span></div>
+                        <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp1.020.000/mo</span></div></div>
                     </div>
                     <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <div class="wishlist-icon">❤</div>
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <div class="rating">⭐ 4.9</div>
-                            <h3>The Verde Residence</h3>
-                            <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp6.800.000/month</span></div>
-                            <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp1.020.000/month</span></div>
-                        </div>
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.9</div><h3>The Verde Residence</h3>
+                        <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp6.800.000/mo</span></div>
+                        <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp1.020.000/mo</span></div></div>
                     </div>
                     <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-rent">Rent</span>
-                            <div class="wishlist-icon">❤</div>
-                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <div class="rating">⭐ 4.7</div>
-                            <h3>Central Park Residence</h3>
-                            <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp4.200.000/month</span></div>
-                            <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp630.000/month</span></div>
-                        </div>
-                    </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <div class="wishlist-icon">❤</div>
-                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <div class="rating">⭐ 4.6</div>
-                            <h3>Menara Jakarta</h3>
-                            <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp3.400.000/month</span></div>
-                            <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp510.000/month</span></div>
-                        </div>
+                        <div class="prop-img-box"><span class="badge-rent">Rent</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.7</div><h3>Central Park Residence</h3>
+                        <div class="price-row"><span class="price-label">Rent</span><span class="price-val">Rp4.200.000/mo</span></div>
+                        <div class="price-row"><span class="price-label">Equity</span><span class="price-val">Rp630.000/mo</span></div></div>
                     </div>
                 </div>
             </section>
@@ -227,27 +177,10 @@
             <section class="section-card">
                 <h2 style="font-size: 1.6rem; line-height: 1.2;">Progress feels better when you can see it.</h2>
                 <div class="gamification-grid">
-                    <div class="game-card card-orange">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="game-icon-box bg-orange">💡</div>
-                            <span class="game-points" style="color: #9a3412;">+100 points</span>
-                        </div>
-                        <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
-                    </div>
-                    <div class="game-card card-blue">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="game-icon-box bg-blue">🔥</div>
-                            <span class="game-points" style="color: #1e3a8a;">+80 points</span>
-                        </div>
-                        <div><h4>Pahlawan Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
-                    </div>
-                    <div class="game-card card-green">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="game-icon-box bg-green">⭐</div>
-                            <span class="game-points" style="color: #064e3b;">+50 points</span>
-                        </div>
-                        <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
-                    </div>
+                    <div class="game-card card-orange"><div class="game-icon-box bg-orange">💡</div><span class="game-points" style="color: #9a3412;">+100 pts</span><div><h4>Hemat Energi</h4><p>Kurangi listrik bulanan!</p></div></div>
+                    <div class="game-card card-blue"><div class="game-icon-box bg-blue">🔥</div><span class="game-points" style="color: #1e3a8a;">+80 pts</span><div><h4>Pahlawan Waktu</h4><p>Bayar sewa tepat waktu.</p></div></div>
+                    <div class="game-card card-green"><div class="game-icon-box bg-green">⭐</div><span class="game-points" style="color: #064e3b;">+50 pts</span><div><h4>Beri Ulasan</h4><p>Berikan rating untuk poin.</p></div></div>
+                    <div class="game-card card-lightblue"><div class="game-icon-box bg-lightblue">👥</div><span class="game-points" style="color: #1e40af;">+100 pts</span><div><h4>Ajak Teman</h4><p>Ajak teman bergabung.</p></div></div>
                 </div>
             </section>
         </div>
@@ -257,55 +190,29 @@
                 <div class="prog-header"><span>✪ On-to-Own</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
-                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)">
-                        <div class="step-icon">↳</div><div class="step-label">Sewa</div>
-                    </div>
-                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)">
-                        <div class="step-icon">🏠</div><div class="step-label">Milik</div>
-                    </div>
+                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
+                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
                 </div>
                 <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="House"></div>
             </section>
-
             <section class="section-card">
                 <h3 style="margin-top:0">Mortgage Simulator</h3>
                 <div class="sim-container">
-                    <div class="sim-group">
-                        <div class="input-row">
-                            <label>Property Price</label>
-                            <div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div>
-                        </div>
-                    </div>
-                    <div class="sim-group">
-                        <div class="input-row">
-                            <label>Tenor: <span id="v-years">15</span> Years</label>
-                            <input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()">
-                        </div>
-                    </div>
-                    <div class="res-area">
-                        <div class="res-main-val" id="res-monthly">Rp 0</div>
-                        <div id="res-alloc" style="font-size: 0.8rem; color:#249170; font-weight:700;">0% of income</div>
-                    </div>
-                    <button class="btn-cta" style="margin-top: 10px;">Start Journey</button>
+                    <div class="sim-group"><div class="input-row"><label>Price</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div></div>
+                    <div class="sim-group"><div class="input-row"><label>Tenor: <span id="v-years">15</span> Yrs</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div></div>
+                    <div class="res-area"><div class="res-main-val" id="res-monthly">Rp 0</div><div style="font-size: 0.8rem; color:#249170; font-weight:700;">Cicilan Sehat</div></div>
                 </div>
             </section>
         </div>
     </div>
-
-    <div class="final-cta">
-        <h2>Slot terbatas</h2>
-        <p>Join waiting list sekarang untuk akses eksklusif</p>
-    </div>
     <footer class="footer"><img src="new-logo.png" style="height:30px"></footer>
-
     <script>
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
             const years = parseInt(document.getElementById('m-years').value);
             document.getElementById('v-years').innerText = years;
             const monthlyPayment = (price * 0.9 * 1.5) / (years * 12);
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID') + "/mo";
-            document.getElementById('res-alloc').innerText = "Cicilan Sehat";
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
         }
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
