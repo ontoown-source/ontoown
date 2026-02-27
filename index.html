@@ -34,22 +34,20 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem;
         }
 
-        /* 2. HERO SECTION */
+        /* 2. HERO SECTION - The Hook */
         .hero {
-            height: 45vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; justify-content: center; align-items: center; color: white; text-align: center;
+            padding: 0 20px;
         }
-        .hero h1 { font-size: 2.8rem; line-height: 1.1; margin: 0; font-weight: 700; }
+        .hero h1 { font-size: 2.5rem; line-height: 1.2; margin: 0; font-weight: 700; }
 
-        /* 3. PLATFORM DESCRIPTION */
-        .desc-section { padding: 40px 25px; background: white; text-align: left; }
-        .desc-section p { color: #555; line-height: 1.6; margin: 20px 0; font-size: 1.05rem; }
-        .btn-discover {
-            background: var(--primary-green); color: white; border: none;
-            padding: 12px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: inherit;
-        }
+        /* Generic Container for Storytelling */
+        .content-section { padding: 40px 25px; background: white; margin-bottom: 15px; }
+        .content-section h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
+        .content-section p { color: #555; line-height: 1.7; margin: 15px 0; font-size: 1.05rem; }
 
         /* 4. PROGRESS CARD (GAMIFICATION) */
         .card { background: white; margin: 20px; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
@@ -135,6 +133,13 @@
         .res-area { background: #f0fdf4; padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center; border: 1px dashed var(--primary-green); }
         .res-val { font-size: 1.8rem; font-weight: 700; color: var(--primary-green); margin: 5px 0; }
 
+        /* CTA BUTTON */
+        .btn-cta {
+            background: var(--primary-green); color: white; border: none;
+            padding: 15px 25px; border-radius: 12px; font-weight: 700; cursor: pointer;
+            font-family: inherit; width: 100%; font-size: 1.1rem; text-decoration: none; display: inline-block; text-align: center;
+        }
+
         /* BOTTOM NAV */
         .bottom-nav { 
             position: fixed; bottom: 0; width: 100%; background: white; 
@@ -151,16 +156,42 @@
     </nav>
 
     <header class="hero">
-        <h1>Rent today.<br>Own Tomorrow.</h1>
+        <h1>Gak usah Nunggu kaya punya rumah.<br>Huni hari ini, miliki esok hari</h1>
     </header>
 
-    <section class="desc-section">
-        <img src="new-logo.png" alt="Ontoown" style="height: 50px; margin-bottom: 10px;">
-        <p>ONTOOWN is a platform that turns renting into a real path to home ownership. You can start by renting, build equity over time, and smoothly transition to owning your home step by step.</p>
-        <button class="btn-discover">Discover more</button>
+    <section class="content-section">
+        <h2>Susah punya rumah?</h2>
+        <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
+        <p><strong>Gimana kalau kamu bisa test drive rumah impian dengan cara mencicil sambil tinggal di rumahnyaa?</strong></p>
+    </section>
+
+    <section class="content-section" style="background: var(--dark-blue); color: white;">
+        <h2 style="color: white;">Kenalin, ONTOOWN</h2>
+        <p>Disini kamu mulai bisa sewa sambil membangun ekuitas.</p>
+        <p>Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah.</p>
+    </section>
+
+    <section class="flex-box">
+        <h2 style="margin: 0; font-size: 1.6rem; color: white;">Kendali di Tanganmu</h2>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px;">Ngerasa ga cocok sm tetangganya? Atau kejauhan dr kantor baru? Tenang, di ONTOOWN km punya kendali.</p>
+        <div class="ticket-wrap">
+            <div class="ticket">
+                <span style="font-size: 1.8rem;">🏢</span>
+                <h4>Trial Stay Pass</h4>
+                <p>Pakai trial pass, kamu bisa coba hunian dengan bebas.</p>
+            </div>
+            <div class="ticket green">
+                <span style="font-size: 1.8rem;">🏠</span>
+                <h4>Rotation</h4>
+                <p>Putar unitmu, temukan rumah yg benar2 di hati.</p>
+            </div>
+        </div>
     </section>
 
     <section class="card">
+        <h2 style="margin: 0 0 10px 0;">Cek progres kamu</h2>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Lihat rumahmu, tumbuh seiring waktu</p>
+        
         <div class="prog-header">
             <span>✪ On-to-Own Progress</span>
             <span id="p-txt" style="color: var(--primary-green);">33%</span>
@@ -185,7 +216,7 @@
         <div style="text-align: center; margin: 30px 0;">
             <img id="p-img" src="rumah-33.png" style="width: 240px; height: auto;" alt="House Progress">
         </div>
-        <button onclick="up()" class="btn-discover" style="width: 100%; background: #e8f4f1; color: var(--primary-green);">Tingkatkan Progres</button>
+        <button onclick="up()" class="btn-cta" style="background: #e8f4f1; color: var(--primary-green);">Tingkatkan Progres</button>
     </section>
 
     <div class="section-title">
@@ -225,7 +256,7 @@
 
     <section class="dark-section">
         <div style="padding: 0 25px;">
-            <h2 style="margin: 0; font-size: 1.5rem;">Progress feels better when you can see it.</h2>
+            <h2 style="margin: 0; font-size: 1.5rem; color: white;">Progress feels better when you can see it.</h2>
         </div>
         
         <div class="gamify-grid">
@@ -248,23 +279,6 @@
                 <span class="pts">+150 points</span>
                 <h4>Bring a Friend</h4>
                 <p>Invite friends to join the platform.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="flex-box">
-        <h2 style="margin: 0; font-size: 1.8rem;">Live Flexibly</h2>
-        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px;">Try a unit before committing by renting daily with trial stays & move within the ONTOOWN ecosystem.</p>
-        <div class="ticket-wrap">
-            <div class="ticket">
-                <span style="font-size: 1.8rem;">🏢</span>
-                <h4>Trial Stay Pass</h4>
-                <p>Valid for New User in Ontoown Apps only</p>
-            </div>
-            <div class="ticket green">
-                <span style="font-size: 1.8rem;">🏠</span>
-                <h4>Rotation</h4>
-                <p>Valid for Ontoown Renters with Flexibility Add-on</p>
             </div>
         </div>
     </section>
@@ -293,13 +307,19 @@
                     <option value="flat">Flat</option>
                 </select>
             </div>
-            <button onclick="calc()" class="btn-discover" style="width: 100%;">Try mortgage simulator</button>
+            <button onclick="calc()" class="btn-cta" style="background: var(--primary-green); color: white;">Try mortgage simulator</button>
             <div class="res-area">
                 <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Estimated Monthly Installment</div>
                 <div class="res-val" id="m-res">Rp 0</div>
                 <div id="m-note" style="font-size: 0.75rem; color: #888; margin-top: 8px;">Asumsi DP 10% dari harga properti</div>
             </div>
         </div>
+    </section>
+
+    <section class="content-section" style="text-align: center; border-top: 2px solid #eee;">
+        <h2 style="font-size: 1.5rem;">Slot terbatas</h2>
+        <p style="color: #444; margin-bottom: 30px;">Jadilah yang pertama punya rumah tanpa drama.<br><strong>Join waiting list sekarang untuk akses eksklusif</strong></p>
+        <a href="#" class="btn-cta">Join Waiting List</a>
     </section>
 
     <nav class="bottom-nav">
