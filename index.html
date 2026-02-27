@@ -34,20 +34,25 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem;
         }
 
-        /* 2. HERO SECTION - The Hook */
+        /* 2. HERO SECTION */
         .hero {
-            height: 50vh;
+            height: 40vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; justify-content: center; align-items: center; color: white; text-align: center;
             padding: 0 20px;
         }
-        .hero h1 { font-size: 2.5rem; line-height: 1.2; margin: 0; font-weight: 700; }
+        .hero h1 { font-size: 1.5rem; line-height: 1.4; margin: 0; font-weight: 600; }
 
         /* Generic Container for Storytelling */
         .content-section { padding: 40px 25px; background: white; margin-bottom: 15px; }
         .content-section h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
         .content-section p { color: #555; line-height: 1.7; margin: 15px 0; font-size: 1.05rem; }
+
+        /* Pain Point with Icons */
+        .pain-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 25px; }
+        .pain-item { display: flex; align-items: flex-start; gap: 15px; }
+        .pain-icon { font-size: 1.5rem; background: #fee2e2; padding: 10px; border-radius: 12px; }
 
         /* 4. PROGRESS CARD (GAMIFICATION) */
         .card { background: white; margin: 20px; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
@@ -152,21 +157,38 @@
 
     <nav class="top-nav">
         <img src="new-logo.png" alt="Ontoown Logo" class="logo-img">
-        <a href="#" class="btn-signup">Sign Up</a>
+        <a href="#" class="btn-signup">Daftar</a>
     </nav>
 
     <header class="hero">
-        <h1>Gak usah Nunggu kaya punya rumah.<br>Huni hari ini, miliki esok hari</h1>
+        <h1>Gak usah nunggu jadi kaya untuk punya rumah. Huni hari ini, miliki esok hari</h1>
     </header>
 
     <section class="content-section">
         <h2>Susah punya rumah?</h2>
         <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
-        <p><strong>Gimana kalau kamu bisa test drive rumah impian dengan cara mencicil sambil tinggal di rumahnyaa?</strong></p>
+        
+        <div class="pain-grid">
+            <div class="pain-item">
+                <span class="pain-icon">📝</span>
+                <div>
+                    <h4 style="margin: 0 0 5px 0;">Syarat Ribet</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #666;">Banyak dokumen dan proses verifikasi yang bikin pusing.</p>
+                </div>
+            </div>
+            <div class="pain-item">
+                <span class="pain-icon">💸</span>
+                <div>
+                    <h4 style="margin: 0 0 5px 0;">DP Tinggi</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #666;">Harus siapin dana besar di awal untuk uang muka.</p>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 30px;"><strong>Gimana kalau kamu bisa test drive rumah impian dengan cara mencicil sambil tinggal di rumahnyaa?</strong></p>
     </section>
 
-    <section class="content-section" style="background: var(--dark-blue); color: white;">
-        <h2 style="color: white;">Kenalin, ONTOOWN</h2>
+    <section class="content-section" style="background: white; color: #333;">
+        <img src="new-logo.png" alt="Ontoown Logo" style="height: 40px; margin-bottom: 15px;">
         <p>Disini kamu mulai bisa sewa sambil membangun ekuitas.</p>
         <p>Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah.</p>
     </section>
@@ -182,7 +204,7 @@
             </div>
             <div class="ticket green">
                 <span style="font-size: 1.8rem;">🏠</span>
-                <h4>Rotation</h4>
+                <h4>Rotasi Unit</h4>
                 <p>Putar unitmu, temukan rumah yg benar2 di hati.</p>
             </div>
         </div>
@@ -193,7 +215,7 @@
         <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Lihat rumahmu, tumbuh seiring waktu</p>
         
         <div class="prog-header">
-            <span>✪ On-to-Own Progress</span>
+            <span>✪ Progres On-to-Own</span>
             <span id="p-txt" style="color: var(--primary-green);">33%</span>
         </div>
         <div class="bar-bg"><div id="p-bar" class="bar-fill"></div></div>
@@ -201,15 +223,15 @@
         <div class="steps-nav">
             <div class="step-item active" id="s1">
                 <div class="step-icon">↳</div>
-                <div class="step-label">Rent Started</div>
+                <div class="step-label">Sewa Mulai</div>
             </div>
             <div class="step-item" id="s2">
                 <div class="step-icon">📈</div>
-                <div class="step-label">Build Equity</div>
+                <div class="step-label">Bangun Ekuitas</div>
             </div>
             <div class="step-item" id="s3">
                 <div class="step-icon">🏠</div>
-                <div class="step-label">Own Your Home</div>
+                <div class="step-label">Miliki Rumah</div>
             </div>
         </div>
 
@@ -220,8 +242,8 @@
     </section>
 
     <div class="section-title">
-        <h2>Discover Property</h2>
-        <p>Explore verified homes that fit your lifestyle. Set your contract term and choose from available rent or rent-to-own options.</p>
+        <h2>Temukan Properti</h2>
+        <p>Jelajahi rumah terverifikasi yang sesuai gaya hidupmu. Atur jangka waktu kontrak dan pilih opsi sewa atau sewa-beli.</p>
     </div>
 
     <div class="horizontal-scroll">
@@ -234,8 +256,8 @@
             <div class="prop-info">
                 <div style="font-size: 0.8rem; color: #f59e0b; margin-bottom: 5px;">★ 4.8</div>
                 <h3>Sudirman Park Apartment</h3>
-                <div class="price-row"><span>Rent</span><span class="price-val">Rp8.500.000/month</span></div>
-                <div class="price-row"><span>Equity</span><span class="price-val">Rp1.275.000/month</span></div>
+                <div class="price-row"><span>Sewa</span><span class="price-val">Rp8.500.000/bulan</span></div>
+                <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bulan</span></div>
             </div>
         </div>
 
@@ -248,48 +270,48 @@
             <div class="prop-info">
                 <div style="font-size: 0.8rem; color: #f59e0b; margin-bottom: 5px;">★ 4.9</div>
                 <h3>The Verde Residence</h3>
-                <div class="price-row"><span>Rent</span><span class="price-val">Rp6.800.000/month</span></div>
-                <div class="price-row"><span>Equity</span><span class="price-val">Rp1.020.000/month</span></div>
+                <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bulan</span></div>
+                <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bulan</span></div>
             </div>
         </div>
     </div>
 
     <section class="dark-section">
         <div style="padding: 0 25px;">
-            <h2 style="margin: 0; font-size: 1.5rem; color: white;">Progress feels better when you can see it.</h2>
+            <h2 style="margin: 0; font-size: 1.5rem; color: white;">Progres terasa lebih menyenangkan saat Anda bisa melihatnya.</h2>
         </div>
         
         <div class="gamify-grid">
             <div class="gamify-box yellow">
-                <span class="pts">+100 points</span>
+                <span class="pts">+100 poin</span>
                 <h4>Power Saver</h4>
-                <p>Cut your electricity usage at home!</p>
+                <p>Hemat penggunaan listrik di rumah!</p>
             </div>
             <div class="gamify-box blue">
-                <span class="pts">+80 points</span>
-                <h4>On Time Hero</h4>
-                <p>Pay rent before the due date.</p>
+                <span class="pts">+80 poin</span>
+                <h4>Pahlawan Tepat Waktu</h4>
+                <p>Bayar sewa sebelum tanggal jatuh tempo.</p>
             </div>
             <div class="gamify-box purple">
-                <span class="pts">+50 points</span>
-                <h4>Rate & Earn</h4>
-                <p>Leave a review to earn points.</p>
+                <span class="pts">+50 poin</span>
+                <h4>Ulas & Dapatkan</h4>
+                <p>Berikan ulasan untuk mendapatkan poin.</p>
             </div>
             <div class="gamify-box">
-                <span class="pts">+150 points</span>
-                <h4>Bring a Friend</h4>
-                <p>Invite friends to join the platform.</p>
+                <span class="pts">+150 poin</span>
+                <h4>Ajak Teman</h4>
+                <p>Undang teman untuk bergabung dengan platform.</p>
             </div>
         </div>
     </section>
 
     <section class="card">
-        <h2 style="margin: 0 0 10px 0;">Mortgage Simulator</h2>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">See your future house by trying the mortgage simulator. Simulate your payment and timelines all in one!</p>
+        <h2 style="margin: 0 0 10px 0;">Simulator KPR</h2>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Lihat rumah masa depan Anda dengan mencoba simulator KPR. Simulasikan pembayaran dan jangka waktu semuanya dalam satu tempat!</p>
         
         <div class="sim-container">
             <div class="input-group">
-                <label>Property Price (Rp)</label>
+                <label>Harga Properti (Rp)</label>
                 <input type="number" id="m-price" value="500000000">
             </div>
             <div class="input-group">
@@ -297,19 +319,19 @@
                 <input type="range" id="m-years" min="5" max="30" value="15" oninput="document.getElementById('y-txt').innerText = this.value">
             </div>
             <div class="input-group">
-                <label>Interest Rate (%/Year)</label>
+                <label>Suku Bunga (%/Tahun)</label>
                 <input type="number" id="m-rate" value="6" step="0.1">
             </div>
             <div class="input-group">
-                <label>Interest Type</label>
+                <label>Jenis Bunga</label>
                 <select id="m-type">
                     <option value="anuitas">Anuitas (Efektif)</option>
                     <option value="flat">Flat</option>
                 </select>
             </div>
-            <button onclick="calc()" class="btn-cta" style="background: var(--primary-green); color: white;">Try mortgage simulator</button>
+            <button onclick="calc()" class="btn-cta" style="background: var(--primary-green); color: white;">Coba Simulator KPR</button>
             <div class="res-area">
-                <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Estimated Monthly Installment</div>
+                <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Estimasi Cicilan Bulanan</div>
                 <div class="res-val" id="m-res">Rp 0</div>
                 <div id="m-note" style="font-size: 0.75rem; color: #888; margin-top: 8px;">Asumsi DP 10% dari harga properti</div>
             </div>
@@ -319,7 +341,7 @@
     <section class="content-section" style="text-align: center; border-top: 2px solid #eee;">
         <h2 style="font-size: 1.5rem;">Slot terbatas</h2>
         <p style="color: #444; margin-bottom: 30px;">Jadilah yang pertama punya rumah tanpa drama.<br><strong>Join waiting list sekarang untuk akses eksklusif</strong></p>
-        <a href="#" class="btn-cta">Join Waiting List</a>
+        <a href="#" class="btn-cta">Daftar Waiting List</a>
     </section>
 
     <nav class="bottom-nav">
@@ -360,11 +382,4 @@
             if (type === 'flat') {
                 res = (loan + (loan * rate * years)) / (years * 12);
             } else {
-                const i = rate / 12; const n = years * 12;
-                res = loan * (i / (1 - Math.pow(1 + i, -n)));
-            }
-            document.getElementById('m-res').innerText = "Rp " + Math.round(res).toLocaleString('id-ID');
-        }
-    </script>
-</body>
-</html>
+                const i = rate /
