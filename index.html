@@ -20,6 +20,8 @@
             background-color: var(--bg-gray);
             padding-bottom: 100px;
             overflow-x: hidden;
+            /* REVISI 2: Line height seragam */
+            line-height: 1.6;
         }
 
         /* 1. TOP NAVBAR */
@@ -42,17 +44,21 @@
             display: flex; justify-content: center; align-items: center; color: white; text-align: center;
             padding: 0 20px;
         }
-        .hero h1 { font-size: 1.5rem; line-height: 1.4; margin: 0; font-weight: 600; }
+        .hero h1 { font-size: 1.5rem; line-height: 1.3; margin: 0; font-weight: 600; }
 
         /* Generic Container for Storytelling */
         .content-section { padding: 40px 25px; background: white; margin-bottom: 15px; }
         .content-section h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
-        .content-section p { color: #555; line-height: 1.7; margin: 15px 0; font-size: 1.05rem; }
+        /* REVISI 2: Padding teks disamakan */
+        .content-section p { color: #555; line-height: 1.6; margin: 15px 0; font-size: 1.05rem; }
 
         /* Pain Point with Icons */
         .pain-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 25px; }
         .pain-item { display: flex; align-items: flex-start; gap: 15px; }
         .pain-icon { font-size: 1.5rem; background: #fee2e2; padding: 10px; border-radius: 12px; }
+
+        /* REVISI 1: Perbesar Logo Solution */
+        .solution-logo { height: 45px; width: auto; margin-bottom: 15px; }
 
         /* 4. PROGRESS CARD (GAMIFICATION) */
         .card { background: white; margin: 20px; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
@@ -103,13 +109,15 @@
         .gamify-box {
             background: #dcfce7; color: #111827; min-width: 130px; padding: 20px 15px;
             border-radius: 18px; text-align: left; scroll-snap-align: start;
+            /* REVISI 2: Line height di kartu */
+            line-height: 1.4;
         }
         .gamify-box.yellow { background: #fef3c7; }
         .gamify-box.blue { background: #dbeafe; }
         .gamify-box.purple { background: #f3e8ff; }
         .gamify-box .pts { font-weight: 800; font-size: 1rem; display: block; margin-bottom: 5px; }
-        .gamify-box h4 { margin: 5px 0; font-size: 0.85rem; font-weight: 700; }
-        .gamify-box p { margin: 0; font-size: 0.65rem; opacity: 0.8; line-height: 1.3; }
+        .gamify-box h4 { margin: 5px 0; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+        .gamify-box p { margin: 0; font-size: 0.65rem; opacity: 0.8; }
 
         /* 7. LIVE FLEXIBLY (TICKET) */
         .flex-box { background: var(--dark-blue); color: white; padding: 40px 20px; text-align: center; }
@@ -143,6 +151,14 @@
             background: var(--primary-green); color: white; border: none;
             padding: 15px 25px; border-radius: 12px; font-weight: 700; cursor: pointer;
             font-family: inherit; width: 100%; font-size: 1.1rem; text-decoration: none; display: inline-block; text-align: center;
+        }
+
+        /* REVISI 5: Tombol Waiting List */
+        .btn-cta-small {
+            background: var(--primary-green); color: white; border: none;
+            padding: 12px 20px; border-radius: 12px; font-weight: 700; cursor: pointer;
+            font-family: inherit; width: 100%; font-size: 1rem; text-decoration: none; display: inline-block; text-align: center;
+            box-sizing: border-box;
         }
 
         /* BOTTOM NAV */
@@ -188,7 +204,7 @@
     </section>
 
     <section class="content-section" style="background: white; color: #333;">
-        <img src="new-logo.png" alt="Ontoown Logo" style="height: 40px; margin-bottom: 15px;">
+        <img src="new-logo.png" alt="Ontoown Logo" class="solution-logo">
         <p>Disini kamu mulai bisa sewa sambil membangun ekuitas.</p>
         <p>Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah.</p>
     </section>
@@ -284,30 +300,30 @@
         <div class="gamify-grid">
             <div class="gamify-box yellow">
                 <span class="pts">+100 poin</span>
-                <h4>Power Saver</h4>
+                <h4>⚡ Power Saver</h4>
                 <p>Hemat penggunaan listrik di rumah!</p>
             </div>
             <div class="gamify-box blue">
                 <span class="pts">+80 poin</span>
-                <h4>Pahlawan Tepat Waktu</h4>
-                <p>Bayar sewa sebelum tanggal jatuh tempo.</p>
+                <h4>⏳ Pahlawan Tepat Waktu</h4>
+                <p>Bayar sewa sebelum jatuh tempo.</p>
             </div>
             <div class="gamify-box purple">
                 <span class="pts">+50 poin</span>
-                <h4>Ulas & Dapatkan</h4>
-                <p>Berikan ulasan untuk mendapatkan poin.</p>
+                <h4>⭐ Ulas & Dapatkan</h4>
+                <p>Berikan ulasan untuk dapatkan poin.</p>
             </div>
             <div class="gamify-box">
                 <span class="pts">+150 poin</span>
-                <h4>Ajak Teman</h4>
-                <p>Undang teman untuk bergabung dengan platform.</p>
+                <h4>👥 Ajak Teman</h4>
+                <p>Undang teman untuk bergabung.</p>
             </div>
         </div>
     </section>
 
     <section class="card">
         <h2 style="margin: 0 0 10px 0;">Simulator KPR</h2>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Lihat rumah masa depan Anda dengan mencoba simulator KPR. Simulasikan pembayaran dan jangka waktu semuanya dalam satu tempat!</p>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Lihat rumah masa depan Anda dengan simulator KPR. Simulasikan pembayaran dan jangka waktu semuanya dalam satu tempat!</p>
         
         <div class="sim-container">
             <div class="input-group">
@@ -341,7 +357,7 @@
     <section class="content-section" style="text-align: center; border-top: 2px solid #eee;">
         <h2 style="font-size: 1.5rem;">Slot terbatas</h2>
         <p style="color: #444; margin-bottom: 30px;">Jadilah yang pertama punya rumah tanpa drama.<br><strong>Join waiting list sekarang untuk akses eksklusif</strong></p>
-        <a href="#" class="btn-cta">Daftar Waiting List</a>
+        <a href="#" class="btn-cta-small">Daftar Waiting List</a>
     </section>
 
     <nav class="bottom-nav">
@@ -370,10 +386,10 @@
             }
         }
 
-        // LOGIKA KALKULATOR KPR
+        // LOGIKA KALKULATOR KPR - REVISI 4: Diperbaiki
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value);
-            const loan = price * 0.9; 
+            const loan = price * 0.9; // Asumsi DP 10%
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const type = document.getElementById('m-type').value;
@@ -382,4 +398,14 @@
             if (type === 'flat') {
                 res = (loan + (loan * rate * years)) / (years * 12);
             } else {
-                const i = rate /
+                // Formula Anuitas
+                const i = rate / 12; 
+                const n = years * 12;
+                res = loan * (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
+            }
+            
+            document.getElementById('m-res').innerText = "Rp " + Math.round(res).toLocaleString('id-ID');
+        }
+    </script>
+</body>
+</html>
