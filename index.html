@@ -22,7 +22,7 @@
             color: #333;
         }
 
-        /* Top Navbar */
+        /* 1. TOP NAVBAR */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
@@ -34,82 +34,97 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* Main Container Layout */
+        /* 2. LAYOUT GRID */
         .main-container {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 20px;
             padding: 20px;
         }
 
         @media (min-width: 1024px) {
             .main-container {
-                flex-direction: row;
+                grid-template-columns: 2fr 1fr;
                 padding: 40px 5%;
                 gap: 30px;
             }
-            .content-left { flex: 2; }
-            .sidebar-right { flex: 1; }
         }
+
+        /* HERO SECTION */
+        .hero {
+            grid-column: 1 / -1;
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            display: flex; justify-content: center; align-items: center; color: white; text-align: center;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .hero h1 { font-size: 2rem; line-height: 1.3; margin: 0; font-weight: 600; padding: 0 20px; }
 
         /* General Card Style */
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
         .section-card p { color: #555; font-size: 1rem; }
 
-        /* REVISI 2: Property Cards Horizontal */
-        .prop-scroll-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-        .prop-card {
-            background: white; border-radius: 20px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06); 
-            overflow: hidden; 
-            min-width: 300px;
-            flex: 1;
-        }
-        .prop-img-box { position: relative; height: 180px; }
-        .prop-img { width: 100%; height: 100%; object-fit: cover; }
-        .badge-ready {
-            position: absolute; top: 12px; left: 12px; background: #34d399; color: white;
-            padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700;
-        }
-        .prop-info { padding: 20px; }
-        .prop-info h3 { margin: 0 0 10px; font-size: 1.2rem; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
-        .price-val { font-weight: 700; color: var(--primary-green); }
-
-        /* Progress Visuals */
+        /* Progress Card */
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
-        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
-        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; }
+        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 25px; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: 0.8s ease-in-out; }
         
         .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
         .step-item { text-align: center; flex: 1; opacity: 0.4; }
         .step-item.active { opacity: 1; }
         .step-icon { font-size: 1.2rem; margin-bottom: 5px; }
         .step-label { font-size: 0.7rem; font-weight: 600; }
-        
-        .house-visual { text-align: center; margin: 20px 0; }
-        .house-img { max-width: 80%; height: auto; }
 
-        /* REVISI 1: Calculator Update */
+        /* REVISI 1: Visual Progress Rumah */
+        .house-visual-box {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 15px;
+        }
+        .house-visual-box img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+
+        /* Gamifikasi Fitur Box */
+        .gamify-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
+        .gamify-box { background: #f3f4f6; color: #111827; padding: 20px; border-radius: 18px; text-align: center; }
+        .gamify-box h4 { margin: 10px 0 5px; font-size: 0.9rem; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .gamify-box .pts { font-weight: 800; font-size: 1.1rem; color: var(--primary-green); display: block; }
+        .icon-circle { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin: 0 auto; }
+
+        /* Property Card */
+        .prop-card { background: white; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 20px; }
+        .prop-img-box { position: relative; height: 180px; }
+        .prop-img { width: 100%; height: 100%; object-fit: cover; }
+        .badge-ready { position: absolute; top: 12px; left: 12px; background: #34d399; color: white; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; }
+        .prop-info { padding: 20px; }
+        .prop-info h3 { margin: 0 0 10px; font-size: 1.2rem; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+        .price-val { font-weight: 700; color: var(--primary-green); }
+
+        /* REVISI 2: Simulator KPR Lengkap */
         .sim-container { background: white; border-radius: 20px; padding: 20px; border: 1px solid #eee; margin-top: 15px; }
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
         .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
         .btn-cta { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
         .res-area { background: #f0fdf4; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
-        .res-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
+
+        /* REVISI 3: CTA Waiting List */
+        .waiting-list-section { text-align: center; padding: 40px 20px; background: white; border-radius: 20px; margin: 30px 5%; border: 2px solid var(--primary-green); }
 
         /* Footer */
         .footer { background: var(--dark-blue); color: white; padding: 50px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
         .footer-logo { height: 35px; margin-bottom: 15px; }
-        .footer h4 { margin-bottom: 15px; }
-        .footer ul { list-style: none; padding: 0; }
+        .footer h4 { margin-bottom: 15px; font-size: 1.1rem; }
+        .footer ul { list-style: none; padding: 0; margin: 0; }
         .footer ul li { margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8; }
         .footer a { color: white; text-decoration: none; }
     </style>
@@ -123,7 +138,11 @@
 
     <div class="main-container">
         
-        <div class="content-left">
+        <header class="hero">
+            <h1>Gak usah nunggu jadi kaya untuk punya rumah. Huni hari ini, miliki esok hari</h1>
+        </header>
+
+        <div>
             <section class="section-card">
                 <h2>Kenalin Ontoown</h2>
                 <p>Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah.</p>
@@ -131,51 +150,27 @@
 
             <section class="section-card">
                 <h2>Temukan Properti</h2>
-                <div class="prop-scroll-container">
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <h3>Sudirman Park Apartment</h3>
-                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp8.500.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bln</span></div>
-                        </div>
+                <div class="prop-card">
+                    <div class="prop-img-box">
+                        <span class="badge-ready">Ontoown Ready</span>
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
                     </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <h3>The Verde Residence</h3>
-                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div>
-                        </div>
-                    </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Rent</span>
-                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <h3>Central Park Residence</h3>
-                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp4.200.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp630.000/bln</span></div>
-                        </div>
+                    <div class="prop-info">
+                        <h3>Sudirman Park Apartment</h3>
+                        <div class="price-row"><span>Sewa</span><span class="price-val">Rp8.500.000/bulan</span></div>
+                        <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bulan</span></div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <div class="sidebar-right">
+        <div>
             <section class="section-card">
                 <div class="prog-header">
                     <span>✪ Progres On-to-Own</span>
-                    <span style="color: var(--primary-green);">33%</span>
+                    <span id="p-txt" style="color: var(--primary-green);">33%</span>
                 </div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 33%;"></div></div>
+                <div class="bar-bg"><div id="p-bar" class="bar-fill" style="width: 33%;"></div></div>
                 
                 <div class="steps-nav">
                     <div class="step-item active"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
@@ -183,8 +178,15 @@
                     <div class="step-item"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
                 </div>
                 
-                <div class="house-visual">
-                    <img src="house-frame.png" alt="House Progress" class="house-img">
+                <div class="house-visual-box">
+                    <img src="house-frame.png" alt="House Structure">
+                </div>
+                
+                <div class="gamify-grid">
+                    <div class="gamify-box"><div class="icon-circle">⚡</div><h4>Power Saver<span class="pts">+100</span></h4></div>
+                    <div class="gamify-box"><div class="icon-circle">⏳</div><h4>Pahlawan<span class="pts">+80</span></h4></div>
+                    <div class="gamify-box"><div class="icon-circle">⭐</div><h4>Ulas<span class="pts">+50</span></h4></div>
+                    <div class="gamify-box"><div class="icon-circle">👥</div><h4>Ajak<span class="pts">+150</span></h4></div>
                 </div>
             </section>
 
@@ -203,28 +205,21 @@
                         <label>Suku Bunga (% per tahun)</label>
                         <input type="number" id="m-rate" value="6" step="0.1">
                     </div>
-                    <div class="input-group">
-                        <label>Jenis Bunga</label>
-                        <select id="m-type">
-                            <option value="annuity">Anuitas</option>
-                            <option value="flat">Flat</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Persentase Ekuitas RTO (%)</label>
-                        <input type="number" id="m-equity" value="15">
-                    </div>
-                    <button onclick="calc()" class="btn-cta">Hitung</button>
-                    
+                    <button onclick="calc()" class="btn-cta">Hitung Cicilan</button>
                     <div class="res-area">
-                        <div class="res-row"><span>Total Kredit</span><span class="price-val" id="res-loan">Rp 0</span></div>
-                        <div class="res-row"><span>Estimasi Cicilan/Bulan</span><span class="price-val" style="font-size: 1.2rem;" id="res-monthly">Rp 0</span></div>
-                        <div class="res-row"><span>Tambahan Ekuitas RTO</span><span class="price-val" id="res-equity">Rp 0</span></div>
+                        <div style="font-size: 0.9rem;">Estimasi Cicilan</div>
+                        <div class="price-val" style="font-size: 1.5rem;" id="m-res">Rp 0</div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
+    <section class="waiting-list-section">
+        <h2>Slot terbatas!</h2>
+        <p>Jadilah yang pertama punya rumah tanpa drama. Join waiting list sekarang untuk akses eksklusif.</p>
+        <a href="#" class="btn-signup" style="padding: 15px 30px; font-size: 1rem;">Daftar Waiting List</a>
+    </section>
 
     <footer class="footer">
         <div>
@@ -254,37 +249,22 @@
     </footer>
 
     <script>
-        // Logika Kalkulator KPR Lengkap
+        // REVISI 2: Logika KPR Anuitas
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value);
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
-            const type = document.getElementById('m-type').value;
-            const equityPercent = parseFloat(document.getElementById('m-equity').value) / 100;
             
             const dp = price * 0.1; // Asumsi DP 10%
             const loanAmount = price - dp;
-            const months = years * 12;
+            const monthlyRate = rate / 12;
+            const numberOfPayments = years * 12;
             
-            let monthlyPayment = 0;
+            // Formula Anuitas
+            const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
             
-            if (type === 'annuity') {
-                // Formula Anuitas
-                const monthlyRate = rate / 12;
-                monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-            } else {
-                // Formula Flat
-                const totalInterest = loanAmount * rate * years;
-                monthlyPayment = (loanAmount + totalInterest) / months;
-            }
-            
-            const rtoEquity = monthlyPayment * equityPercent;
-            
-            document.getElementById('res-loan').innerText = "Rp " + Math.round(loanAmount).toLocaleString('id-ID');
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
-            document.getElementById('res-equity').innerText = "Rp " + Math.round(rtoEquity).toLocaleString('id-ID');
+            document.getElementById('m-res').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
         }
-        
         // Hitung saat load pertama kali
         calc();
     </script>
