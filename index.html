@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Rent Today, Own Tomorrow</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary-green: #249170;
@@ -17,6 +19,7 @@
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
             padding-bottom: 100px;
+            overflow-x: hidden;
         }
 
         /* 1. TOP NAVBAR */
@@ -48,7 +51,7 @@
             padding: 12px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: inherit;
         }
 
-        /* 4. PROGRESS CARD */
+        /* 4. PROGRESS CARD (GAMIFICATION) */
         .card { background: white; margin: 20px; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #f0f0f0; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 25px; }
@@ -60,7 +63,52 @@
         .step-icon { font-size: 1.2rem; margin-bottom: 5px; }
         .step-label { font-size: 0.7rem; font-weight: 600; }
 
-        /* 5. LIVE FLEXIBLY (TICKET) */
+        /* 5. DISCOVER PROPERTY (HORIZONTAL SCROLL) */
+        .section-title { padding: 0 25px; margin-top: 40px; }
+        .section-title h2 { margin: 0; font-size: 1.6rem; color: var(--dark-blue); }
+        .section-title p { margin: 10px 0; font-size: 0.9rem; color: #666; line-height: 1.5; }
+
+        .horizontal-scroll {
+            display: flex; gap: 15px; overflow-x: auto; padding: 10px 25px 30px;
+            scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
+
+        .prop-card {
+            background: white; border-radius: 20px; min-width: 260px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden; scroll-snap-align: start;
+        }
+        .prop-img-box { position: relative; height: 160px; }
+        .prop-img { width: 100%; height: 100%; object-fit: cover; }
+        .badge-ready {
+            position: absolute; top: 12px; left: 12px; background: #34d399; color: white;
+            padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700;
+        }
+        .heart-icon {
+            position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.8);
+            width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+        .prop-info { padding: 15px; }
+        .prop-info h3 { margin: 0 0 10px; font-size: 1.1rem; line-height: 1.2; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.75rem; }
+        .price-val { font-weight: 700; color: var(--primary-green); }
+
+        /* 6. DARK SECTION GAMIFICATION */
+        .dark-section { background: #1a2538; color: white; padding: 40px 0; margin-top: 30px; }
+        .gamify-grid { display: flex; gap: 15px; overflow-x: auto; padding: 20px 25px; scrollbar-width: none; }
+        .gamify-grid::-webkit-scrollbar { display: none; }
+        .gamify-box {
+            background: #dcfce7; color: #111827; min-width: 130px; padding: 20px 15px;
+            border-radius: 18px; text-align: left; scroll-snap-align: start;
+        }
+        .gamify-box.yellow { background: #fef3c7; }
+        .gamify-box.blue { background: #dbeafe; }
+        .gamify-box.purple { background: #f3e8ff; }
+        .gamify-box .pts { font-weight: 800; font-size: 1rem; display: block; margin-bottom: 5px; }
+        .gamify-box h4 { margin: 5px 0; font-size: 0.85rem; font-weight: 700; }
+        .gamify-box p { margin: 0; font-size: 0.65rem; opacity: 0.8; line-height: 1.3; }
+
+        /* 7. LIVE FLEXIBLY (TICKET) */
         .flex-box { background: var(--dark-blue); color: white; padding: 40px 20px; text-align: center; }
         .ticket-wrap { display: flex; gap: 12px; margin-top: 25px; justify-content: center; }
         .ticket {
@@ -77,7 +125,7 @@
         .ticket.green h4 { color: #16a34a; }
         .ticket p { font-size: 0.65rem; margin: 0; line-height: 1.3; }
 
-        /* 6. MORTGAGE SIMULATOR */
+        /* 8. MORTGAGE SIMULATOR */
         .sim-container { background: white; border-radius: 20px; padding: 20px; border: 1px solid #f0f0f0; margin-top: 15px; }
         .input-group { margin-bottom: 18px; }
         .input-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: #333; }
@@ -88,7 +136,11 @@
         .res-val { font-size: 1.8rem; font-weight: 700; color: var(--primary-green); margin: 5px 0; }
 
         /* BOTTOM NAV */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; }
+        .bottom-nav { 
+            position: fixed; bottom: 0; width: 100%; background: white; 
+            display: flex; justify-content: space-around; padding: 15px 0; 
+            border-top: 1px solid #eee; z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -134,6 +186,70 @@
             <img id="p-img" src="rumah-33.png" style="width: 240px; height: auto;" alt="House Progress">
         </div>
         <button onclick="up()" class="btn-discover" style="width: 100%; background: #e8f4f1; color: var(--primary-green);">Tingkatkan Progres</button>
+    </section>
+
+    <div class="section-title">
+        <h2>Discover Property</h2>
+        <p>Explore verified homes that fit your lifestyle. Set your contract term and choose from available rent or rent-to-own options.</p>
+    </div>
+
+    <div class="horizontal-scroll">
+        <div class="prop-card">
+            <div class="prop-img-box">
+                <span class="badge-ready">Ontoown Ready</span>
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                <div class="heart-icon">♡</div>
+            </div>
+            <div class="prop-info">
+                <div style="font-size: 0.8rem; color: #f59e0b; margin-bottom: 5px;">★ 4.8</div>
+                <h3>Sudirman Park Apartment</h3>
+                <div class="price-row"><span>Rent</span><span class="price-val">Rp8.500.000/month</span></div>
+                <div class="price-row"><span>Equity</span><span class="price-val">Rp1.275.000/month</span></div>
+            </div>
+        </div>
+
+        <div class="prop-card">
+            <div class="prop-img-box">
+                <span class="badge-ready">Ontoown Ready</span>
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                <div class="heart-icon">♡</div>
+            </div>
+            <div class="prop-info">
+                <div style="font-size: 0.8rem; color: #f59e0b; margin-bottom: 5px;">★ 4.9</div>
+                <h3>The Verde Residence</h3>
+                <div class="price-row"><span>Rent</span><span class="price-val">Rp6.800.000/month</span></div>
+                <div class="price-row"><span>Equity</span><span class="price-val">Rp1.020.000/month</span></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="dark-section">
+        <div style="padding: 0 25px;">
+            <h2 style="margin: 0; font-size: 1.5rem;">Progress feels better when you can see it.</h2>
+        </div>
+        
+        <div class="gamify-grid">
+            <div class="gamify-box yellow">
+                <span class="pts">+100 points</span>
+                <h4>Power Saver</h4>
+                <p>Cut your electricity usage at home!</p>
+            </div>
+            <div class="gamify-box blue">
+                <span class="pts">+80 points</span>
+                <h4>On Time Hero</h4>
+                <p>Pay rent before the due date.</p>
+            </div>
+            <div class="gamify-box purple">
+                <span class="pts">+50 points</span>
+                <h4>Rate & Earn</h4>
+                <p>Leave a review to earn points.</p>
+            </div>
+            <div class="gamify-box">
+                <span class="pts">+150 points</span>
+                <h4>Bring a Friend</h4>
+                <p>Invite friends to join the platform.</p>
+            </div>
+        </div>
     </section>
 
     <section class="flex-box">
@@ -193,7 +309,7 @@
     </nav>
 
     <script>
-        // FUNGSI TINGKATKAN PROGRESS
+        // LOGIKA PROGRESS GAMIFIKASI
         let prog = 33;
         function up() {
             if (prog < 100) {
@@ -212,10 +328,10 @@
             }
         }
 
-        // FUNGSI KALKULATOR KPR
+        // LOGIKA KALKULATOR KPR
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value);
-            const loan = price * 0.9; // Simulasi dengan DP 10%
+            const loan = price * 0.9; 
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const type = document.getElementById('m-type').value;
