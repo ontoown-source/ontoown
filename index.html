@@ -20,6 +20,8 @@
             background-color: var(--bg-gray);
             color: #333;
             overflow-x: hidden;
+            /* Perubahan: Membuat scroll halus */
+            scroll-behavior: smooth;
         }
 
         /* 1. NAVBAR */
@@ -249,7 +251,7 @@
 <body>
     <nav class="top-nav">
         <img src="new-logo.png" alt="Ontoown Logo" class="logo-img">
-        <a href="#" class="btn-signup">Daftar</a>
+        <a href="#daftar" class="btn-signup">Daftar</a>
     </nav>
 
     <header class="hero">
@@ -391,7 +393,7 @@
         </div>
     </div>
 
-    <div class="waiting-list-section">
+    <div class="waiting-list-section" id="daftar">
         <h2>Slot terbatas!</h2>
         <p>Jadilah yang pertama punya rumah tanpa drama.<br>Gabung daftar tunggu sekarang untuk akses eksklusif</p>
         
