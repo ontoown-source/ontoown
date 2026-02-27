@@ -14,11 +14,9 @@
             --light-green: #dcfce7;
         }
 
-        /* --- TRIK AUTO-LAYOUT UNTUK LAPTOP (ANTI ZOOM MANUAL) --- */
-        @media (min-width: 1024px) and (max-width: 1500px) {
-            body {
-                zoom: 0.85; /* Mengecilkan skala tampilan otomatis agar pas di laptop */
-            }
+        /* --- FIX LAYOUT: AGAR PAS DI LAPTOP 100% --- */
+        html {
+            font-size: 15px; /* Sedikit dikecilkan agar proporsional di laptop */
         }
 
         body {
@@ -41,7 +39,7 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* 2. HERO SECTION (THE HOOK) */
+        /* 2. HERO SECTION */
         .hero {
             height: 70vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
@@ -52,17 +50,38 @@
         .hero h1 { font-size: 3.5rem; line-height: 1.1; margin: 0; font-weight: 800; }
         .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; opacity: 0.9; }
 
-        .main-container { display: flex; flex-direction: column; gap: 40px; padding: 40px 5%; max-width: 1400px; margin: 0 auto; }
+        /* PERBAIKAN LEBAR KONTEN (LAPTOP FRIENDLY) */
+        .main-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 40px; 
+            padding: 40px 5%; 
+            max-width: 1250px; /* Lebar maksimal diperkecil agar sidebar tidak terdorong keluar */
+            margin: 0 auto; 
+        }
 
-        /* General Section Card */
-        .section-card { padding: 40px; background: white; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
-        .section-card p { line-height: 1.6; color: #555; font-size: 1.1rem; }
+        @media (min-width: 1024px) {
+            .main-container { 
+                flex-direction: row; 
+                gap: 30px; 
+            }
+            .content-left { 
+                flex: 1.8; /* Perbandingan disesuaikan agar seimbang */
+                min-width: 0; 
+            } 
+            .sidebar-right { 
+                flex: 1; 
+                min-width: 360px; /* Sidebar tetap kokoh tapi pas di layar */
+            }   
+        }
 
-        /* 3. PAIN POINT & SOLUTION */
+        .section-card { padding: 30px; background: white; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; }
+        .section-card p { line-height: 1.6; color: #555; font-size: 1.05rem; }
+
         .solution-highlight { font-size: 1.2rem; font-weight: 600; color: var(--dark-blue); border-left: 5px solid var(--primary-green); padding-left: 20px; margin: 25px 0; }
 
-        /* 4. DISCOVERY PROPERTY (FIGMA STYLE) */
+        /* 4. DISCOVERY PROPERTY */
         .prop-scroll-container {
             display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -70,9 +89,9 @@
         .prop-scroll-container::-webkit-scrollbar { display: none; }
         .prop-card { 
             background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            min-width: 280px; flex: 0 0 auto; scroll-snap-align: start; border: 1px solid #f0f0f0;
+            min-width: 260px; flex: 0 0 auto; scroll-snap-align: start; border: 1px solid #f0f0f0;
         }
-        .prop-img-box { position: relative; height: 180px; }
+        .prop-img-box { position: relative; height: 160px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 20px; border-top-right-radius: 20px; }
         .badge-ready { position: absolute; top: 12px; left: 12px; background: #34d399; color: white; padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
         .wishlist-icon { position: absolute; top: 12px; right: 12px; background: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); color: #ff6b6b; }
@@ -81,10 +100,10 @@
         .price-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* 5. TICKET STYLE (FLEXIBILITY) */
+        /* 5. TICKET STYLE */
         .ticket-container { display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
         .ticket {
-            flex: 1; min-width: 250px; padding: 40px 30px; border-radius: 30px; text-align: center;
+            flex: 1; min-width: 220px; padding: 30px 20px; border-radius: 30px; text-align: center;
             position: relative; display: flex; flex-direction: column; align-items: center; gap: 15px;
         }
         .ticket-blue { background-color: #dbeafe; color: #1e40af; }
@@ -95,14 +114,14 @@
         }
         .ticket::before { left: -12px; } .ticket::after { right: -12px; }
         .ticket-icon { font-size: 2.5rem; }
-        .ticket h4 { margin: 0; font-size: 1.4rem; font-weight: 800; }
-        .ticket p { margin: 0; font-size: 0.9rem; font-weight: 600; opacity: 0.9; line-height: 1.4 !important; }
+        .ticket h4 { margin: 0; font-size: 1.3rem; font-weight: 800; }
+        .ticket p { margin: 0; font-size: 0.85rem; font-weight: 600; opacity: 0.9; line-height: 1.4 !important; }
 
         /* 6. GAMIFICATION */
-        .gamify-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
-        .gamify-card { padding: 25px 20px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-        .g-icon-box { width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
-        .g-pts { font-weight: 800; font-size: 0.9rem; }
+        .gamify-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
+        .gamify-card { padding: 20px 15px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .g-icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; }
+        .g-pts { font-weight: 800; font-size: 0.85rem; }
         .c-orange { background: #ffedd5; } .bg-orange { background: #f97316; }
         .c-blue { background: #dbeafe; }   .bg-blue { background: #2e4a8a; }
         .c-green { background: #dcfce7; }  .bg-green { background: #249170; }
@@ -128,11 +147,11 @@
         .input-with-icon input, .input-with-icon select { width: 100%; padding: 15px 15px 15px 45px; border: 1.5px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s; }
         .input-with-icon input:focus { border-color: var(--primary-green); }
         .res-area { background: var(--dark-blue); color: white; padding: 25px; border-radius: 20px; text-align: center; }
-        .res-main-val { font-size: 2.2rem; font-weight: 800; color: #34d399; margin: 10px 0; }
+        .res-main-val { font-size: 2rem; font-weight: 800; color: #34d399; margin: 10px 0; }
 
         /* 8. CTA & FOOTER */
-        .waiting-list-section { background: var(--dark-blue); color: white; text-align: center; padding: 100px 10%; border-radius: 50px; margin: 60px 20px; }
-        .footer { background: #0f172a; color: white; padding: 80px 10%; }
+        .waiting-list-section { background: var(--dark-blue); color: white; text-align: center; padding: 80px 10%; border-radius: 50px; margin: 60px 20px; }
+        .footer { background: #0f172a; color: white; padding: 60px 10%; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
         .footer ul { list-style: none; padding: 0; margin-top: 20px; }
         .footer ul li { margin-bottom: 15px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
@@ -157,7 +176,7 @@
             <h2>Susah punya rumah?</h2>
             <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
             <div class="solution-highlight">
-                "Kenalin, ONTOOWN. Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah."
+                "Kenalin, ONTOOWN. Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu bisa masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah."
             </div>
         </section>
 
@@ -287,49 +306,33 @@
 
     <footer class="footer">
         <div class="footer-grid">
-            <div>
-                <img src="new-logo.png" alt="Logo" class="footer-logo" style="height: 60px;">
-                <p style="opacity: 0.7; margin-top: 10px;">Sewa Hari Ini, Miliki Esok Hari.</p>
-            </div>
-            <div>
-                <h4>Produk</h4>
-                <ul><li>Flexibility</li><li>Gamification</li><li>Property Discovery</li></ul>
-            </div>
-            <div>
-                <h4>Dukungan</h4>
-                <ul><li>FAQ</li><li>Syarat & Ketentuan</li><li>Kebijakan Privasi</li></ul>
-            </div>
-            <div>
-                <h4>Hubungi Kami</h4>
-                <div style="margin-bottom: 15px;">✉ ontoown@gmail.com</div>
-                <div>📸 @ontoown</div>
-            </div>
+            <div><img src="new-logo.png" alt="Logo" class="footer-logo" style="height: 60px;"><p style="opacity: 0.7; margin-top: 10px;">Sewa Hari Ini, Miliki Esok Hari.</p></div>
+            <div><h4>Produk</h4><ul><li>Flexibility</li><li>Gamification</li><li>Property Discovery</li></ul></div>
+            <div><h4>Dukungan</h4><ul><li>FAQ</li><li>Syarat & Ketentuan</li><li>Kebijakan Privasi</li></ul></div>
+            <div><h4>Hubungi Kami</h4><div style="margin-bottom: 15px;">✉ ontoown@gmail.com</div><div>📸 @ontoown</div></div>
         </div>
-        <div style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.5; font-size: 0.8rem;">
-            © 2026 Ontoown. All rights reserved.
-        </div>
+        <div style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.5; font-size: 0.8rem;">© 2026 Ontoown. All rights reserved.</div>
     </footer>
 
     <script>
+        // --- CALCULATOR LOGIC ---
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
             const dpPercent = parseFloat(document.getElementById('m-dp').value);
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const income = parseFloat(document.getElementById('m-income').value) || 1;
-            
             document.getElementById('v-years').innerText = years;
             document.getElementById('v-rate').innerText = (rate*100).toFixed(1);
-
             const loanAmount = price * (1 - dpPercent);
             const monthlyPayment = (loanAmount * (1 + (rate * years))) / (years * 12);
             const allocation = (monthlyPayment / income) * 100;
-
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
             document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
             document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#34d399";
         }
 
+        // --- PROGRESS LOGIC ---
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
             document.getElementById('prog-bar').style.width = percent + "%";
@@ -351,16 +354,13 @@
             const button = e.target.querySelector('button');
             button.innerText = 'Mengirim...';
             button.disabled = true;
-
             const name = document.getElementById('wl-name').value;
             const email = document.getElementById('wl-email').value;
             const gender = document.getElementById('wl-gender').value;
             const city = document.getElementById('wl-city').value;
             const messageEl = document.getElementById('responseMessage');
 
-            const { data, error } = await supabase
-                .from('waiting_list')
-                .insert([{ nama: name, email: email, jenis_kelamin: gender, lokasi: city }]);
+            const { error } = await supabase.from('waiting_list').insert([{ nama: name, email: email, jenis_kelamin: gender, lokasi: city }]);
 
             if (error) {
                 messageEl.innerText = 'Gagal menyimpan data. Coba lagi.';
