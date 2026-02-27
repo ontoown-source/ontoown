@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Rent Today, Own Tomorrow</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary-green: #249170;
             --dark-blue: #1a2538;
             --bg-gray: #f8f9fa;
-            --accent-yellow: #fef3c7;
-            --accent-blue: #dbeafe;
-            --accent-green: #d1fae5;
         }
 
         body {
@@ -25,7 +22,7 @@
             color: #333;
         }
 
-        /* Top Navbar */
+        /* 1. NAVBAR */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
@@ -37,7 +34,7 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* 1. HERO SECTION */
+        /* 2. HERO SECTION */
         .hero {
             height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
@@ -45,23 +42,22 @@
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             color: white; text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; text-transform: none; }
-        .hero p { font-size: 1.2rem; margin-top: 15px; font-weight: 500; }
+        .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
+        .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
-        /* Main Container Layout */
+        /* Container Layout */
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
-
         @media (min-width: 1024px) {
-            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; }
+            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1300px; margin: 0 auto; }
             .content-left { flex: 2; }
             .sidebar-right { flex: 1; }
         }
 
-        /* General Card Style */
+        /* Card Style */
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
+        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
 
-        /* 2. PROPERTY SCROLL */
+        /* 3. PROPERTY SCROLL */
         .prop-scroll-container {
             display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -76,13 +72,29 @@
         .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* 3. GAMIFICATION */
-        .gamification-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 20px; }
-        .game-card { padding: 15px; border-radius: 15px; text-align: left; color: var(--dark-blue); }
-        .game-card h4 { margin: 8px 0 4px; font-size: 0.9rem; font-weight: 700; }
-        .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; opacity: 0.8; }
+        /* 4. GAMIFICATION REDESIGN (SESUAI GAMBAR) */
+        .gamification-grid {
+            display: flex; gap: 15px; overflow-x: auto; padding: 10px 0 20px; scrollbar-width: none;
+        }
+        .gamification-grid::-webkit-scrollbar { display: none; }
+        .game-card {
+            min-width: 160px; padding: 20px 15px; border-radius: 20px; text-align: left;
+            display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .game-icon-box {
+            width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: white;
+        }
+        .game-card h4 { margin: 0; font-size: 1rem; font-weight: 700; color: #1a2538; }
+        .game-card p { font-size: 0.75rem; margin: 0; line-height: 1.3; color: #444; }
+        .game-points { font-weight: 800; font-size: 0.85rem; display: block; }
 
-        /* 4. SIDEBAR PROGRESS */
+        .card-orange { background-color: #ffedd5; } .bg-orange { background-color: #f97316; }
+        .card-blue { background-color: #dbeafe; }   .bg-blue { background-color: #3b82f6; }
+        .card-green { background-color: #dcfce7; }  .bg-green { background-color: #22c55e; }
+        .card-purple { background-color: #f3e8ff; } .bg-purple { background-color: #a855f7; }
+
+        /* 5. SIDEBAR PROGRESS */
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease-in-out; }
@@ -90,45 +102,31 @@
         .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
         .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
         .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
-        .step-label { font-size: 0.7rem; font-weight: 600; }
         .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
         .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
 
-        /* 5. UPDATED MORTGAGE SIMULATOR (IMAGE 11 STYLE) */
+        /* 6. MODERN MORTGAGE SIMULATOR */
         .sim-container { background: white; border-radius: 20px; padding: 5px; border: 1px solid #f0f0f0; margin-top: 15px; }
         .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
-        .sim-group h4 { margin: 0 0 15px 0; font-size: 0.9rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-        
+        .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
         .input-row { margin-bottom: 15px; }
         .input-row label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
         .input-with-icon { position: relative; display: flex; align-items: center; }
-        .input-with-icon span { position: absolute; left: 12px; font-size: 1rem; }
+        .input-with-icon span { position: absolute; left: 12px; }
         .input-with-icon input, .input-with-icon select { 
             width: 100%; padding: 12px 12px 12px 35px; border: 1px solid #e0e0e0; 
             border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
         }
-
-        /* Slider Styling */
-        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; cursor: pointer; }
-        .range-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: #999; font-weight: 600; }
-
-        /* Estimation Box */
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
         .res-area { background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; margin-top: 10px; }
-        .res-label { font-size: 0.85rem; color: #666; font-weight: 600; }
         .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
-        .res-detail-row { display: flex; justify-content: space-between; border-top: 1px solid #f9f9f9; padding-top: 10px; margin-top: 10px; font-size: 0.85rem; }
-        .res-detail-val { font-weight: 700; color: var(--dark-blue); }
+        .btn-cta { background: var(--primary-green); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
 
-        .btn-cta { background: var(--primary-green); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; transition: 0.3s; margin-top: 10px; }
-
-        /* 6. FINAL CTA & FOOTER */
+        /* 7. FINAL CTA & FOOTER */
         .final-cta { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 5%; }
-        .final-cta h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; }
         .cta-input-group { display: flex; gap: 10px; max-width: 500px; margin: 30px auto 0; background: white; padding: 6px; border-radius: 35px; }
         .cta-input-group input { flex: 1; border: none; padding: 12px 20px; border-radius: 30px; outline: none; font-family: inherit; }
-        .btn-submit { background: var(--primary-green); color: white; border: none; padding: 12px 25px; border-radius: 30px; font-weight: 700; cursor: pointer; }
-
-        .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; }
+        .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; text-align: center; }
     </style>
 </head>
 <body>
@@ -180,25 +178,28 @@
             </section>
 
             <section class="section-card">
-                <h2>Progress feels better when you can see it.</h2>
+                <h2 style="font-size: 1.6rem; line-height: 1.2;">Progress feels better when you can see it.</h2>
                 <div class="gamification-grid">
-                    <div class="game-card" style="background: var(--accent-yellow);">
-                        <span style="font-size: 1.5rem;">💡</span>
-                        <h4>Power Saver</h4>
-                        <p>Cut your electricity usage at home!</p>
-                        <p><strong>+100 points</strong></p>
+                    <div class="game-card card-orange">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="game-icon-box bg-orange">💡</div>
+                            <span class="game-points" style="color: #9a3412;">+100 pts</span>
+                        </div>
+                        <div><h4>Power Saver</h4><p>Cut your electricity usage!</p></div>
                     </div>
-                    <div class="game-card" style="background: var(--accent-blue);">
-                        <span style="font-size: 1.5rem;">🔥</span>
-                        <h4>On Time Hero</h4>
-                        <p>Pay rent before the due date.</p>
-                        <p><strong>+80 points</strong></p>
+                    <div class="game-card card-blue">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="game-icon-box bg-blue">🔥</div>
+                            <span class="game-points" style="color: #1e3a8a;">+80 pts</span>
+                        </div>
+                        <div><h4>On Time Hero</h4><p>Pay rent before due date.</p></div>
                     </div>
-                    <div class="game-card" style="background: var(--accent-green);">
-                        <span style="font-size: 1.5rem;">💎</span>
-                        <h4>Rate & Earn</h4>
-                        <p>Leave a review to earn points.</p>
-                        <p><strong>+50 points</strong></p>
+                    <div class="game-card card-purple">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="game-icon-box bg-purple">👥</div>
+                            <span class="game-points" style="color: #581c87;">+150 pts</span>
+                        </div>
+                        <div><h4>Bring a Friend</h4><p>Invite friends to move in.</p></div>
                     </div>
                 </div>
             </section>
@@ -206,89 +207,47 @@
 
         <div class="sidebar-right">
             <section class="section-card">
-                <div class="prog-header">
-                    <span>✪ Progres On-to-Own</span>
-                    <span id="prog-text" style="color: var(--primary-green);">33%</span>
-                </div>
+                <div class="prog-header"><span>✪ On-to-Own</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
                     <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)">
                         <div class="step-icon">↳</div><div class="step-label">Sewa</div>
                     </div>
-                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)">
-                        <div class="step-icon">📈</div><div class="step-label">Ekuitas</div>
-                    </div>
                     <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)">
                         <div class="step-icon">🏠</div><div class="step-label">Milik</div>
                     </div>
                 </div>
-                <div class="house-visual-box">
-                    <img id="house-img" src="rumah-33.png" alt="House Progress">
-                </div>
+                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="House"></div>
             </section>
 
             <section class="section-card">
                 <h2 style="font-size: 1.4rem; margin-bottom: 20px;">Mortgage Simulator</h2>
-                
                 <div class="sim-container">
                     <div class="sim-group">
-                        <h4>Property Details</h4>
+                        <h4>Details</h4>
                         <div class="input-row">
-                            <label>Property Price</label>
-                            <div class="input-with-icon">
-                                <span>🏢</span>
-                                <input type="number" id="m-price" value="500000000" oninput="calc()">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <label>Down Payment</label>
-                            <div class="input-with-icon">
-                                <span>💵</span>
-                                <select id="m-dp" onchange="calc()">
-                                    <option value="0.05">5%</option>
-                                    <option value="0.10" selected>10%</option>
-                                    <option value="0.20">20%</option>
-                                </select>
-                            </div>
+                            <label>Price</label>
+                            <div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div>
                         </div>
                     </div>
-
                     <div class="sim-group">
-                        <h4>Installment Estimation</h4>
+                        <h4>Estimation</h4>
                         <div class="input-row">
                             <label>Tenor: <span id="v-years">15</span> Years</label>
                             <input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()">
-                            <div class="range-labels"><span>5</span><span>30</span></div>
                         </div>
                         <div class="input-row">
-                            <label>Interest Rate: <span id="v-rate">6</span>%</label>
-                            <input type="range" id="m-rate" min="1" max="15" value="6" step="0.1" oninput="calc()">
-                            <div class="range-labels"><span>1%</span><span>15%</span></div>
-                        </div>
-                        <div class="input-row">
-                            <label>Monthly Income</label>
-                            <div class="input-with-icon">
-                                <span>💰</span>
-                                <input type="number" id="m-income" value="15000000" oninput="calc()">
-                            </div>
+                            <label>Income</label>
+                            <div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div>
                         </div>
                     </div>
-
                     <div class="res-area">
-                        <div class="res-label">Estimated Monthly Installment</div>
                         <div class="res-main-val" id="res-monthly">Rp 0</div>
-                        
-                        <div class="res-detail-row">
-                            <span class="res-label">Loan Amount</span>
-                            <span class="res-detail-val" id="res-loan">Rp 0</span>
-                        </div>
-                        <div class="res-detail-row">
-                            <span class="res-label">Income Allocation</span>
-                            <span class="res-detail-val" id="res-alloc">0% (Max 30%)</span>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid #eee; padding-top: 10px;">
+                            <span>Income Allocation</span><span id="res-alloc" style="font-weight:700;">0%</span>
                         </div>
                     </div>
-
-                    <button class="btn-cta">Start Your Journey</button>
+                    <button class="btn-cta" style="margin-top: 10px;">Start Journey</button>
                 </div>
             </section>
         </div>
@@ -298,49 +257,28 @@
         <h2>Slot terbatas</h2>
         <p>Join waiting list sekarang untuk akses eksklusif</p>
         <div class="cta-input-group">
-            <input type="email" placeholder="Masukkan alamat email kamu">
-            <button class="btn-submit">Join Waiting List</button>
+            <input type="email" placeholder="Masukkan email kamu">
+            <button class="btn-submit" style="background:var(--primary-green); color:white; border:none; padding:10px 20px; border-radius:30px; font-weight:700;">Join</button>
         </div>
     </div>
 
-    <footer class="footer">
-        <div><img src="new-logo.png" alt="Logo" style="height:30px"></div>
-        <div><h4>© 2026 Ontoown</h4></div>
-    </footer>
+    <footer class="footer"><img src="new-logo.png" style="height:30px"></footer>
 
     <script>
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
-            const dpPercent = parseFloat(document.getElementById('m-dp').value);
             const years = parseInt(document.getElementById('m-years').value);
-            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const income = parseFloat(document.getElementById('m-income').value) || 1;
-
-            // Update Labels
             document.getElementById('v-years').innerText = years;
-            document.getElementById('v-rate').innerText = (rate * 100).toFixed(1);
 
-            // Calculation
-            const loanAmount = price * (1 - dpPercent);
-            const monthlyRate = rate / 12;
-            const months = years * 12;
-
-            // Annuity Formula
-            let monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-            
-            if(isNaN(monthlyPayment)) monthlyPayment = 0;
-
+            const loanAmount = price * 0.9;
+            const monthlyPayment = (loanAmount * 1.5) / (years * 12);
             const allocation = (monthlyPayment / income) * 100;
 
-            // Update UI
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID') + "/month";
-            document.getElementById('res-loan').innerText = "Rp " + Math.round(loanAmount).toLocaleString('id-ID');
-            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "% of income";
-            
-            // Allocation Health Check
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID') + "/mo";
+            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
             document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
         }
-
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
             document.getElementById('prog-bar').style.width = percent + "%";
@@ -348,8 +286,6 @@
             document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
             element.classList.add('active');
         }
-
-        // Initial Calculation
         calc();
     </script>
 </body>
