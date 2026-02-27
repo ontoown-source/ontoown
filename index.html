@@ -34,201 +34,283 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* 2. HERO SECTION (THE HOOK) */
+        /* 2. HERO SECTION */
         .hero {
-            height: 70vh;
+            height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             color: white; text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin: 0; font-weight: 800; }
-        .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; opacity: 0.9; }
+        .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
+        .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
-        .main-container { display: flex; flex-direction: column; gap: 40px; padding: 40px 5%; max-width: 1400px; margin: 0 auto; }
+        .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
+        
+        @media (min-width: 1024px) {
+            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1400px; margin: 0 auto; }
+            .content-left { flex: 2.5; } 
+            .sidebar-right { flex: 1; }  
+        }
 
-        /* General Section Card */
-        .section-card { padding: 40px; background: white; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
-        .section-card p { line-height: 1.6; color: #555; font-size: 1.1rem; }
+        .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
+        .section-card p { line-height: 1.6; color: #555; }
 
-        /* 3. PAIN POINT & SOLUTION */
-        .solution-highlight { font-size: 1.2rem; font-weight: 600; color: var(--dark-blue); border-left: 5px solid var(--primary-green); padding-left: 20px; margin: 25px 0; }
+        /* --- TICKET STYLE (FLEXIBILITY) --- */
+        .ticket-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
 
-        /* 4. DISCOVERY PROPERTY (FIGMA STYLE) */
+        .ticket {
+            flex: 1;
+            min-width: 200px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Variasi Warna Tiket */
+        .ticket-blue { background-color: #dbeafe; color: #1e40af; }
+        .ticket-green { background-color: #dcfce7; color: #15803d; }
+
+        /* Efek Lubang Tiket */
+        .ticket::before, .ticket::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: white; /* Harus sama dengan background section-card */
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        .ticket::before { left: -10px; }
+        .ticket::after { right: -10px; }
+
+        .ticket-icon { font-size: 2rem; margin-bottom: 5px; }
+        .ticket h4 { margin: 0; font-size: 1.2rem; font-weight: 800; }
+        .ticket p { margin: 0; font-size: 0.8rem; font-weight: 600; opacity: 0.8; line-height: 1.3 !important; }
+
+        /* --- STYLE LAINNYA --- */
+        .solution-text { font-size: 1.1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
+        
         .prop-scroll-container {
-            display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
+            display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
         }
         .prop-scroll-container::-webkit-scrollbar { display: none; }
         .prop-card { 
-            background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            min-width: 280px; flex: 0 0 auto; scroll-snap-align: start; border: 1px solid #f0f0f0;
+            background: white; border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            min-width: 280px; 
+            flex: 0 0 calc(33.333% - 15px); 
+            scroll-snap-align: start;
+            border: 1px solid #f0f0f0;
         }
-        .prop-img-box { position: relative; height: 180px; }
-        .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 20px; border-top-right-radius: 20px; }
-        .badge-ready { position: absolute; top: 12px; left: 12px; background: #34d399; color: white; padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
-        .wishlist-icon { position: absolute; top: 12px; right: 12px; background: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); color: #ff6b6b; }
-        .prop-info { padding: 20px; }
-        .rating { font-size: 0.8rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; }
+        .prop-img-box { position: relative; height: 160px; }
+        .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px; }
+        .badge-ready { position: absolute; top: 10px; left: 10px; background: #34d399; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        .badge-rent { position: absolute; top: 10px; left: 10px; background: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        .wishlist-icon { position: absolute; top: 10px; right: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .prop-info { padding: 15px; }
+        .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
+        .rating { font-size: 0.75rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* 5. TICKET STYLE (FLEXIBILITY) */
-        .ticket-container { display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
-        .ticket {
-            flex: 1; min-width: 250px; padding: 40px 30px; border-radius: 30px; text-align: center;
-            position: relative; display: flex; flex-direction: column; align-items: center; gap: 15px;
+        .gamify-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;
         }
-        .ticket-blue { background-color: #dbeafe; color: #1e40af; }
-        .ticket-green { background-color: #dcfce7; color: #15803d; }
-        .ticket::before, .ticket::after {
-            content: ''; position: absolute; top: 50%; width: 24px; height: 24px;
-            background-color: white; border-radius: 50%; transform: translateY(-50%);
+        .gamify-card {
+            padding: 20px 15px; border-radius: 18px; text-align: left;
+            display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
-        .ticket::before { left: -12px; } .ticket::after { right: -12px; }
-        .ticket-icon { font-size: 2.5rem; }
-        .ticket h4 { margin: 0; font-size: 1.4rem; font-weight: 800; }
-        .ticket p { margin: 0; font-size: 0.9rem; font-weight: 600; opacity: 0.9; line-height: 1.4 !important; }
-
-        /* 6. GAMIFICATION */
-        .gamify-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
-        .gamify-card { padding: 25px 20px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-        .g-icon-box { width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
-        .g-pts { font-weight: 800; font-size: 0.9rem; }
+        .g-icon-box {
+            width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: white;
+        }
+        .gamify-card h4 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1a2538; }
+        .gamify-card p { font-size: 0.75rem; margin: 0; line-height: 1.3; color: #444; }
+        .g-pts { font-weight: 800; font-size: 0.8rem; display: block; }
+        
         .c-orange { background: #ffedd5; } .bg-orange { background: #f97316; }
         .c-blue { background: #dbeafe; }   .bg-blue { background: #2e4a8a; }
         .c-green { background: #dcfce7; }  .bg-green { background: #249170; }
         .c-lightblue { background: #d1e9ff; } .bg-lightblue { background: #3b82f6; }
 
-        /* 7. INTERACTIVE AREA (SIMULATOR & PROGRESS SIDE BY SIDE) */
-        .interactive-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        @media (max-width: 1023px) { .interactive-split { grid-template-columns: 1fr; } }
-
-        .steps-nav { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
-        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; padding: 15px; border-radius: 15px; background: #f9fafb; }
-        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 800; background: #f0fdf4; border: 2px solid var(--primary-green); }
-        .bar-bg { background: #e5e7eb; height: 15px; border-radius: 10px; overflow: hidden; margin-bottom: 25px; }
+        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
+        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease; }
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; gap: 5px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px; }
+        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; background: #f0fdf4; }
+        .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
+        .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
 
-        /* SIMULATOR ENHANCED */
-        .sim-container { background: #f9fafb; border-radius: 20px; padding: 20px; }
-        .sim-group { background: white; padding: 20px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 20px; }
-        .input-row { margin-bottom: 20px; }
-        .input-row label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; }
+        .sim-container { background: white; border-radius: 20px; padding: 5px; margin-top: 15px; }
+        .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
+        .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
+        .input-row { margin-bottom: 15px; }
+        .input-row label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
         .input-with-icon { position: relative; display: flex; align-items: center; }
-        .input-with-icon span { position: absolute; left: 15px; }
-        .input-with-icon input, .input-with-icon select { width: 100%; padding: 15px 15px 15px 45px; border: 1.5px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s; }
-        .input-with-icon input:focus { border-color: var(--primary-green); }
-        .res-area { background: var(--dark-blue); color: white; padding: 25px; border-radius: 20px; text-align: center; }
-        .res-main-val { font-size: 2.2rem; font-weight: 800; color: #34d399; margin: 10px 0; }
+        .input-with-icon span { position: absolute; left: 12px; }
+        .input-with-icon input, .input-with-icon select { 
+            width: 100%; padding: 12px 12px 12px 35px; border: 1px solid #e0e0e0; 
+            border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
+        }
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
+        .res-area { background: #f0fdf4; padding: 20px; border-radius: 15px; margin-top: 10px; border: 1px solid #bbf7d0; }
+        .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
+        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #bbf7d0; padding-top: 10px; }
 
-        /* 8. CTA & FOOTER */
-        .waiting-list-section { background: var(--dark-blue); color: white; text-align: center; padding: 100px 10%; border-radius: 50px; margin: 60px 20px; }
-        .footer { background: #0f172a; color: white; padding: 80px 10%; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
-        .footer ul { list-style: none; padding: 0; margin-top: 20px; }
-        .footer ul li { margin-bottom: 15px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
-        .footer ul li:hover { opacity: 1; transform: translateX(5px); }
+        .waiting-list-section {
+            background: var(--dark-blue); color: white; text-align: center;
+            padding: 80px 5%; border-radius: 40px; margin: 40px 20px;
+        }
+        .waiting-list-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .waiting-list-section p { opacity: 0.8; margin-bottom: 30px; }
+        .waitlist-input-container {
+            display: flex; gap: 10px; max-width: 600px; margin: 0 auto;
+            background: white; padding: 8px; border-radius: 40px;
+        }
+        .waitlist-input-container input {
+            flex: 1; border: none; padding: 15px 25px; border-radius: 40px; outline: none; font-family: inherit;
+        }
+        .btn-join {
+            background: var(--primary-green); color: white; border: none;
+            padding: 15px 35px; border-radius: 40px; font-weight: 700; cursor: pointer;
+        }
+
+        .footer { background: var(--dark-blue); color: white; padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-logo { height: 50px; margin-bottom: 20px; }
+        .footer h4 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer ul { list-style: none; padding: 0; }
+        .footer ul li { margin-bottom: 12px; opacity: 0.7; font-size: 0.95rem; }
+        .contact-info { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
-
     <nav class="top-nav">
         <img src="new-logo.png" alt="Ontoown Logo" class="logo-img">
         <a href="#" class="btn-signup">Daftar</a>
     </nav>
 
     <header class="hero">
-        <h1>Gak usah nunggu jadi kaya<br>untuk punya rumah.</h1>
+        <h1>Gak usah nunggu<br>jadi kaya untuk punya rumah.</h1>
         <p>Huni hari ini, miliki esok hari</p>
     </header>
 
     <div class="main-container">
-        
-        <section class="section-card">
-            <h2>Susah punya rumah?</h2>
-            <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
-            <div class="solution-highlight">
-                "Kenalin, ONTOOWN. Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah."
-            </div>
-        </section>
-
-        <section class="section-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                <h2>Discovery Your Property</h2>
-                <span style="font-size: 1rem; color: #f59e0b; font-weight: 700; cursor: pointer;">Lihat Semua ></span>
-            </div>
-            <div class="prop-scroll-container">
-                <div class="prop-card">
-                    <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                    <div class="prop-info"><div class="rating">⭐ 4.8</div><h3>Sudirman Park Apartment</h3><div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div><div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
-                </div>
-                <div class="prop-card">
-                    <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                    <div class="prop-info"><div class="rating">⭐ 4.9</div><h3>The Verde Residence</h3><div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div><div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
-                </div>
-                <div class="prop-card">
-                    <div class="prop-img-box"><span class="badge-rent">Sewa</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                    <div class="prop-info"><div class="rating">⭐ 4.7</div><h3>Central Park Residence</h3><div class="price-row"><span>Sewa</span><span class="price-val">Rp4.200.000/bln</span></div><div class="price-row"><span>Ekuitas</span><span class="price-val">Rp630.000/bln</span></div></div>
-                </div>
-                <div class="prop-card">
-                    <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                    <div class="prop-info"><div class="rating">⭐ 4.6</div><h3>Menara Jakarta</h3><div class="price-row"><span>Sewa</span><span class="price-val">Rp3.400.000/bln</span></div><div class="price-row"><span>Ekuitas</span><span class="price-val">Rp510.000/bln</span></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-card">
-            <h2>Fleksibilitas Tanpa Batas</h2>
-            <p>"Butuh mobilitas tinggi? Ngerasa ga cocok sama tetangga? Tenang, di ONTOOWN kamu punya kendali penuh."</p>
-            <div class="ticket-container">
-                <div class="ticket ticket-blue">
-                    <div class="ticket-icon">🏢</div>
-                    <h4>Trial Stay Pass</h4>
-                    <p>Coba hunian selama beberapa hari sebelum berkomitmen penuh.</p>
-                </div>
-                <div class="ticket ticket-green">
-                    <div class="ticket-icon">🏠</div>
-                    <h4>Rotasi Unit</h4>
-                    <p>Pindah ke unit lain dalam ekosistem Ontoown dengan mudah.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-card">
-            <h2>Progres terasa lebih baik saat kamu bisa melihatnya!</h2>
-            <div class="gamify-grid">
-                <div class="gamify-card c-orange">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div class="g-icon-box bg-orange">💡</div><span class="g-pts" style="color: #9a3412;">+100 poin</span>
-                    </div>
-                    <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
-                </div>
-                <div class="gamify-card c-blue">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div class="g-icon-box bg-blue">🔥</div><span class="g-pts" style="color: #1e3a8a;">+80 poin</span>
-                    </div>
-                    <div><h4>Pahlawan Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
-                </div>
-                <div class="gamify-card c-green">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div class="g-icon-box bg-green">⭐</div><span class="g-pts" style="color: #064e3b;">+50 poin</span>
-                    </div>
-                    <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
-                </div>
-                <div class="gamify-card c-lightblue">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div class="g-icon-box bg-lightblue">👥</div><span class="g-pts" style="color: #1e40af;">+100 poin</span>
-                    </div>
-                    <div><h4>Ajak Teman</h4><p>Ajak temanmu untuk ikut bergabung.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <div class="interactive-split">
+        <div class="content-left">
             <section class="section-card">
-                <h2>Lihat rumahmu tumbuh</h2>
+                <h2>Solusi Cerdas Punya Rumah</h2>
+                <p class="solution-text">
+                    "Kenalin, ONTOOWN. disini km mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah"
+                </p>
+            </section>
+
+            <section class="section-card">
+                <h2>Fleksibilitas Tanpa Batas</h2>
+                <p>
+                    "Ngerasa ga cocok sm tetangganya? Tenang, di ONTOOWN km punya kendali. Pakai trial pass, kamu bisa coba hunian dengan bebas. Putar unitmu, temukan rumah yg benar2 di hati"
+                </p>
+                
+                <div class="ticket-container">
+                    <div class="ticket ticket-blue">
+                        <div class="ticket-icon">🏢</div>
+                        <h4>Trial Stay Pass</h4>
+                        <p>Berlaku khusus pengguna baru di Aplikasi Ontoown saja</p>
+                    </div>
+                    
+                    <div class="ticket ticket-green">
+                        <div class="ticket-icon">🏠</div>
+                        <h4>Rotasi Unit</h4>
+                        <p>Berlaku bagi penyewa Ontoown dengan Add-on Fleksibilitas</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 1.5rem;">Cari Properti Kamu</h2>
+                    <span style="font-size: 0.85rem; color: #f59e0b; cursor: pointer;">Lihat Semua ></span>
+                </div>
+                <div class="prop-scroll-container">
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.8</div><h3>Sudirman Park Apartment</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.9</div><h3>The Verde Residence</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-rent">Sewa</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.7</div><h3>Central Park Residence</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp4.200.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp630.000/bln</span></div></div>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating">⭐ 4.6</div><h3>Menara Jakarta</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp3.400.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp510.000/bln</span></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2 style="font-size: 1.6rem; line-height: 1.2;">Progres terasa lebih baik saat kamu bisa melihatnya!</h2>
+                <div class="gamify-grid">
+                    <div class="gamify-card c-orange">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-orange">💡</div>
+                            <span class="g-pts" style="color: #9a3412;">+100 poin</span>
+                        </div>
+                        <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
+                    </div>
+                    <div class="gamify-card c-blue">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-blue">🔥</div>
+                            <span class="g-pts" style="color: #1e3a8a;">+80 poin</span>
+                        </div>
+                        <div><h4>Pahlawan Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
+                    </div>
+                    <div class="gamify-card c-green">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-green">⭐</div>
+                            <span class="g-pts" style="color: #064e3b;">+50 poin</span>
+                        </div>
+                        <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
+                    </div>
+                    <div class="gamify-card c-lightblue">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-lightblue">👥</div>
+                            <span class="g-pts" style="color: #1e40af;">+100 poin</span>
+                        </div>
+                        <div><h4>Ajak Teman</h4><p>Ajak temanmu untuk ikut bergabung.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="sidebar-right">
+            <section class="section-card">
                 <div class="prog-header"><span>✪ Progres Ontoown</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
@@ -236,11 +318,11 @@
                     <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)"><div class="step-icon">📈</div><div class="step-label">Ekuitas</div></div>
                     <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
                 </div>
-                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progress"></div>
+                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progres"></div>
             </section>
 
             <section class="section-card">
-                <h2>Simulasi KPR & Ekuitas</h2>
+                <h3 style="margin-top:0">Simulasi KPR</h3>
                 <div class="sim-container">
                     <div class="sim-group">
                         <div class="input-row"><label>Harga Properti</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
@@ -252,67 +334,53 @@
                         <div class="input-row"><label>Pendapatan Bulanan</label><div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
                     </div>
                     <div class="res-area">
-                        <div style="font-size:0.9rem; opacity: 0.8;">Estimasi Cicilan Bulanan</div>
+                        <div style="font-size:0.8rem; color:#333">Estimasi Cicilan Bulanan</div>
                         <div class="res-main-val" id="res-monthly">Rp 0</div>
-                        <div class="res-detail"><span>Alokasi Gaji</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
+                        <div class="res-detail"><span>Alokasi Pendapatan</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
                     </div>
                 </div>
             </section>
         </div>
-
     </div>
 
     <div class="waiting-list-section">
-        <h2>Slot Terbatas</h2>
+        <h2>Slot terbatas</h2>
         <p>Jadilah yang pertama punya rumah tanpa drama.<br>Gabung daftar tunggu sekarang untuk akses eksklusif</p>
-        <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 15px; max-width: 450px; margin: 0 auto;">
-            <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 18px; border-radius: 40px; border: none; font-size: 1rem;">
-            <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 18px; border-radius: 40px; border: none; font-size: 1rem;">
-            <select id="wl-gender" required style="padding: 18px; border-radius: 40px; border: none; appearance: none; background: white; font-size: 1rem;">
+        
+        <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+            <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 15px; border-radius: 40px; border: none;">
+            <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none;">
+            
+            <select id="wl-gender" required style="padding: 15px; border-radius: 40px; border: none; appearance: none; background: white;">
                 <option value="" disabled selected>Jenis Kelamin</option>
                 <option value="Laki-laki">Laki-laki</option>
                 <option value="Perempuan">Perempuan</option>
             </select>
-            <input type="text" id="wl-city" placeholder="Kota yang diinginkan" required style="padding: 18px; border-radius: 40px; border: none; font-size: 1rem;">
-            <button type="submit" class="btn-join" style="width: 100%; border: none; cursor: pointer; padding: 20px; font-size: 1.1rem; transition: 0.3s;">Gabung Waiting List</button>
+            
+            <input type="text" id="wl-city" placeholder="Kota yang diinginkan" required style="padding: 15px; border-radius: 40px; border: none;">
+            
+            <button type="submit" class="btn-join" style="width: 100%; margin-top: 10px; border: none; cursor: pointer;">Gabung Waiting List</button>
         </form>
-        <p id="responseMessage" style="margin-top: 20px; font-weight: bold;"></p>
+        
+        <p id="responseMessage" style="margin-top: 15px; font-weight: bold;"></p>
     </div>
 
     <footer class="footer">
         <div class="footer-grid">
-            <div>
-                <img src="new-logo.png" alt="Logo" class="footer-logo" style="height: 60px;">
-                <p style="opacity: 0.7; margin-top: 10px;">Sewa Hari Ini, Miliki Esok Hari.</p>
-            </div>
-            <div>
-                <h4>Produk</h4>
-                <ul><li>Flexibility</li><li>Gamification</li><li>Property Discovery</li></ul>
-            </div>
-            <div>
-                <h4>Dukungan</h4>
-                <ul><li>FAQ</li><li>Syarat & Ketentuan</li><li>Kebijakan Privasi</li></ul>
-            </div>
-            <div>
-                <h4>Hubungi Kami</h4>
-                <div style="margin-bottom: 15px;">✉ ontoown@gmail.com</div>
-                <div>📸 @ontoown</div>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.5; font-size: 0.8rem;">
-            © 2026 Ontoown. All rights reserved.
+            <div><img src="new-logo.png" alt="Logo" class="footer-logo"><p>Sewa Hari Ini, Miliki Esok Hari.</p></div>
+            <div><h4>Produk</h4><ul><li>Fleksibilitas</li><li>Gamifikasi</li><li>Properti</li></ul></div>
+            <div><h4>Dukungan</h4><ul><li>FAQ</li><li>Syarat & Ketentuan</li></ul></div>
+            <div><h4>Hubungi Kami</h4><div class="contact-info">✉ ontoown@gmail.com</div><div class="contact-info">📸 @ontoown</div></div>
         </div>
     </footer>
 
     <script>
-        // --- CALCULATOR LOGIC ---
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
             const dpPercent = parseFloat(document.getElementById('m-dp').value);
             const years = parseInt(document.getElementById('m-years').value);
             const rate = parseFloat(document.getElementById('m-rate').value) / 100;
             const income = parseFloat(document.getElementById('m-income').value) || 1;
-            
             document.getElementById('v-years').innerText = years;
             document.getElementById('v-rate').innerText = (rate*100).toFixed(1);
 
@@ -322,10 +390,8 @@
 
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
             document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
-            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#34d399";
+            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
         }
-
-        // --- PROGRESS LOGIC ---
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
             document.getElementById('prog-bar').style.width = percent + "%";
@@ -333,12 +399,10 @@
             document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
             element.classList.add('active');
         }
-
         calc();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // --- SUPABASE INTEGRATION (STAYS THE SAME) ---
         const supabaseUrl = 'https://rxwvnnaksopgjvlqjdti.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4d3ZubmFrc29wZ2p2bHFqZHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxODg0NTcsImV4cCI6MjA4Nzc2NDQ1N30.8GQHcZ8_x0gEFi72KxjyfydrDRmPV3No_ZitnRrZWXk';
         const supabase = supabase.createClient(supabaseUrl, supabaseKey);
