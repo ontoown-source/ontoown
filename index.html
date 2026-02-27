@@ -42,12 +42,24 @@
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             color: white; text-align: center; padding: 0 20px;
         }
+        
+        /* Ukuran Font Default (Desktop) */
         .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
         .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
+        /* --- Teks Responsif untuk HP --- */
+        @media (max-width: 767px) {
+            .hero h1 {
+                font-size: 2.2rem; /* Ukuran diperkecil untuk HP */
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        /* --------------------------------- */
+
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         
-        /* UPDATE MEDIA QUERY UNTUK LAPTOP */
         @media (min-width: 1024px) {
             .main-container {
                 flex-direction: row;
@@ -64,7 +76,6 @@
                 flex: 1;
                 min-width: 350px;
             }
-            /* Ubah layout gamify jadi grid lagi di laptop agar tidak terlalu panjang */
             .gamify-container {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -96,13 +107,12 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        /* Variasi Warna Tiket */
         .ticket-blue { background-color: #dbeafe; color: #1e40af; }
         .ticket-green { background-color: #dcfce7; color: #15803d; }
 
-        /* Efek Lubang Tiket */
         .ticket::before, .ticket::after {
             content: '';
             position: absolute;
@@ -123,7 +133,6 @@
         /* --- STYLE LAINNYA --- */
         .solution-text { font-size: 1.1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
         
-        /* SCROLL CONTAINER UNTUK PROPERTI */
         .prop-scroll-container {
             display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -161,7 +170,7 @@
         
         .gamify-card {
             min-width: 200px;
-            flex: 0 0 200px; /* Lebar tetap di mobile */
+            flex: 0 0 200px;
             padding: 20px 15px;
             border-radius: 18px;
             text-align: left;
@@ -183,7 +192,6 @@
         .c-blue { background: #dbeafe; }   .bg-blue { background: #2e4a8a; }
         .c-green { background: #dcfce7; }  .bg-green { background: #249170; }
         .c-lightblue { background: #d1e9ff; } .bg-lightblue { background: #3b82f6; }
-        /* ---------------------------------------------------- */
 
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
