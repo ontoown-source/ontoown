@@ -14,14 +14,20 @@
             --light-green: #dcfce7;
         }
 
+        /* --- PERBAIKAN LAYOUT GLOBAL (Laptop Friendly) --- */
+        html {
+            font-size: 14px; /* Default diperkecil agar tidak raksasa di laptop */
+        }
+        @media (min-width: 1440px) {
+            html { font-size: 16px; } /* Normal di monitor sangat besar */
+        }
+
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
             color: #333;
             overflow-x: hidden;
-            /* Perbaikan font agar tidak terlalu besar di laptop */
-            font-size: 16px; 
         }
 
         /* 1. NAVBAR */
@@ -30,61 +36,48 @@
             padding: 10px 5%; background: white; position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo-img { height: 40px; width: auto; }
+        .logo-img { height: 40px; width: auto; } /* Tinggi diperkecil sedikit */
         .btn-signup {
             background: var(--primary-green); color: white; padding: 8px 20px;
-            border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem;
+            border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
         /* 2. HERO SECTION */
         .hero {
-            height: 55vh;
+            height: 55vh; /* Tinggi diperpendek agar tidak memenuhi layar laptop */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             color: white; text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-size: 2.8rem; line-height: 1.1; margin: 0; font-weight: 800; }
+        .hero h1 { font-size: 3rem; line-height: 1.1; margin: 0; font-weight: 800; }
         .hero p { font-size: 1.2rem; margin-top: 10px; font-weight: 600; opacity: 0.9; }
 
-        /* --- FIX LAYOUT LAPTOP: PROPOSIONAL 100% --- */
+        /* CONTAINER FIX */
         .main-container { 
             display: flex; 
             flex-direction: column; 
-            gap: 20px; 
+            gap: 25px; 
             padding: 20px; 
-            max-width: 1250px; /* Lebar standar laptop agar tidak meluber */
+            max-width: 1280px; /* Lebar standar laptop agar pas di 100% zoom */
             margin: 0 auto; 
         }
         
         @media (min-width: 1024px) {
-            .main-container { 
-                flex-direction: row; 
-                padding: 30px 4%; 
-                gap: 25px; 
-                align-items: flex-start;
-            }
-            .content-left { 
-                flex: 1.8; /* Ukuran kiri diperkecil agar pas */
-                min-width: 0; 
-            } 
-            .sidebar-right { 
-                flex: 1; 
-                min-width: 360px; /* Sidebar tetap kokoh tanpa memakan tempat */
-                position: sticky;
-                top: 80px;
-            }   
+            .main-container { flex-direction: row; padding: 30px 5%; gap: 30px; }
+            .content-left { flex: 1.7; min-width: 0; } 
+            .sidebar-right { flex: 1; min-width: 340px; }  
         }
 
-        .section-card { padding: 25px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.5rem; font-weight: 700; }
-        .section-card p { font-size: 0.95rem; line-height: 1.5; color: #555; }
+        .section-card { padding: 25px; background: white; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.7rem; font-weight: 800; }
+        .section-card p { line-height: 1.5; color: #555; }
 
-        /* TICKET STYLE */
-        .ticket-container { display: flex; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+        /* TICKET STYLE (FLEXIBILITY) */
+        .ticket-container { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .ticket {
-            flex: 1; min-width: 180px; padding: 20px 15px; border-radius: 20px; text-align: center;
-            position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;
+            flex: 1; min-width: 180px; padding: 25px 15px; border-radius: 25px; text-align: center;
+            position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px;
         }
         .ticket-blue { background-color: #dbeafe; color: #1e40af; }
         .ticket-green { background-color: #dcfce7; color: #15803d; }
@@ -93,76 +86,75 @@
             background-color: white; border-radius: 50%; transform: translateY(-50%);
         }
         .ticket::before { left: -8px; } .ticket::after { right: -8px; }
-        .ticket-icon { font-size: 1.5rem; }
-        .ticket h4 { margin: 0; font-size: 1rem; font-weight: 800; }
-        .ticket p { margin: 0; font-size: 0.75rem; font-weight: 600; opacity: 0.8; line-height: 1.2 !important; }
+        .ticket-icon { font-size: 2rem; }
+        .ticket h4 { margin: 0; font-size: 1.1rem; font-weight: 800; }
+        .ticket p { margin: 0; font-size: 0.8rem; font-weight: 600; opacity: 0.8; line-height: 1.3 !important; }
 
-        .solution-text { font-size: 1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
+        .solution-text { font-size: 1.1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
         
-        /* PROPERTY SCROLL */
+        /* PROPERTY CARDS (Discovery) */
         .prop-scroll-container {
-            display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px;
+            display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
         }
         .prop-scroll-container::-webkit-scrollbar { display: none; }
         .prop-card { 
             background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            min-width: 230px; flex: 0 0 auto; scroll-snap-align: start; border: 1px solid #f0f0f0;
+            min-width: 240px; flex: 0 0 auto; scroll-snap-align: start; border: 1px solid #f0f0f0;
         }
-        .prop-img-box { position: relative; height: 140px; }
+        .prop-img-box { position: relative; height: 150px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px; }
-        .badge-ready { position: absolute; top: 8px; left: 8px; background: #34d399; color: white; padding: 3px 8px; border-radius: 6px; font-size: 0.6rem; font-weight: 700; }
-        .wishlist-icon { position: absolute; top: 8px; right: 8px; background: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .prop-info { padding: 12px; }
-        .prop-info h3 { margin: 0 0 5px; font-size: 0.9rem; font-weight: 700; color: #1a2538; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 3px; font-size: 0.7rem; }
+        .badge-ready { position: absolute; top: 10px; left: 10px; background: #34d399; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        .wishlist-icon { position: absolute; top: 10px; right: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #ff6b6b; }
+        .prop-info { padding: 15px; }
+        .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
+        .rating { font-size: 0.75rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* GAMIFICATION */
-        .gamify-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
-        .gamify-card { padding: 15px 12px; border-radius: 15px; text-align: left; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
-        .g-icon-box { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: white; }
-        .gamify-card h4 { margin: 0; font-size: 0.85rem; font-weight: 700; color: #1a2538; }
-        .gamify-card p { font-size: 0.65rem; margin: 0; line-height: 1.2; color: #444; }
-        .g-pts { font-weight: 800; font-size: 0.75rem; display: block; }
+        /* GAMIFICATION SECTION */
+        .gamify-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .gamify-card { padding: 15px 12px; border-radius: 18px; text-align: left; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+        .g-icon-box { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: white; }
+        .g-pts { font-weight: 800; font-size: 0.8rem; }
         .c-orange { background: #ffedd5; } .bg-orange { background: #f97316; }
         .c-blue { background: #dbeafe; }   .bg-blue { background: #2e4a8a; }
         .c-green { background: #dcfce7; }  .bg-green { background: #249170; }
         .c-lightblue { background: #d1e9ff; } .bg-lightblue { background: #3b82f6; }
 
-        /* PROGRESS */
-        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 10px; align-items: center; font-size: 0.9rem; }
-        .bar-bg { background: #e5e7eb; height: 10px; border-radius: 6px; overflow: hidden; margin-bottom: 15px; }
+        /* PROGRESS ON TO OWN */
+        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
+        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease; }
-        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 15px; gap: 4px; }
-        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; padding: 8px; border-radius: 8px; font-size: 0.8rem; }
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; gap: 5px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px; }
         .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; background: #f0fdf4; }
-        .step-icon { font-size: 1.2rem; margin-bottom: 3px; }
-        .house-visual-box { text-align: center; margin: 15px 0; padding: 15px; background: #f9fafb; border-radius: 15px; }
-        .house-visual-box img { max-width: 100%; height: auto; max-height: 150px; }
+        .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .house-visual-box { text-align: center; margin: 20px 0; padding: 15px; background: #f9fafb; border-radius: 15px; }
+        .house-visual-box img { max-width: 100%; height: auto; max-height: 160px; }
 
-        /* SIMULATOR */
-        .sim-container { background: white; border-radius: 20px; padding: 5px; margin-top: 10px; }
-        .sim-group { background: #fff; padding: 12px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 12px; }
-        .sim-group h4 { margin: 0 0 10px 0; font-size: 0.75rem; color: #999; text-transform: uppercase; }
-        .input-row { margin-bottom: 12px; }
-        .input-row label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; color: var(--dark-blue); }
+        /* MORTGAGE SIMULATOR */
+        .sim-container { background: white; border-radius: 20px; padding: 5px; margin-top: 15px; }
+        .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
+        .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
+        .input-row { margin-bottom: 15px; }
+        .input-row label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
         .input-with-icon { position: relative; display: flex; align-items: center; }
-        .input-with-icon span { position: absolute; left: 10px; }
+        .input-with-icon span { position: absolute; left: 12px; }
         .input-with-icon input, .input-with-icon select { 
-            width: 100%; padding: 10px 10px 10px 30px; border: 1px solid #e0e0e0; 
-            border-radius: 10px; font-family: inherit; font-size: 0.85rem; outline: none;
+            width: 100%; padding: 10px 10px 10px 35px; border: 1px solid #e0e0e0; 
+            border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
         }
-        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 8px; }
-        .res-area { background: #f0fdf4; padding: 15px; border-radius: 15px; margin-top: 8px; border: 1px solid #bbf7d0; }
-        .res-main-val { font-size: 1.4rem; font-weight: 800; color: var(--primary-green); margin: 3px 0; }
-        .res-detail { display: flex; justify-content: space-between; font-size: 0.75rem; margin-top: 8px; border-top: 1px solid #bbf7d0; padding-top: 8px; }
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
+        .res-area { background: #f0fdf4; padding: 20px; border-radius: 15px; margin-top: 10px; border: 1px solid #bbf7d0; }
+        .res-main-val { font-size: 1.6rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
+        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #bbf7d0; padding-top: 10px; }
 
-        /* WAITING LIST & FOOTER */
-        .waiting-list-section { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 40px; margin: 30px 20px; }
-        .footer { background: var(--dark-blue); color: white; padding: 40px 10%; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; }
-        .footer-logo { height: 40px; margin-bottom: 15px; }
+        /* FOOTER & WAITING LIST */
+        .waiting-list-section { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 40px; margin: 40px 20px; }
+        .footer { background: var(--dark-blue); color: white; padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-logo { height: 40px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -179,15 +171,16 @@
     <div class="main-container">
         <div class="content-left">
             <section class="section-card">
-                <h2>Solusi Cerdas Punya Rumah</h2>
-                <p class="solution-text">
-                    "Kenalin, ONTOOWN. disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu bisa masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah"
-                </p>
+                <h2>Susah punya rumah?</h2>
+                <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
+                <div class="solution-highlight">
+                    "Kenalin, ONTOOWN. Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah."
+                </div>
             </section>
 
             <section class="section-card">
                 <h2>Fleksibilitas Tanpa Batas</h2>
-                <p>"Butuh mobilitas tinggi? Ganti unitmu dengan Rotasi Unit, temukan rumah yg benar-benar di hati"</p>
+                <p>"Butuh mobilitas tinggi? Tenang, di ONTOOWN kamu punya kendali penuh. Coba hunian dengan bebas."</p>
                 <div class="ticket-container">
                     <div class="ticket ticket-blue"><div class="ticket-icon">🏢</div><h4>Trial Stay Pass</h4><p>Khusus pengguna baru aplikasi</p></div>
                     <div class="ticket ticket-green"><div class="ticket-icon">🏠</div><h4>Rotasi Unit</h4><p>Khusus penyewa Add-on Fleksibilitas</p></div>
@@ -195,20 +188,20 @@
             </section>
 
             <section class="section-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h2>Cari Properti Kamu</h2>
-                    <span style="font-size: 0.8rem; color: #f59e0b; cursor: pointer; font-weight:700;">Lihat Semua ></span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 1.5rem;">Cari Properti Kamu</h2>
+                    <span style="font-size: 0.85rem; color: #f59e0b; cursor: pointer; font-weight:700;">Lihat Semua ></span>
                 </div>
                 <div class="prop-scroll-container">
                     <div class="prop-card">
                         <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><h3>Sudirman Park Apartment</h3>
+                        <div class="prop-info"><div class="rating">⭐ 4.8</div><h3>Sudirman Park Apartment</h3>
                         <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
                         <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
                     </div>
                     <div class="prop-card">
                         <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><h3>The Verde Residence</h3>
+                        <div class="prop-info"><div class="rating">⭐ 4.9</div><h3>The Verde Residence</h3>
                         <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
                         <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
                     </div>
@@ -216,10 +209,12 @@
             </section>
 
             <section class="section-card">
-                <h2 style="font-size: 1.4rem;">Progres terasa lebih baik!</h2>
+                <h2 style="font-size: 1.6rem; line-height: 1.2;">Progres terasa lebih baik!</h2>
                 <div class="gamify-grid">
                     <div class="gamify-card c-orange"><div class="g-icon-box bg-orange">💡</div><span class="g-pts" style="color: #9a3412;">+100 poin</span><div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik!</p></div></div>
                     <div class="gamify-card c-blue"><div class="g-icon-box bg-blue">🔥</div><span class="g-pts" style="color: #1e3a8a;">+80 poin</span><div><h4>Pahlawan Waktu</h4><p>Bayar sewa tepat waktu!</p></div></div>
+                    <div class="gamify-card c-green"><div class="g-icon-box bg-green">⭐</div><span class="g-pts" style="color: #064e3b;">+50 poin</span><div><h4>Beri Ulasan</h4><p>Berikan rating untuk poin.</p></div></div>
+                    <div class="gamify-card c-lightblue"><div class="g-icon-box bg-lightblue">👥</div><span class="g-pts" style="color: #1e40af;">+100 poin</span><div><h4>Ajak Teman</h4><p>Ajak teman bergabung.</p></div></div>
                 </div>
             </section>
         </div>
@@ -229,45 +224,61 @@
                 <div class="prog-header"><span>✪ Progres Ontoown</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
                 <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
                 <div class="steps-nav">
-                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon">↳</div><div>Sewa</div></div>
-                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon">🏠</div><div>Milik</div></div>
+                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
+                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)"><div class="step-icon">📈</div><div class="step-label">Ekuitas</div></div>
+                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
                 </div>
-                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progress"></div>
+                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progres"></div>
             </section>
 
             <section class="section-card">
-                <h3 style="margin-top:0; font-size:1.1rem;">Simulasi KPR</h3>
+                <h3 style="margin-top:0">Simulasi KPR</h3>
                 <div class="sim-container">
                     <div class="sim-group">
                         <div class="input-row"><label>Harga Properti</label><div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
+                        <div class="input-row"><label>DP</label><div class="input-with-icon"><span>💵</span><select id="m-dp" onchange="calc()"><option value="0.10" selected>10%</option><option value="0.20">20%</option></select></div></div>
                     </div>
                     <div class="sim-group">
-                        <div class="input-row"><label>Tenor: <span id="v-years">15</span> Tahun</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div>
+                        <div class="input-row"><label>Tenor: <span id="v-years">15</span> Thn</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div>
+                        <div class="input-row"><label>Gaji Bulanan</label><div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
                     </div>
                     <div class="res-area">
                         <div class="res-main-val" id="res-monthly">Rp 0</div>
-                        <div class="res-detail"><span>Alokasi Pendapatan</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
+                        <div class="res-detail"><span>Alokasi Gaji</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
+    <div class="waiting-list-section">
+        <h2>Slot terbatas</h2>
+        <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+            <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none;">
+            <button type="submit" class="btn-signup" style="width: 100%; border: none; cursor: pointer;">Gabung Waiting List</button>
+        </form>
+        <p id="responseMessage" style="margin-top: 15px; font-weight: bold;"></p>
+    </div>
+
     <footer class="footer">
         <div class="footer-grid">
             <div><img src="new-logo.png" alt="Logo" class="footer-logo"><p>Sewa Hari Ini, Miliki Esok Hari.</p></div>
-            <div><h4>Produk</h4><ul><li>Fleksibilitas</li><li>Gamifikasi</li></ul></div>
-            <div><h4>Hubungi Kami</h4><div class="contact-info">✉ ontoown@gmail.com</div></div>
+            <div><h4>Contact</h4><div class="contact-info">✉ ontoown@gmail.com</div></div>
         </div>
     </footer>
 
     <script>
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value) || 0;
+            const dpPercent = parseFloat(document.getElementById('m-dp').value);
             const years = parseInt(document.getElementById('m-years').value);
+            const income = parseFloat(document.getElementById('m-income').value) || 1;
             document.getElementById('v-years').innerText = years;
-            const monthlyPayment = (price * 0.9 * 1.5) / (years * 12);
+            const monthlyPayment = (price * (1 - dpPercent) * 1.5) / (years * 12);
+            const allocation = (monthlyPayment / income) * 100;
             document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
+            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
+            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
         }
         function setStep(percent, image, element) {
             document.getElementById('house-img').src = image;
@@ -277,6 +288,20 @@
             element.classList.add('active');
         }
         calc();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const supabaseUrl = 'https://rxwvnnaksopgjvlqjdti.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4d3ZubmFrc29wZ2p2bHFqZHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxODg0NTcsImV4cCI6MjA4Nzc2NDQ1N30.8GQHcZ8_x0gEFi72KxjyfydrDRmPV3No_ZitnRrZWXk';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('wl-email').value;
+            const messageEl = document.getElementById('responseMessage');
+            const { error } = await supabase.from('waiting_list').insert([{ email: email }]);
+            if (error) { messageEl.innerText = 'Gagal menyimpan.'; messageEl.style.color = '#ff6b6b'; }
+            else { messageEl.innerText = 'Berhasil bergabung!'; messageEl.style.color = '#34d399'; }
+        });
     </script>
 </body>
 </html>
