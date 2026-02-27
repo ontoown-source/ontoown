@@ -22,7 +22,7 @@
             color: #333;
         }
 
-        /* 1. TOP NAVBAR */
+        /* Top Navbar */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
@@ -34,7 +34,7 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* 2. LAYOUT GRID */
+        /* Main Container */
         .main-container {
             display: grid;
             grid-template-columns: 1fr;
@@ -66,20 +66,25 @@
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
         
-        /* Storytelling Pain Point */
-        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .pain-item { background: #fdf2f2; padding: 20px; border-radius: 12px; display: flex; align-items: flex-start; gap: 15px; }
-        .pain-icon { font-size: 1.5rem; }
-
-        /* Property Grid */
-        .prop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        /* REVISI 1: Horizontal Scroll Properties */
+        .prop-container {
+            margin: 0 -30px; /* Offset padding card */
         }
+        .prop-scroll-wrapper {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 30px;
+            scroll-snap-type: x mandatory;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .prop-scroll-wrapper::-webkit-scrollbar { display: none; }
+        
         .prop-card {
             background: white; border-radius: 20px; 
+            min-width: 280px; /* Lebar kartu properti */
             box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden;
+            scroll-snap-align: start;
         }
         .prop-img-box { position: relative; height: 180px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; }
@@ -89,8 +94,21 @@
         .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* Sidebar Elements */
-        .gamify-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+        /* REVISI 2: Layout Progress Baru */
+        .progress-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
+        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; }
+        
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; }
+        .step-item.active { opacity: 1; }
+        .step-icon { font-size: 1.2rem; margin-bottom: 5px; }
+        .step-label { font-size: 0.7rem; font-weight: 600; }
+        
+        .house-visual { text-align: center; margin: 20px 0; }
+        .house-img { width: 200px; height: auto; }
+
+        .gamify-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
         .gamify-box { background: #f3f4f6; padding: 15px; border-radius: 18px; text-align: center; }
         .icon-circle { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .pts { font-weight: 800; color: var(--primary-green); display: block; }
@@ -103,6 +121,9 @@
         .btn-cta { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
         .res-area { background: #f0fdf4; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
 
+        /* REVISI 3: CTA Waiting List */
+        .waiting-list-section { text-align: center; padding: 40px 20px; background: white; border-radius: 20px; margin: 30px 0; border: 2px solid var(--primary-green); }
+        
         /* Footer */
         .footer { background: var(--dark-blue); color: white; padding: 50px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
         .footer-logo { height: 35px; margin-bottom: 15px; }
@@ -115,61 +136,66 @@
 <body>
 
     <nav class="top-nav">
-        <img src="new-logo.png" alt="Ontoown Logo" class="logo-img">
+        <img src="logo.png" alt="Ontoown Logo" class="logo-img">
         <a href="#" class="btn-signup">Daftar</a>
     </nav>
 
     <div class="main-container">
         
         <header class="hero">
-            <h1>Gak usah nunggu jadi kaya untuk punya rumah. Huni hari ini, miliki esok hari</h1>
+            <h1>Rent today. Own Tomorrow.</h1>
         </header>
 
         <div>
             <section class="section-card">
                 <h2>Susah punya rumah?</h2>
                 <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
-                <div class="pain-grid">
-                    <div class="pain-item">
-                        <span class="pain-icon">📝</span>
-                        <div><h4>Syarat Ribet</h4><p>Dokumen dan verifikasi bikin pusing.</p></div>
-                    </div>
-                    <div class="pain-item">
-                        <span class="pain-icon">💸</span>
-                        <div><h4>DP Tinggi</h4><p>Dana besar di awal untuk uang muka.</p></div>
-                    </div>
-                </div>
             </section>
 
             <section class="section-card">
                 <h2>Temukan Properti</h2>
-                <div class="prop-grid">
-                    <script>
-                        for(let i=1; i<=6; i++) {
-                            document.write(`
-                                <div class="prop-card">
-                                    <div class="prop-img-box">
-                                        <span class="badge-ready">Ontoown Ready</span>
-                                        <img src="https://images.unsplash.com/photo-15${i}12917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                <div class="prop-container">
+                    <div class="prop-scroll-wrapper">
+                        <script>
+                            for(let i=1; i<=6; i++) {
+                                document.write(`
+                                    <div class="prop-card">
+                                        <div class="prop-img-box">
+                                            <span class="badge-ready">Ontoown Ready</span>
+                                            <img src="https://images.unsplash.com/photo-15${i}12917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                                        </div>
+                                        <div class="prop-info">
+                                            <h3>Properti Impian ${i}</h3>
+                                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp ${5 + i}.000.000/bln</span></div>
+                                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp ${i}00.000/bln</span></div>
+                                        </div>
                                     </div>
-                                    <div class="prop-info">
-                                        <h3>Properti Impian ${i}</h3>
-                                        <div class="price-row"><span>Sewa</span><span class="price-val">Rp ${5 + i}.000.000/bln</span></div>
-                                        <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp ${i}00.000/bln</span></div>
-                                    </div>
-                                </div>
-                            `);
-                        }
-                    </script>
+                                `);
+                            }
+                        </script>
+                    </div>
                 </div>
             </section>
         </div>
 
         <div>
             <section class="section-card">
-                <h2>Progres On-to-Own</h2>
-                <div class="bar-bg"><div id="p-bar" class="bar-fill" style="width: 33%;"></div></div>
+                <div class="progress-header">
+                    <span>✪ On-to-Own Progress</span>
+                    <span style="color: var(--primary-green);">33%</span>
+                </div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 33%;"></div></div>
                 
+                <div class="steps-nav">
+                    <div class="step-item active"><div class="step-icon">↳</div><div class="step-label">Rent Started</div></div>
+                    <div class="step-item"><div class="step-icon">📈</div><div class="step-label">Build Equity</div></div>
+                    <div class="step-item"><div class="step-icon">🏠</div><div class="step-label">Own Home</div></div>
+                </div>
+                
+                <div class="house-visual">
+                    <img src="house-frame.png" alt="House Progress" class="house-img">
+                </div>
+
                 <div class="gamify-grid">
                     <div class="gamify-box"><div class="icon-circle">⚡</div><h4>Power Saver<span class="pts">+100</span></h4></div>
                     <div class="gamify-box"><div class="icon-circle">⏳</div><h4>Tepat Waktu<span class="pts">+80</span></h4></div>
@@ -185,14 +211,6 @@
                         <label>Harga Properti (Rp)</label>
                         <input type="number" id="m-price" value="500000000">
                     </div>
-                    <div class="input-group">
-                        <label>Tenor (Tahun): <span id="y-txt">15</span></label>
-                        <input type="range" id="m-years" min="5" max="30" value="15" oninput="document.getElementById('y-txt').innerText = this.value">
-                    </div>
-                    <div class="input-group">
-                        <label>Suku Bunga (%/Tahun)</label>
-                        <input type="number" id="m-rate" value="6" step="0.1">
-                    </div>
                     <button onclick="calc()" class="btn-cta">Hitung Cicilan</button>
                     <div class="res-area">
                         <div style="font-size: 0.9rem;">Estimasi Cicilan</div>
@@ -203,30 +221,28 @@
         </div>
     </div>
 
+    <div style="padding: 0 5%;">
+        <section class="waiting-list-section">
+            <h2>Slot terbatas!</h2>
+            <p>Jadilah yang pertama punya rumah tanpa drama. Join waiting list sekarang untuk akses eksklusif.</p>
+            <a href="#" class="btn-signup" style="padding: 15px 30px; font-size: 1rem;">Daftar Waiting List</a>
+        </section>
+    </div>
+
     <footer class="footer">
-        <div><img src="new-logo.png" alt="Ontoown Logo" class="footer-logo"><p style="font-size: 0.8rem; opacity: 0.7;">Rent Today, Own Tomorrow.</p></div>
+        <div><img src="logo.png" alt="Ontoown Logo" class="footer-logo"><p style="font-size: 0.8rem; opacity: 0.7;">Rent Today, Own Tomorrow.</p></div>
         <div><h4>Fitur</h4><ul><li><a href="#">Flexibility</a></li><li><a href="#">Gamification</a></li><li><a href="#">Mortgage Simulator</a></li></ul></div>
         <div><h4>Kontak</h4><ul><li>Email : ontoown@gmail.com</li></ul></div>
         <div><h4>Ikuti Kami</h4><ul><li><a href="#">Instagram @ontoown</a></li></ul></div>
     </footer>
 
     <script>
-        // Logika Kalkulator KPR Lengkap
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value);
-            const loan = price * 0.9; // Asumsi DP 10%
-            const years = parseInt(document.getElementById('m-years').value);
-            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
-            
-            const i = rate / 12; 
-            const n = years * 12;
-            
-            // Formula Anuitas
-            const res = loan * (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
-            
+            const loan = price * 0.9;
+            const res = loan * 0.008; // Contoh hitungan sederhana
             document.getElementById('m-res').innerText = "Rp " + Math.round(res).toLocaleString('id-ID');
         }
-        // Hitung pertama kali
         calc();
     </script>
 </body>
