@@ -44,10 +44,12 @@
         .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
+        
+        /* UPDATE: Mengatur rasio agar konten kiri lebih dominan */
         @media (min-width: 1024px) {
-            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1300px; margin: 0 auto; }
-            .content-left { flex: 2; }
-            .sidebar-right { flex: 1; }
+            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1400px; margin: 0 auto; }
+            .content-left { flex: 2.5; } /* Lebih lebar */
+            .sidebar-right { flex: 1; }  /* Lebih sempit */
         }
 
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
@@ -62,29 +64,28 @@
         .prop-card { 
             background: white; border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
-            overflow: hidden; min-width: 240px; 
-            flex: 0 0 auto; scroll-snap-align: start;
+            min-width: 280px; /* Sedikit lebih lebar */
+            flex: 0 0 calc(33.333% - 15px); /* Tampilkan 3 kartu */
+            scroll-snap-align: start;
             border: 1px solid #f0f0f0;
         }
-        .prop-img-box { position: relative; height: 150px; }
-        .prop-img { width: 100%; height: 100%; object-fit: cover; }
+        .prop-img-box { position: relative; height: 160px; }
+        .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px; }
         .badge-ready { position: absolute; top: 10px; left: 10px; background: #34d399; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
         .badge-rent { position: absolute; top: 10px; left: 10px; background: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
         .wishlist-icon { position: absolute; top: 10px; right: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .prop-info { padding: 12px; }
+        .prop-info { padding: 15px; }
         .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
         .rating { font-size: 0.75rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
         .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* 4. GAMIFICATION SECTION (NEWLY ADDED) */
+        /* 4. GAMIFICATION SECTION */
         .gamify-grid {
-            display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px;
-            scrollbar-width: none;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;
         }
-        .gamify-grid::-webkit-scrollbar { display: none; }
         .gamify-card {
-            min-width: 160px; padding: 20px 15px; border-radius: 18px; text-align: left;
+            padding: 20px 15px; border-radius: 18px; text-align: left;
             display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
         .g-icon-box {
@@ -92,7 +93,7 @@
             font-size: 1.3rem; color: white;
         }
         .gamify-card h4 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1a2538; }
-        .gamify-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; color: #444; }
+        .gamify-card p { font-size: 0.75rem; margin: 0; line-height: 1.3; color: #444; }
         .g-pts { font-weight: 800; font-size: 0.8rem; display: block; }
         
         .c-orange { background: #ffedd5; } .bg-orange { background: #f97316; }
@@ -104,15 +105,15 @@
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease; }
-        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
-        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; gap: 5px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px; }
+        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; background: #f0fdf4; }
         .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
         .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
         .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
 
         /* 6. MORTGAGE SIMULATOR */
-        .sim-container { background: white; border-radius: 20px; padding: 5px; border: 1px solid #f0f0f0; margin-top: 15px; }
+        .sim-container { background: white; border-radius: 20px; padding: 5px; margin-top: 15px; }
         .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
         .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
         .input-row { margin-bottom: 15px; }
@@ -124,9 +125,9 @@
             border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
         }
         input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
-        .res-area { background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; margin-top: 10px; }
+        .res-area { background: #f0fdf4; padding: 20px; border-radius: 15px; margin-top: 10px; border: 1px solid #bbf7d0; }
         .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
-        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
+        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #bbf7d0; padding-top: 10px; }
 
         /* 7. WAITING LIST */
         .waiting-list-section {
@@ -200,13 +201,7 @@
                         <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp4.200.000/bln</span></div>
                         <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp630.000/bln</span></div></div>
                     </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon">❤</div><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
-                        <div class="prop-info"><div class="rating">⭐ 4.6</div><h3>Menara Jakarta</h3>
-                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp3.400.000/bln</span></div>
-                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp510.000/bln</span></div></div>
                     </div>
-                </div>
             </section>
 
             <section class="section-card">
@@ -269,7 +264,7 @@
                         <div class="input-row"><label>Pendapatan Bulanan</label><div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
                     </div>
                     <div class="res-area">
-                        <div style="font-size:0.8rem; color:#666">Estimasi Cicilan Bulanan</div>
+                        <div style="font-size:0.8rem; color:#333">Estimasi Cicilan Bulanan</div>
                         <div class="res-main-val" id="res-monthly">Rp 0</div>
                         <div class="res-detail"><span>Alokasi Pendapatan</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
                     </div>
