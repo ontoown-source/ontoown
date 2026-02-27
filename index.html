@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Rent Today, Own Tomorrow</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --primary-green: #249170;
@@ -18,11 +16,11 @@
             font-family: 'League Spartan', sans-serif;
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
-            line-height: 1.6;
             color: #333;
+            overflow-x: hidden;
         }
 
-        /* 1. NAVBAR */
+        /* NAVBAR */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
@@ -34,7 +32,7 @@
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* 2. HERO SECTION */
+        /* HERO SECTION */
         .hero {
             height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
@@ -45,7 +43,6 @@
         .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
         .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
-        /* Container Layout */
         .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         @media (min-width: 1024px) {
             .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; max-width: 1300px; margin: 0 auto; }
@@ -53,11 +50,10 @@
             .sidebar-right { flex: 1; }
         }
 
-        /* Card Style */
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
 
-        /* 3. PROPERTY SCROLL */
+        /* PROPERTY SCROLL */
         .prop-scroll-container {
             display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -72,29 +68,30 @@
         .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
-        /* 4. GAMIFICATION REDESIGN (SESUAI GAMBAR) */
+        /* GAMIFICATION REDESIGN (SESUAI GAMBAR DENGAN 4 KARTU) */
         .gamification-grid {
-            display: flex; gap: 15px; overflow-x: auto; padding: 10px 0 20px; scrollbar-width: none;
+            display: flex; gap: 12px; overflow-x: auto; padding: 10px 0 20px; scrollbar-width: none;
         }
         .gamification-grid::-webkit-scrollbar { display: none; }
         .game-card {
-            min-width: 160px; padding: 20px 15px; border-radius: 20px; text-align: left;
-            display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            min-width: 155px; padding: 18px 14px; border-radius: 18px; text-align: left;
+            display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
         .game-icon-box {
-            width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; color: white;
+            width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: white;
         }
-        .game-card h4 { margin: 0; font-size: 1rem; font-weight: 700; color: #1a2538; }
-        .game-card p { font-size: 0.75rem; margin: 0; line-height: 1.3; color: #444; }
-        .game-points { font-weight: 800; font-size: 0.85rem; display: block; }
+        .game-card h4 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1a2538; }
+        .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; color: #444; }
+        .game-points { font-weight: 800; font-size: 0.8rem; display: block; }
 
+        /* Varian Warna Kartu & Ikon (Sesuai Referensi) */
         .card-orange { background-color: #ffedd5; } .bg-orange { background-color: #f97316; }
-        .card-blue { background-color: #dbeafe; }   .bg-blue { background-color: #3b82f6; }
-        .card-green { background-color: #dcfce7; }  .bg-green { background-color: #22c55e; }
-        .card-purple { background-color: #f3e8ff; } .bg-purple { background-color: #a855f7; }
+        .card-blue { background-color: #dbeafe; }   .bg-blue { background-color: #2e4a8a; }
+        .card-green { background-color: #dcfce7; }  .bg-green { background-color: #249170; }
+        .card-lightblue { background-color: #d1e9ff; } .bg-lightblue { background-color: #3b82f6; }
 
-        /* 5. SIDEBAR PROGRESS */
+        /* SIDEBAR PROGRESS */
         .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
         .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease-in-out; }
@@ -105,7 +102,7 @@
         .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
         .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
 
-        /* 6. MODERN MORTGAGE SIMULATOR */
+        /* MORTGAGE SIMULATOR */
         .sim-container { background: white; border-radius: 20px; padding: 5px; border: 1px solid #f0f0f0; margin-top: 15px; }
         .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
         .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
@@ -120,17 +117,14 @@
         input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
         .res-area { background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; margin-top: 10px; }
         .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
-        .btn-cta { background: var(--primary-green); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
+        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
 
-        /* 7. FINAL CTA & FOOTER */
+        /* FINAL CTA */
         .final-cta { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 5%; }
-        .cta-input-group { display: flex; gap: 10px; max-width: 500px; margin: 30px auto 0; background: white; padding: 6px; border-radius: 35px; }
-        .cta-input-group input { flex: 1; border: none; padding: 12px 20px; border-radius: 30px; outline: none; font-family: inherit; }
         .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; text-align: center; }
     </style>
 </head>
 <body>
-
     <nav class="top-nav">
         <img src="new-logo.png" alt="Ontoown Logo" class="logo-img">
         <a href="#" class="btn-signup">Daftar</a>
@@ -160,7 +154,6 @@
                         <div class="prop-info">
                             <h3>Sudirman Park Apartment</h3>
                             <div class="price-row"><span>Sewa</span><span class="price-val">Rp8.500.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bln</span></div>
                         </div>
                     </div>
                     <div class="prop-card">
@@ -171,7 +164,6 @@
                         <div class="prop-info">
                             <h3>The Verde Residence</h3>
                             <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div>
                         </div>
                     </div>
                 </div>
@@ -183,23 +175,30 @@
                     <div class="game-card card-orange">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div class="game-icon-box bg-orange">💡</div>
-                            <span class="game-points" style="color: #9a3412;">+100 pts</span>
+                            <span class="game-points" style="color: #9a3412;">+100 points</span>
                         </div>
-                        <div><h4>Power Saver</h4><p>Cut your electricity usage!</p></div>
+                        <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
                     </div>
                     <div class="game-card card-blue">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div class="game-icon-box bg-blue">🔥</div>
-                            <span class="game-points" style="color: #1e3a8a;">+80 pts</span>
+                            <span class="game-points" style="color: #1e3a8a;">+80 points</span>
                         </div>
-                        <div><h4>On Time Hero</h4><p>Pay rent before due date.</p></div>
+                        <div><h4>Pahlawan Tepat Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
                     </div>
-                    <div class="game-card card-purple">
+                    <div class="game-card card-green">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div class="game-icon-box bg-purple">👥</div>
-                            <span class="game-points" style="color: #581c87;">+150 pts</span>
+                            <div class="game-icon-box bg-green">⭐</div>
+                            <span class="game-points" style="color: #064e3b;">+50 points</span>
                         </div>
-                        <div><h4>Bring a Friend</h4><p>Invite friends to move in.</p></div>
+                        <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
+                    </div>
+                    <div class="game-card card-lightblue">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="game-icon-box bg-lightblue">👥</div>
+                            <span class="game-points" style="color: #1e40af;">+100 points</span>
+                        </div>
+                        <div><h4>Ajak Teman</h4><p>Ajak temanmu untuk ikut bergabung.</p></div>
                     </div>
                 </div>
             </section>
@@ -221,33 +220,30 @@
             </section>
 
             <section class="section-card">
-                <h2 style="font-size: 1.4rem; margin-bottom: 20px;">Mortgage Simulator</h2>
+                <h3 style="margin-top:0">Mortgage Simulator</h3>
                 <div class="sim-container">
                     <div class="sim-group">
-                        <h4>Details</h4>
                         <div class="input-row">
-                            <label>Price</label>
+                            <label>Property Price</label>
                             <div class="input-with-icon"><span>🏢</span><input type="number" id="m-price" value="500000000" oninput="calc()"></div>
                         </div>
                     </div>
                     <div class="sim-group">
-                        <h4>Estimation</h4>
                         <div class="input-row">
                             <label>Tenor: <span id="v-years">15</span> Years</label>
                             <input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()">
                         </div>
                         <div class="input-row">
-                            <label>Income</label>
+                            <label>Monthly Income</label>
                             <div class="input-with-icon"><span>💰</span><input type="number" id="m-income" value="15000000" oninput="calc()"></div>
                         </div>
                     </div>
                     <div class="res-area">
                         <div class="res-main-val" id="res-monthly">Rp 0</div>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; border-top: 1px solid #eee; padding-top: 10px;">
+                        <div class="res-detail">
                             <span>Income Allocation</span><span id="res-alloc" style="font-weight:700;">0%</span>
                         </div>
                     </div>
-                    <button class="btn-cta" style="margin-top: 10px;">Start Journey</button>
                 </div>
             </section>
         </div>
@@ -256,12 +252,7 @@
     <div class="final-cta">
         <h2>Slot terbatas</h2>
         <p>Join waiting list sekarang untuk akses eksklusif</p>
-        <div class="cta-input-group">
-            <input type="email" placeholder="Masukkan email kamu">
-            <button class="btn-submit" style="background:var(--primary-green); color:white; border:none; padding:10px 20px; border-radius:30px; font-weight:700;">Join</button>
-        </div>
     </div>
-
     <footer class="footer"><img src="new-logo.png" style="height:30px"></footer>
 
     <script>
@@ -271,11 +262,10 @@
             const income = parseFloat(document.getElementById('m-income').value) || 1;
             document.getElementById('v-years').innerText = years;
 
-            const loanAmount = price * 0.9;
-            const monthlyPayment = (loanAmount * 1.5) / (years * 12);
+            const monthlyPayment = (price * 0.9 * 1.5) / (years * 12);
             const allocation = (monthlyPayment / income) * 100;
 
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID') + "/mo";
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID');
             document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
             document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#249170";
         }
