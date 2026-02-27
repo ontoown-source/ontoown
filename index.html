@@ -4,140 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontoown - Rent Today, Own Tomorrow</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary-green: #249170;
             --dark-blue: #1a2538;
             --bg-gray: #f8f9fa;
-            --accent-yellow: #fef3c7;
-            --accent-blue: #dbeafe;
-            --accent-green: #d1fae5;
         }
 
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
-            line-height: 1.6;
             color: #333;
         }
 
-        /* Top Navbar */
-        .top-nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .logo-img { height: 30px; width: auto; }
-        .btn-signup {
-            background: var(--primary-green); color: white; padding: 10px 20px;
-            border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
-        }
-
-        /* 1. HERO SECTION (Update Bold & Background) */
+        /* 1. HERO SECTION (Bold & Megah) */
         .hero {
-            height: 60vh;
+            height: 65vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             color: white; text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; text-transform: none; }
-        .hero p { font-size: 1.2rem; margin-top: 15px; font-weight: 500; }
+        .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
+        .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
 
-        /* Main Container Layout */
-        .main-container {
-            display: flex; flex-direction: column; gap: 20px; padding: 20px;
-        }
+        .main-container { padding: 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
 
-        @media (min-width: 1024px) {
-            .main-container { flex-direction: row; padding: 40px 5%; gap: 30px; }
-            .content-left { flex: 2; }
-            .sidebar-right { flex: 1; }
-        }
+        .section-card { padding: 25px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
 
-        /* General Card Style */
-        .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
-
-        /* 2. PROPERTY SCROLL (Balikin fitur geser) */
+        /* 2. PROPERTY SCROLL (Horizontal) */
         .prop-scroll-container {
             display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
         }
         .prop-scroll-container::-webkit-scrollbar { display: none; }
-
-        .prop-card {
-            background: white; border-radius: 20px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06); 
-            overflow: hidden; min-width: 280px; flex: 0 0 auto;
-            scroll-snap-align: start;
-        }
+        .prop-card { background: white; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden; min-width: 280px; flex: 0 0 auto; scroll-snap-align: start; }
         .prop-img-box { position: relative; height: 180px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; }
-        .badge-ready {
-            position: absolute; top: 12px; left: 12px; background: #34d399; color: white;
-            padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700;
-        }
-        .prop-info { padding: 15px; }
-        .prop-info h3 { margin: 0 0 10px; font-size: 1.1rem; font-weight: 700; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem; }
-        .price-val { font-weight: 700; color: var(--primary-green); }
+        .badge-ready { position: absolute; top: 12px; left: 12px; background: #34d399; color: white; padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
 
-        /* Progress Visuals */
-        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
-        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
-        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease-in-out; }
+        /* 3. MODERN MORTGAGE SIMULATOR */
+        .sim-header { background: var(--dark-blue); color: white; padding: 15px; border-radius: 20px 20px 0 0; text-align: center; font-weight: 700; }
+        .sim-body { background: white; padding: 25px; border-radius: 0 0 20px 20px; border: 1px solid #eee; }
+        .input-box { margin-bottom: 20px; }
+        .input-box label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
+        .input-with-icon { position: relative; display: flex; align-items: center; }
+        .input-with-icon i { position: absolute; left: 15px; color: #888; }
+        .input-with-icon input, .input-with-icon select { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid #e0e0e0; border-radius: 12px; font-family: inherit; font-size: 1rem; }
         
-        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; }
-        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; }
-        .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
-        .step-label { font-size: 0.7rem; font-weight: 600; }
-        
-        .house-visual-box {
-            text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px;
-        }
-        .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
+        /* Slider Styling */
+        .range-box { margin-top: 10px; }
+        .range-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: #555; margin-bottom: 5px; }
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); height: 6px; }
 
-        /* Gamification */
-        .gamification-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 20px;
-        }
-        .game-card { padding: 15px; border-radius: 15px; text-align: left; color: var(--dark-blue); }
-        .game-card h4 { margin: 8px 0 4px; font-size: 0.9rem; font-weight: 700; }
-        .game-card p { font-size: 0.7rem; margin: 0; line-height: 1.2; opacity: 0.8; }
+        /* Estimation Results */
+        .est-box { background: #fff; border: 1px solid #f0f0f0; padding: 20px; border-radius: 15px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .est-title { font-size: 1rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 15px; }
+        .est-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 15px; }
+        .est-label { font-size: 0.85rem; color: #666; font-weight: 600; }
+        .est-val { font-size: 1.6rem; font-weight: 800; color: var(--primary-green); }
+        .est-sub { font-size: 0.9rem; color: #444; font-weight: 700; }
 
-        /* Final CTA */
-        .final-cta {
-            background: var(--dark-blue); color: white; text-align: center;
-            padding: 60px 5%; border-radius: 30px; margin: 40px 5%;
-        }
-        .final-cta h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; }
-        .cta-input-group {
-            display: flex; gap: 10px; max-width: 500px; margin: 30px auto 0;
-            background: white; padding: 6px; border-radius: 35px;
-        }
-        .cta-input-group input {
-            flex: 1; border: none; padding: 12px 20px; border-radius: 30px; outline: none; font-family: inherit;
-        }
-        .btn-submit {
-            background: var(--primary-green); color: white; border: none;
-            padding: 12px 25px; border-radius: 30px; font-weight: 700; cursor: pointer;
-        }
+        .btn-start { background: var(--primary-green); color: white; border: none; padding: 16px; border-radius: 15px; width: 100%; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        .btn-start:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        .footer { background: #0f172a; color: white; padding: 40px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; }
+        /* Footer */
+        .final-cta { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 20px; }
     </style>
 </head>
 <body>
-
-    <nav class="top-nav">
-        <img src="new-logo.png" alt="Ontoown Logo" class="logo-img">
-        <a href="#" class="btn-signup">Daftar</a>
-    </nav>
 
     <header class="hero">
         <h1>Gak usah Nunggu<br>kaya punya rumah.</h1>
@@ -145,150 +84,136 @@
     </header>
 
     <div class="main-container">
-        <div class="content-left">
-            <section class="section-card">
-                <h2>Susah punya rumah?</h2>
-                <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
-                <p><strong>Gimana kalau kamu bisa test drive rumah impian dengan cara mencicil sambil tinggal di rumahnyaa?</strong></p>
-            </section>
+        
+        <section class="section-card">
+            <h2>Ontoown Picks</h2>
+            <div class="prop-scroll-container">
+                <div class="prop-card">
+                    <div class="prop-img-box">
+                        <span class="badge-ready">Ontoown Ready</span>
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                    </div>
+                    <div class="prop-info">
+                        <h3>Sudirman Park Apartment</h3>
+                        <div style="display:flex; justify-content:space-between; font-size:0.9rem;"><span>Sewa</span><span style="font-weight:700; color:var(--primary-green);">Rp8.500.000/bln</span></div>
+                    </div>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-img-box">
+                        <span class="badge-ready">Ontoown Ready</span>
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                    </div>
+                    <div class="prop-info">
+                        <h3>The Verde Residence</h3>
+                        <div style="display:flex; justify-content:space-between; font-size:0.9rem;"><span>Sewa</span><span style="font-weight:700; color:var(--primary-green);">Rp6.800.000/bln</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section class="section-card">
-                <h2>Ontoown Picks</h2>
-                <div class="prop-scroll-container">
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <h3>Sudirman Park Apartment</h3>
-                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp8.500.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bln</span></div>
-                        </div>
-                    </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <h3>The Verde Residence</h3>
-                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div>
-                        </div>
-                    </div>
-                    <div class="prop-card">
-                        <div class="prop-img-box">
-                            <span class="badge-ready">Ontoown Ready</span>
-                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                        </div>
-                        <div class="prop-info">
-                            <h3>Menara Jakarta</h3>
-                            <div class="price-row"><span>Sewa</span><span class="price-val">Rp3.400.000/bln</span></div>
-                            <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp510.000/bln</span></div>
-                        </div>
+        <section style="max-width: 500px; margin: 0 auto; width: 100%;">
+            <div class="sim-header">Mortgage Simulator</div>
+            <div class="sim-body">
+                <div class="input-box">
+                    <label>Property Price</label>
+                    <div class="input-with-icon">
+                        <i>🏠</i>
+                        <input type="number" id="p-price" value="500000000" oninput="updateCalc()">
                     </div>
                 </div>
-            </section>
 
-            <section class="section-card">
-                <h2>Progress feels better when you can see it.</h2>
-                <div class="gamification-grid">
-                    <div class="game-card" style="background: var(--accent-yellow);">
-                        <span style="font-size: 1.5rem;">💡</span>
-                        <h4>Power Saver</h4>
-                        <p>Cut your electricity usage at home!</p>
-                        <p><strong>+100 points</strong></p>
-                    </div>
-                    <div class="game-card" style="background: var(--accent-blue);">
-                        <span style="font-size: 1.5rem;">🔥</span>
-                        <h4>On Time Hero</h4>
-                        <p>Pay rent before the due date.</p>
-                        <p><strong>+80 points</strong></p>
-                    </div>
-                    <div class="game-card" style="background: var(--accent-green);">
-                        <span style="font-size: 1.5rem;">💎</span>
-                        <h4>Rate & Earn</h4>
-                        <p>Leave a review to earn points.</p>
-                        <p><strong>+50 points</strong></p>
+                <div class="input-box">
+                    <label>Down Payment</label>
+                    <div class="input-with-icon">
+                        <i>💰</i>
+                        <select id="p-dp" onchange="updateCalc()">
+                            <option value="0.05">5%</option>
+                            <option value="0.10" selected>10%</option>
+                            <option value="0.20">20%</option>
+                        </select>
                     </div>
                 </div>
-            </section>
-        </div>
 
-        <div class="sidebar-right">
-            <section class="section-card">
-                <div class="prog-header">
-                    <span>✪ Progres On-to-Own</span>
-                    <span id="prog-text" style="color: var(--primary-green);">33%</span>
+                <div class="input-box">
+                    <label>Tenor: <span id="v-years">15</span> Years</label>
+                    <input type="range" id="p-years" min="5" max="30" value="15" oninput="updateCalc()">
+                    <div class="range-info"><span>5</span><span>30</span></div>
                 </div>
-                <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
-                <div class="steps-nav">
-                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)">
-                        <div class="step-icon">↳</div><div class="step-label">Sewa</div>
-                    </div>
-                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)">
-                        <div class="step-icon">📈</div><div class="step-label">Ekuitas</div>
-                    </div>
-                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)">
-                        <div class="step-icon">🏠</div><div class="step-label">Milik</div>
-                    </div>
-                </div>
-                <div class="house-visual-box">
-                    <img id="house-img" src="rumah-33.png" alt="House Progress">
-                </div>
-            </section>
 
-            <section class="section-card">
-                <h3 style="margin-top:0">Simulator KPR</h3>
-                <div class="sim-container">
-                    <div class="input-group">
-                        <label>Harga Properti (Rp)</label>
-                        <input type="number" id="m-price" value="500000000">
-                    </div>
-                    <div class="input-group">
-                        <label>Tenor (Tahun)</label>
-                        <input type="number" id="m-years" value="15">
-                    </div>
-                    <button onclick="calc()" class="btn-cta">Hitung</button>
-                    <div class="res-area">
-                        <div style="font-size:0.8rem; color:#666">Cicilan/Bulan</div>
-                        <div class="price-val" id="res-monthly" style="font-size:1.4rem">Rp 0</div>
+                <div class="input-box">
+                    <label>Interest Rate: <span id="v-rate">6</span>%</label>
+                    <input type="range" id="p-rate" min="1" max="15" value="6" step="0.1" oninput="updateCalc()">
+                    <div class="range-info"><span>1%</span><span>15%</span></div>
+                </div>
+
+                <div class="input-box">
+                    <label>Monthly Income</label>
+                    <div class="input-with-icon">
+                        <i>💵</i>
+                        <input type="number" id="p-income" value="15000000" oninput="updateCalc()">
                     </div>
                 </div>
-            </section>
-        </div>
+
+                <div class="est-box">
+                    <div class="est-title">Estimation</div>
+                    <div class="est-row">
+                        <span class="est-label">Estimated Monthly Installment</span>
+                        <span class="est-val" id="res-monthly">Rp 0</span>
+                    </div>
+                    <div class="est-row">
+                        <span class="est-label">Loan Amount</span>
+                        <span class="est-sub" id="res-loan">Rp 0</span>
+                    </div>
+                    <div class="est-row">
+                        <span class="est-label">Monthly Income Allocation</span>
+                        <span class="est-sub" id="res-alloc">0%</span>
+                    </div>
+                </div>
+
+                <button class="btn-start">Start Your Journey</button>
+            </div>
+        </section>
+
     </div>
 
     <div class="final-cta">
         <h2>Slot terbatas</h2>
-        <p>Jadilah yang pertama punya rumah tanpa drama.<br>Join waiting list sekarang untuk akses eksklusif</p>
-        <div class="cta-input-group">
-            <input type="email" placeholder="Masukkan alamat email kamu">
-            <button class="btn-submit">Join Waiting List</button>
-        </div>
+        <p>Join waiting list sekarang untuk akses eksklusif</p>
     </div>
 
-    <footer class="footer">
-        <div><img src="new-logo.png" alt="Logo" style="height:30px"></div>
-        <div><h4>© 2026 Ontoown</h4></div>
-    </footer >
-
     <script>
-        function calc() {
-            const price = parseFloat(document.getElementById('m-price').value);
-            const years = parseInt(document.getElementById('m-years').value);
-            const monthly = (price * 1.1) / (years * 12); // Simple math for demo
-            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthly).toLocaleString('id-ID');
+        function updateCalc() {
+            const price = parseFloat(document.getElementById('p-price').value) || 0;
+            const dpPercent = parseFloat(document.getElementById('p-dp').value);
+            const years = parseInt(document.getElementById('p-years').value);
+            const rate = parseFloat(document.getElementById('p-rate').value) / 100;
+            const income = parseFloat(document.getElementById('p-income').value) || 1;
+
+            // Update Label slider
+            document.getElementById('v-years').innerText = years;
+            document.getElementById('v-rate').innerText = (rate * 100).toFixed(1);
+
+            // Hitung Loan
+            const loanAmount = price * (1 - dpPercent);
+            const monthlyRate = rate / 12;
+            const totalMonths = years * 12;
+
+            // Rumus Anuitas
+            let monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+            
+            const allocation = (monthlyPayment / income) * 100;
+
+            // Update UI
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(monthlyPayment).toLocaleString('id-ID') + "/month";
+            document.getElementById('res-loan').innerText = "Rp " + Math.round(loanAmount).toLocaleString('id-ID');
+            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "% of income (Max.30%)";
+            
+            // Kasih warna merah kalau alokasi di atas 30% (biar user tahu itu bahaya)
+            document.getElementById('res-alloc').style.color = allocation > 30 ? "#ef4444" : "#444";
         }
-        function setStep(percent, image, element) {
-            document.getElementById('house-img').src = image;
-            document.getElementById('prog-bar').style.width = percent + "%";
-            document.getElementById('prog-text').innerText = percent + "%";
-            document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
-            element.classList.add('active');
-        }
-        calc();
+
+        // Jalankan kalkulator pertama kali
+        updateCalc();
     </script>
 </body>
 </html>
