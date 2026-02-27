@@ -28,14 +28,13 @@
             padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        /* REVISI 1: Perbesar Logo */
         .logo-img { height: 40px; width: auto; }
         .btn-signup {
             background: var(--primary-green); color: white; padding: 10px 20px;
             border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
         }
 
-        /* REVISI 2: Layout Utama (Desktop Grid) */
+        /* 2. LAYOUT GRID */
         .main-container {
             display: grid;
             grid-template-columns: 1fr;
@@ -47,10 +46,11 @@
             .main-container {
                 grid-template-columns: 2fr 1fr;
                 padding: 40px 5%;
+                gap: 30px;
             }
         }
 
-        /* 2. HERO SECTION */
+        /* Hero */
         .hero {
             grid-column: 1 / -1;
             height: 50vh;
@@ -60,66 +60,54 @@
             border-radius: 20px;
             margin-bottom: 20px;
         }
-        .hero h1 { font-size: 2rem; line-height: 1.3; margin: 0; font-weight: 600; padding: 0 20px; }
+        .hero h1 { font-size: 2rem; margin: 0; padding: 0 20px; }
 
-        /* General Card Style */
+        /* Card Styles */
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; }
-        .section-card p { color: #555; font-size: 1rem; }
-
-        /* Gamifikasi Progress Card */
-        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
-        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 25px; }
-        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: 0.8s ease-in-out; }
         
-        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
-        .step-item { text-align: center; flex: 1; opacity: 0.4; transition: 0.3s; }
-        .step-item.active { opacity: 1; }
-        .step-icon { font-size: 1.2rem; margin-bottom: 5px; }
-        .step-label { font-size: 0.7rem; font-weight: 600; }
+        /* Storytelling Pain Point */
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .pain-item { background: #fdf2f2; padding: 20px; border-radius: 12px; display: flex; align-items: flex-start; gap: 15px; }
+        .pain-icon { font-size: 1.5rem; }
 
-        /* REVISI 3: Gamifikasi Fitur Box (Grid Style) */
-        .gamify-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
-        .gamify-box {
-            background: #f3f4f6; color: #111827; padding: 20px;
-            border-radius: 18px; text-align: center;
+        /* Property Grid */
+        .prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
-        .gamify-box h4 { margin: 10px 0 5px; font-size: 0.9rem; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .gamify-box .pts { font-weight: 800; font-size: 1.1rem; color: var(--primary-green); display: block; }
-        .gamify-box p { margin: 0; font-size: 0.75rem; opacity: 0.8; }
-        .icon-circle { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-
-        /* 5. DISCOVER PROPERTY */
         .prop-card {
             background: white; border-radius: 20px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); overflow: hidden;
         }
         .prop-img-box { position: relative; height: 180px; }
         .prop-img { width: 100%; height: 100%; object-fit: cover; }
-        .badge-ready {
-            position: absolute; top: 12px; left: 12px; background: #34d399; color: white;
-            padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700;
-        }
+        .badge-ready { position: absolute; top: 12px; left: 12px; background: #34d399; color: white; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; }
         .prop-info { padding: 20px; }
-        .prop-info h3 { margin: 0 0 10px; font-size: 1.2rem; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+        .prop-info h3 { margin: 0 0 10px; font-size: 1.1rem; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
         .price-val { font-weight: 700; color: var(--primary-green); }
 
+        /* Sidebar Elements */
+        .gamify-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+        .gamify-box { background: #f3f4f6; padding: 15px; border-radius: 18px; text-align: center; }
+        .icon-circle { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .pts { font-weight: 800; color: var(--primary-green); display: block; }
+        
         /* Mortgage Simulator */
-        .sim-container { background: white; border-radius: 20px; padding: 20px; border: 1px solid #eee; margin-top: 15px; }
-        .input-group { margin-bottom: 18px; }
-        .input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
-        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-        .btn-cta { background: var(--primary-green); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
+        .sim-container { background: white; border-radius: 20px; padding: 20px; border: 1px solid #eee; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
+        .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .btn-cta { background: var(--primary-green); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
+        .res-area { background: #f0fdf4; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
 
-        /* REVISI 5: Footer */
-        .footer {
-            background: var(--dark-blue); color: white; padding: 50px 5%; margin-top: 40px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;
-        }
+        /* Footer */
+        .footer { background: var(--dark-blue); color: white; padding: 50px 5%; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
         .footer-logo { height: 35px; margin-bottom: 15px; }
-        .footer h4 { margin-bottom: 15px; font-size: 1.1rem; }
-        .footer ul { list-style: none; padding: 0; margin: 0; }
+        .footer h4 { margin-bottom: 15px; }
+        .footer ul { list-style: none; padding: 0; }
         .footer ul li { margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8; }
         .footer a { color: white; text-decoration: none; }
     </style>
@@ -139,57 +127,54 @@
 
         <div>
             <section class="section-card">
-                <h2>Kenalin Ontoown</h2>
-                <p>Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah.</p>
+                <h2>Susah punya rumah?</h2>
+                <p>Mau beli rumah, tapi syaratnya ribet? DP Rumah bikin pingsan? Takut salah pilih lingkungan?</p>
+                <div class="pain-grid">
+                    <div class="pain-item">
+                        <span class="pain-icon">📝</span>
+                        <div><h4>Syarat Ribet</h4><p>Dokumen dan verifikasi bikin pusing.</p></div>
+                    </div>
+                    <div class="pain-item">
+                        <span class="pain-icon">💸</span>
+                        <div><h4>DP Tinggi</h4><p>Dana besar di awal untuk uang muka.</p></div>
+                    </div>
+                </div>
             </section>
 
             <section class="section-card">
                 <h2>Temukan Properti</h2>
-                <div class="prop-card">
-                    <div class="prop-img-box">
-                        <span class="badge-ready">Ontoown Ready</span>
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img">
-                    </div>
-                    <div class="prop-info">
-                        <h3>Sudirman Park Apartment</h3>
-                        <div class="price-row"><span>Sewa</span><span class="price-val">Rp8.500.000/bulan</span></div>
-                        <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp1.275.000/bulan</span></div>
-                    </div>
+                <div class="prop-grid">
+                    <script>
+                        for(let i=1; i<=6; i++) {
+                            document.write(`
+                                <div class="prop-card">
+                                    <div class="prop-img-box">
+                                        <span class="badge-ready">Ontoown Ready</span>
+                                        <img src="https://images.unsplash.com/photo-15${i}12917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img">
+                                    </div>
+                                    <div class="prop-info">
+                                        <h3>Properti Impian ${i}</h3>
+                                        <div class="price-row"><span>Sewa</span><span class="price-val">Rp ${5 + i}.000.000/bln</span></div>
+                                        <div class="price-row"><span>Ekuitas</span><span class="price-val">Rp ${i}00.000/bln</span></div>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    </script>
                 </div>
             </section>
         </div>
 
         <div>
             <section class="section-card">
-                <div class="prog-header">
-                    <span>✪ Progres On-to-Own</span>
-                    <span id="p-txt" style="color: var(--primary-green);">33%</span>
-                </div>
-                <div class="bar-bg"><div id="p-bar" class="bar-fill"></div></div>
-                
-                <div class="steps-nav">
-                    <div class="step-item active" id="s1"><div class="step-icon">↳</div><div class="step-label">Sewa</div></div>
-                    <div class="step-item" id="s2"><div class="step-icon">📈</div><div class="step-label">Ekuitas</div></div>
-                    <div class="step-item" id="s3"><div class="step-icon">🏠</div><div class="step-label">Milik</div></div>
-                </div>
+                <h2>Progres On-to-Own</h2>
+                <div class="bar-bg"><div id="p-bar" class="bar-fill" style="width: 33%;"></div></div>
                 
                 <div class="gamify-grid">
-                    <div class="gamify-box">
-                        <div class="icon-circle">⚡</div>
-                        <h4>Power Saver <span class="pts">+100</span></h4>
-                    </div>
-                    <div class="gamify-box">
-                        <div class="icon-circle">⏳</div>
-                        <h4>Pahlawan <span class="pts">+80</span></h4>
-                    </div>
-                    <div class="gamify-box">
-                        <div class="icon-circle">⭐</div>
-                        <h4>Ulas <span class="pts">+50</span></h4>
-                    </div>
-                    <div class="gamify-box">
-                        <div class="icon-circle">👥</div>
-                        <h4>Ajak <span class="pts">+150</span></h4>
-                    </div>
+                    <div class="gamify-box"><div class="icon-circle">⚡</div><h4>Power Saver<span class="pts">+100</span></h4></div>
+                    <div class="gamify-box"><div class="icon-circle">⏳</div><h4>Tepat Waktu<span class="pts">+80</span></h4></div>
+                    <div class="gamify-box"><div class="icon-circle">⭐</div><h4>Ulas<span class="pts">+50</span></h4></div>
+                    <div class="gamify-box"><div class="icon-circle">👥</div><h4>Ajak Teman<span class="pts">+150</span></h4></div>
                 </div>
             </section>
 
@@ -200,10 +185,18 @@
                         <label>Harga Properti (Rp)</label>
                         <input type="number" id="m-price" value="500000000">
                     </div>
-                    <button onclick="calc()" class="btn-cta">Hitung</button>
-                    <div class="price-row" style="margin-top:20px;">
-                        <span>Estimasi Cicilan</span>
-                        <span class="price-val" id="m-res">Rp 0</span>
+                    <div class="input-group">
+                        <label>Tenor (Tahun): <span id="y-txt">15</span></label>
+                        <input type="range" id="m-years" min="5" max="30" value="15" oninput="document.getElementById('y-txt').innerText = this.value">
+                    </div>
+                    <div class="input-group">
+                        <label>Suku Bunga (%/Tahun)</label>
+                        <input type="number" id="m-rate" value="6" step="0.1">
+                    </div>
+                    <button onclick="calc()" class="btn-cta">Hitung Cicilan</button>
+                    <div class="res-area">
+                        <div style="font-size: 0.9rem;">Estimasi Cicilan</div>
+                        <div class="price-val" style="font-size: 1.5rem;" id="m-res">Rp 0</div>
                     </div>
                 </div>
             </section>
@@ -211,41 +204,30 @@
     </div>
 
     <footer class="footer">
-        <div>
-            <img src="new-logo.png" alt="Ontoown Logo" class="footer-logo">
-            <p style="font-size: 0.8rem; opacity: 0.7;">Rent Today, Own Tomorrow.</p>
-        </div>
-        <div>
-            <h4>Fitur</h4>
-            <ul>
-                <li><a href="#">Flexibility</a></li>
-                <li><a href="#">Gamification</a></li>
-                <li><a href="#">Mortgage Simulator</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Kontak</h4>
-            <ul>
-                <li>Email : ontoown@gmail.com</li>
-            </ul>
-        </div>
-        <div>
-            <h4>Ikuti Kami</h4>
-            <ul>
-                <li><a href="#">Instagram @ontoown</a></li>
-            </ul>
-        </div>
+        <div><img src="new-logo.png" alt="Ontoown Logo" class="footer-logo"><p style="font-size: 0.8rem; opacity: 0.7;">Rent Today, Own Tomorrow.</p></div>
+        <div><h4>Fitur</h4><ul><li><a href="#">Flexibility</a></li><li><a href="#">Gamification</a></li><li><a href="#">Mortgage Simulator</a></li></ul></div>
+        <div><h4>Kontak</h4><ul><li>Email : ontoown@gmail.com</li></ul></div>
+        <div><h4>Ikuti Kami</h4><ul><li><a href="#">Instagram @ontoown</a></li></ul></div>
     </footer>
 
     <script>
-        // Logika sederhana untuk progres
-        let prog = 33;
+        // Logika Kalkulator KPR Lengkap
         function calc() {
             const price = parseFloat(document.getElementById('m-price').value);
-            const loan = price * 0.9;
-            const res = loan * 0.008; // Contoh hitungan kasar
+            const loan = price * 0.9; // Asumsi DP 10%
+            const years = parseInt(document.getElementById('m-years').value);
+            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
+            
+            const i = rate / 12; 
+            const n = years * 12;
+            
+            // Formula Anuitas
+            const res = loan * (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
+            
             document.getElementById('m-res').innerText = "Rp " + Math.round(res).toLocaleString('id-ID');
         }
+        // Hitung pertama kali
+        calc();
     </script>
 </body>
 </html>
