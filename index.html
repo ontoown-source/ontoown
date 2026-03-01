@@ -449,6 +449,7 @@
         document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const button = e.target.querySelector('button');
+            const originalText = button.innerText;
             button.innerText = 'Mengirim...';
             button.disabled = true;
 
@@ -458,20 +459,29 @@
             const city = document.getElementById('wl-city').value;
             const messageEl = document.getElementById('responseMessage');
 
+            // Hapus pesan lama
+            messageEl.innerText = '';
+
             const { data, error } = await supabase
                 .from('waiting_list')
                 .insert([{ nama: name, email: email, jenis_kelamin: gender, lokasi: city }]);
 
+            button.disabled = false;
+            button.innerText = originalText;
+
             if (error) {
-                messageEl.innerText = 'Gagal menyimpan data. Coba lagi.';
+                // Tampilkan error detail dari Supabase
+                messageEl.innerText = 'Error: ' + error.message;
                 messageEl.style.color = '#ff6b6b';
-                button.innerText = 'Gabung Waiting List';
-                button.disabled = false;
+                console.error('Supabase Error:', error);
             } else {
                 messageEl.innerText = 'Berhasil! Terima kasih sudah bergabung.';
                 messageEl.style.color = '#34d399';
                 document.getElementById('waitlistForm').reset();
                 button.innerText = 'Berhasil!';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 3000);
             }
         });
     </script>
