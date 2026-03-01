@@ -11,6 +11,8 @@
             --primary-green: #249170;
             --dark-blue: #1a2538;
             --bg-gray: #f8f9fa;
+            --light-blue: #d1e9ff;
+            --light-green: #dcfce7;
         }
 
         body {
@@ -18,26 +20,218 @@
             margin: 0; padding: 0;
             background-color: var(--bg-gray);
             color: #333;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* --- STYLES --- */
-        .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* 1. NAVBAR */
+        .top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
         .logo-img { height: 50px; width: auto; }
-        .btn-signup { background: var(--primary-green); color: white; padding: 10px 25px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+        .btn-signup {
+            background: var(--primary-green); color: white; padding: 10px 25px;
+            border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+        }
+
+        /* 2. HERO SECTION */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            color: white; text-align: center; padding: 0 20px;
+        }
         
-        .hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; line-height: 1; margin: 0; font-weight: 800; }
+        .hero p { font-size: 1.4rem; margin-top: 15px; font-weight: 600; }
+
+        @media (max-width: 767px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+        }
+
+        .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
         
-        .main-container { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        @media (min-width: 1024px) {
+            .main-container {
+                flex-direction: row;
+                padding: 40px 5%;
+                gap: 30px;
+                max-width: 1500px;
+                margin: 0 auto;
+            }
+            .content-left { flex: 1.7; min-width: 0; } 
+            .sidebar-right { flex: 1; min-width: 350px; }
+            .gamify-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                overflow-x: visible;
+            }
+        }
+
         .section-card { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .section-card h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.8rem; font-weight: 700; }
+        .section-card p { line-height: 1.6; color: #555; }
+
+        /* --- TICKET STYLE --- */
+        .ticket-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .ticket {
+            flex: 1;
+            min-width: 250px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .ticket-blue { background-color: #dbeafe; color: #1e40af; }
+        .ticket-green { background-color: #dcfce7; color: #15803d; }
+
+        .ticket::before, .ticket::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: white; 
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        .ticket-blue::before, .ticket-blue::after { background-color: #dbeafe; }
+        .ticket-green::before, .ticket-green::after { background-color: #dcfce7; }
+        .ticket::before { left: -10px; }
+        .ticket::after { right: -10px; }
+
+        .ticket-icon { font-size: 2.5rem; margin-bottom: 5px; display: block; } 
+        .ticket h4 { margin: 0; font-size: 1.2rem; font-weight: 800; }
+        .ticket p { margin: 0; font-size: 0.8rem; font-weight: 600; opacity: 0.8; line-height: 1.3 !important; }
+
+        /* --- STYLE LAINNYA --- */
+        .solution-text { font-size: 1.1rem; font-weight: 500; color: var(--dark-blue); border-left: 4px solid var(--primary-green); padding-left: 15px; }
         
-        .waiting-list-section { background: var(--dark-blue); color: white; text-align: center; padding: 60px 5%; border-radius: 40px; margin: 40px 20px; }
-        .waiting-list-section h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .btn-join { background: var(--primary-green); color: white; border: none; padding: 15px 35px; border-radius: 40px; font-weight: 700; cursor: pointer; font-size: 1rem; width: 100%; max-width: 300px; transition: background 0.3s; }
+        .prop-scroll-container {
+            display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
+        }
+        .prop-scroll-container::-webkit-scrollbar { display: none; }
+        .prop-card { 
+            background: white; border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            min-width: 250px; 
+            flex: 0 0 calc(25% - 15px);
+            scroll-snap-align: start;
+            border: 1px solid #f0f0f0;
+        }
+        .prop-img-box { position: relative; height: 160px; }
+        .prop-img { width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px; }
+        .badge-ready { position: absolute; top: 10px; left: 10px; background: #34d399; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        .badge-rent { position: absolute; top: 10px; left: 10px; background: #3b82f6; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; }
+        
+        .wishlist-icon { position: absolute; top: 10px; right: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .prop-info { padding: 15px; }
+        .prop-info h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: #1a2538; }
+        .rating { font-size: 0.75rem; color: #f59e0b; margin-bottom: 8px; font-weight: 700; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; }
+        .price-val { font-weight: 700; color: var(--primary-green); }
+
+        /* --- GAMIFY STYLE --- */
+        .gamify-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        .gamify-container::-webkit-scrollbar { display: none; }
+        
+        .gamify-card {
+            min-width: 200px;
+            flex: 0 0 200px;
+            padding: 20px 15px;
+            border-radius: 18px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            scroll-snap-align: start;
+        }
+        .g-icon-box {
+            width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: white;
+        }
+        .gamify-card h4 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1a2538; }
+        .gamify-card p { font-size: 0.75rem; margin: 0; line-height: 1.3; color: #444; }
+        .g-pts { font-weight: 800; font-size: 0.8rem; display: block; }
+        
+        .c-orange { background: #ffedd5; } .bg-orange { background: #f97316; }
+        .c-blue { background: #dbeafe; }   .bg-blue { background: #2e4a8a; }
+        .c-green { background: #dcfce7; }  .bg-green { background: #249170; }
+        .c-lightblue { background: #d1e9ff; } .bg-lightblue { background: #3b82f6; }
+
+        .prog-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 12px; align-items: center; }
+        .bar-bg { background: #e5e7eb; height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
+        .bar-fill { background: var(--primary-green); height: 100%; width: 33%; transition: width 0.8s ease; }
+        .steps-nav { display: flex; justify-content: space-between; margin-bottom: 20px; gap: 5px; }
+        .step-item { text-align: center; flex: 1; opacity: 0.4; cursor: pointer; transition: 0.3s; padding: 10px; border-radius: 10px; }
+        .step-item.active { opacity: 1; color: var(--primary-green); font-weight: 700; background: #f0fdf4; }
+        .step-icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .house-visual-box { text-align: center; margin: 20px 0; padding: 20px; background: #f9fafb; border-radius: 15px; }
+        .house-visual-box img { max-width: 100%; height: auto; max-height: 180px; }
+
+        .sim-container { background: white; border-radius: 20px; padding: 5px; margin-top: 15px; }
+        .sim-group { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 15px; }
+        .sim-group h4 { margin: 0 0 15px 0; font-size: 0.8rem; color: #999; text-transform: uppercase; }
+        .input-row { margin-bottom: 15px; }
+        .input-row label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--dark-blue); }
+        .input-with-icon { position: relative; display: flex; align-items: center; }
+        .input-with-icon span { position: absolute; left: 12px; color: #666; }
+        .input-with-icon input, .input-with-icon select { 
+            width: 100%; padding: 12px 12px 12px 35px; border: 1px solid #e0e0e0; 
+            border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none;
+        }
+        input[type="range"] { width: 100%; accent-color: var(--primary-green); margin-top: 10px; }
+        .res-area { background: #f0fdf4; padding: 20px; border-radius: 15px; margin-top: 10px; border: 1px solid #bbf7d0; }
+        .res-main-val { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); margin: 5px 0; }
+        .res-detail { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 10px; border-top: 1px solid #bbf7d0; padding-top: 10px; }
+
+        .waiting-list-section {
+            background: var(--dark-blue); color: white; text-align: center;
+            padding: 80px 5%; border-radius: 40px; margin: 40px 20px;
+        }
+        .waiting-list-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .waiting-list-section p { opacity: 0.8; margin-bottom: 30px;line-height: 1.6; }
+        
+        .btn-join {
+            background: var(--primary-green); color: white; border: none;
+            padding: 15px 35px; border-radius: 40px; font-weight: 700; cursor: pointer;
+            transition: background 0.3s;
+        }
         .btn-join:hover { background: #1d7a5e; }
-        
-        .footer { background: var(--dark-blue); color: white; padding: 40px 10%; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+
+        .footer { background: var(--dark-blue); color: white; padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-logo { height: 50px; margin-bottom: 10px; }
+        .footer h4 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer ul { list-style: none; padding: 0; }
+        .footer ul li { margin-bottom: 12px; opacity: 0.7; font-size: 0.95rem; }
+        .contact-info { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -52,29 +246,199 @@
     </header>
 
     <div class="main-container">
-        <section class="section-card">
-            <h2>Tentang Kami</h2>
-            <p>Solusi Cerdas Punya Rumah dengan sewa sambil membangun ekuitas.</p>
-        </section>
-    </div>
+        <div class="content-left">
+            <section class="section-card">
+                <h2>Solusi Cerdas Punya Rumah</h2>
+                <p class="solution-text">
+                    "Kenalin, ONTOOWN. Disini kamu mulai bisa sewa sambil membangun ekuitas. Tanpa DP raksasa di depan, kamu bisa masuk sebagai penyewa, tapi setiap hari kamu bangun tidur sebagai calon pemilik sah"
+                </p>
+            </section>
 
+            <section class="section-card">
+                <h2>Fleksibilitas Tanpa Batas</h2>
+                <p>
+                    "Butuh mobilitas tinggi? Ngerasa gak cocok sama tetangga? Tenang, di ONTOOWN kamu punya kendali. Pakai trial pass, kamu bisa coba hunian dengan bebas. Ganti unitmu dengan Rotasi Unit, temukan rumah yg benar-benar di hati"
+                </p>
+                
+                <div class="ticket-container">
+                    <div class="ticket ticket-blue">
+                        <i class="ph ph-buildings ticket-icon"></i>
+                        <h4>Trial Stay Pass</h4>
+                        <p>Berlaku khusus bagi pengguna baru di Aplikasi Ontoown </p>
+                    </div>
+                    
+                    <div class="ticket ticket-green">
+                        <i class="ph ph-house-line ticket-icon"></i>
+                        <h4>Rotasi Unit</h4>
+                        <p>Berlaku bagi penyewa Ontoown dengan Add-on Fleksibilitas</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 1.5rem;">Cari Properti Kamu</h2>
+                    <span style="font-size: 0.85rem; color: #f59e0b; cursor: pointer;">Lihat Semua ></span>
+                </div>
+                <div class="prop-scroll-container">
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon"><i class="ph ph-heart"></i></div><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating"><i class="ph ph-star-fill"></i> 4.8</div><h3>Sudirman Park Apartment</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-ready">Ontoown Ready</span><div class="wishlist-icon"><i class="ph ph-heart"></i></div><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating"><i class="ph ph-star-fill"></i> 4.9</div><h3>The Verde Residence</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp6.800.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp1.020.000/bln</span></div></div>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-img-box"><span class="badge-rent">Sewa</span><div class="wishlist-icon"><i class="ph ph-heart"></i></div><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80" class="prop-img"></div>
+                        <div class="prop-info"><div class="rating"><i class="ph ph-star-fill"></i> 4.7</div><h3>Central Park Residence</h3>
+                        <div class="price-row"><span class="price-label">Sewa</span><span class="price-val">Rp4.200.000/bln</span></div>
+                        <div class="price-row"><span class="price-label">Ekuitas</span><span class="price-val">Rp630.000/bln</span></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2 style="font-size: 1.6rem; line-height: 1.2;">Progres terasa lebih baik saat kamu bisa melihatnya!</h2>
+                
+                <div class="gamify-container">
+                    <div class="gamify-card c-orange">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-orange"><i class="ph ph-lightbulb"></i></div>
+                            <span class="g-pts" style="color: #9a3412;">+100 poin</span>
+                        </div>
+                        <div><h4>Hemat Energi</h4><p>Kurangi pemakaian listrik bulananmu!</p></div>
+                    </div>
+                    <div class="gamify-card c-blue">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-blue"><i class="ph ph-fire"></i></div>
+                            <span class="g-pts" style="color: #1e3a8a;">+80 poin</span>
+                        </div>
+                        <div><h4>Pahlawan Waktu</h4><p>Bayar sewa sebelum jatuh tempo.</p></div>
+                    </div>
+                    <div class="gamify-card c-green">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-green"><i class="ph ph-star"></i></div>
+                            <span class="g-pts" style="color: #064e3b;">+50 poin</span>
+                        </div>
+                        <div><h4>Beri Ulasan</h4><p>Berikan rating untuk dapat poin.</p></div>
+                    </div>
+                    <div class="gamify-card c-lightblue">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div class="g-icon-box bg-lightblue"><i class="ph ph-users"></i></div>
+                            <span class="g-pts" style="color: #1e40af;">+100 poin</span>
+                        </div>
+                        <div><h4>Ajak Teman</h4><p>Ajak temanmu untuk ikut bergabung.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="sidebar-right">
+            <section class="section-card">
+                <div class="prog-header"><span><i class="ph ph-medal"></i> Progres Ontoown</span><span id="prog-text" style="color: var(--primary-green);">33%</span></div>
+                <div class="bar-bg"><div id="prog-bar" class="bar-fill"></div></div>
+                <div class="steps-nav">
+                    <div class="step-item active" onclick="setStep(33, 'rumah-33.png', this)"><div class="step-icon"><i class="ph ph-key"></i></div><div class="step-label">Sewa</div></div>
+                    <div class="step-item" onclick="setStep(66, 'rumah-66.png', this)"><div class="step-icon"><i class="ph ph-chart-line-up"></i></div><div class="step-label">Ekuitas</div></div>
+                    <div class="step-item" onclick="setStep(100, 'rumah-100.png', this)"><div class="step-icon"><i class="ph ph-house-line"></i></div><div class="step-label">Milik</div></div>
+                </div>
+                <div class="house-visual-box"><img id="house-img" src="rumah-33.png" alt="Progres"></div>
+            </section>
+
+            <section class="section-card">
+                <h3 style="margin-top:0">Simulasi KPR</h3>
+                <div class="sim-container">
+                    <div class="sim-group">
+                        <div class="input-row"><label>Harga Properti</label><div class="input-with-icon"><span><i class="ph ph-bank"></i></span><input type="number" id="m-price" value="500000000" oninput="calc()"></div></div>
+                        <div class="input-row"><label>Uang Muka (DP)</label><div class="input-with-icon"><span><i class="ph ph-money"></i></span><select id="m-dp" onchange="calc()"><option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.20">20%</option></select></div></div>
+                        <div class="input-row"><label>Ekuitas per Bulan (RTO)</label><div class="input-with-icon"><span><i class="ph ph-percent"></i></span><select id="m-equity" onchange="calc()"><option value="0.15" selected>15%</option><option value="0.20">20%</option><option value="0.25">25%</option></select></div></div>
+                    </div>
+                    <div class="sim-group">
+                        <div class="input-row"><label>Tenor: <span id="v-years">15</span> Tahun</label><input type="range" id="m-years" min="5" max="30" value="15" oninput="calc()"></div>
+                        <div class="input-row"><label>Suku Bunga: <span id="v-rate">6</span>%</label><input type="range" id="m-rate" min="1" max="15" value="6" step="0.1" oninput="calc()"></div>
+                        <div class="input-row"><label>Pendapatan Bulanan</label><div class="input-with-icon"><span><i class="ph ph-wallet"></i></span><input type="number" id="m-income" value="15000000" oninput="calc()"></div></div>
+                    </div>
+                    <div class="res-area">
+                        <div style="font-size:0.8rem; color:#333">Estimasi Cicilan Bulanan</div>
+                        <div class="res-main-val" id="res-monthly">Rp 0</div>
+                        <div class="res-detail"><span>Alokasi Pendapatan</span><span id="res-alloc" style="font-weight:700;">0%</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
     <div class="waiting-list-section" id="daftar">
         <h2>Slot terbatas!</h2>
-        <p>Gabung daftar tunggu sekarang untuk akses eksklusif</p>
+        <p>Jadilah yang pertama punya rumah tanpa drama.<br>Gabung daftar tunggu sekarang untuk akses eksklusif</p>
         
-        <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto;">
-            <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 15px; border-radius: 40px; border: none; color: #333;">
-            <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none; color: #333;">
-            <button type="submit" class="btn-join">Gabung Waiting List</button>
+        <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+            <input type="text" id="wl-name" placeholder="Nama Lengkap" required style="padding: 15px; border-radius: 40px; border: none; outline: none;">
+            <input type="email" id="wl-email" placeholder="Alamat Email" required style="padding: 15px; border-radius: 40px; border: none; outline: none;">
+            
+            <select id="wl-gender" required style="padding: 15px; border-radius: 40px; border: none; outline: none; appearance: none; background: white; color: #333;">
+                <option value="" disabled selected>Jenis Kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+            
+            <input type="text" id="wl-city" placeholder="Kota yang diinginkan" required style="padding: 15px; border-radius: 40px; border: none; outline: none;">
+            
+            <button type="submit" class="btn-join" style="width: 100%; margin-top: 10px; border: none; cursor: pointer;">Gabung Waiting List</button>
         </form>
         
-        <p id="responseMessage" style="margin-top: 20px; font-weight: bold; min-height: 20px;"></p>
+        <p id="responseMessage" style="margin-top: 20px; font-weight: bold; min-height: 24px;"></p>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 Ontoown. All rights reserved.</p>
+        <div class="footer-grid">
+            <div><img src="logoputih.PNG" alt="Logo" class="footer-logo"><p>Sewa Hari Ini, Miliki Esok Hari.</p></div>
+            <div><h4>Produk</h4><ul><li>Fleksibilitas</li><li>Gamifikasi</li><li>Properti</li></ul></div>
+            <div><h4>Dukungan</h4><ul><li>FAQ</li><li>Syarat & Ketentuan</li></ul></div>
+            <div><h4>Hubungi Kami</h4><div class="contact-info"><i class="ph ph-envelope"></i> ontoown@gmail.com</div><div class="contact-info"><i class="ph ph-instagram-logo"></i> @ontoown</div></div>
+        </div>
     </footer>
 
+    <script>
+        function calc() {
+            const price = parseFloat(document.getElementById('m-price').value) || 0;
+            const dpPercent = parseFloat(document.getElementById('m-dp').value);
+            const equityPercent = parseFloat(document.getElementById('m-equity').value); 
+            const years = parseInt(document.getElementById('m-years').value);
+            const rate = parseFloat(document.getElementById('m-rate').value) / 100;
+            const income = parseFloat(document.getElementById('m-income').value) || 1;
+            document.getElementById('v-years').innerText = years;
+            document.getElementById('v-rate').innerText = (rate*100).toFixed(1);
+
+            const loanAmount = price * (1 - dpPercent);
+            
+            // Rumus KPR sederhana
+            const monthlyPayment = (loanAmount * (1 + (rate * years))) / (years * 12);
+            
+            // Ekuitas RTO
+            const monthlyEquity = (price * equityPercent) / 12; 
+            
+            const totalMonthly = monthlyPayment + monthlyEquity;
+            const allocation = (totalMonthly / income) * 100;
+
+            document.getElementById('res-monthly').innerText = "Rp " + Math.round(totalMonthly).toLocaleString('id-ID');
+            document.getElementById('res-alloc').innerText = allocation.toFixed(1) + "%";
+            document.getElementById('res-alloc').style.color = allocation > 40 ? "#ef4444" : "#249170";
+        }
+        function setStep(percent, image, element) {
+            document.getElementById('house-img').src = image;
+            document.getElementById('prog-bar').style.width = percent + "%";
+            document.getElementById('prog-text').innerText = percent + "%";
+            document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+        calc();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // Inisialisasi Supabase
@@ -83,34 +447,53 @@
         const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
         document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
-            // 1. Mencegah reload halaman
+            // PENTING: Mencegah refresh halaman
             e.preventDefault();
             
-            const name = document.getElementById('wl-name').value;
-            const email = document.getElementById('wl-email').value;
-            const messageEl = document.getElementById('responseMessage');
             const button = e.target.querySelector('button');
-
+            const originalText = button.innerText;
             button.innerText = 'Mengirim...';
             button.disabled = true;
 
-            // 2. Mengirim data ke Supabase
+            const name = document.getElementById('wl-name').value;
+            const email = document.getElementById('wl-email').value;
+            const gender = document.getElementById('wl-gender').value;
+            const city = document.getElementById('wl-city').value;
+            const messageEl = document.getElementById('responseMessage');
+
+            // Hapus pesan lama
+            messageEl.innerText = '';
+
+            // Kirim data ke Supabase
             const { data, error } = await supabase
                 .from('waiting_list')
-                .insert([{ nama: name, email: email }]);
+                .insert([
+                    { 
+                        nama: name, 
+                        email: email, 
+                        jenis_kelamin: gender, 
+                        lokasi: city 
+                    }
+                ]);
 
-            // 3. Menangani respon
+            button.disabled = false;
+            button.innerText = originalText;
+
+            // Handle Respon
             if (error) {
-                messageEl.innerText = 'Gagal: ' + error.message;
+                messageEl.innerText = 'Error: ' + error.message;
                 messageEl.style.color = '#ff6b6b';
+                console.error('Supabase Error:', error);
             } else {
-                messageEl.innerText = 'Selamat! Anda telah bergabung.';
+                messageEl.innerText = 'Berhasil! Terima kasih sudah bergabung.';
                 messageEl.style.color = '#34d399';
                 document.getElementById('waitlistForm').reset();
+                
+                button.innerText = 'Berhasil!';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 3000);
             }
-
-            button.innerText = 'Gabung Waiting List';
-            button.disabled = false;
         });
     </script>
 </body>
